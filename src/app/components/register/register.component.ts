@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit{
     });
   }
 
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+  ngOnInit() {             // à l initialisation de...
+    this.registerForm = this.formBuilder.group({               
       pseudo: ['Pseudo', [Validators.required]],
       prenom: ['Prénom', [Validators.required]],
       nom: ['Nom', [Validators.required]],
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit{
     });
   }
 
-  register(){
+  register(){                
     if(this.registerForm){
       
       const data = {
