@@ -14,6 +14,8 @@ import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { HeaderhomeComponent } from './components/headerhome/headerhome.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeadermemberComponent } from './components/headermember/headermember.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,13 @@ import { HeadermemberComponent } from './components/headermember/headermember.co
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
