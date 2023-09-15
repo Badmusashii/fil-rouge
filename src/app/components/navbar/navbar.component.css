@@ -5,7 +5,13 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #B9C3EC;
+  border: 4px solid #7B8CDE;
+  background-color: #b9c3ec;
+  box-shadow: inset 0 0 2em #7B8CDE;
+  border-radius: 1%;
+  width: 145%;
+  height: 60%;
+  margin-left: -20%;
 }
 
 ul.topnav li {float: left;}
@@ -18,7 +24,7 @@ ul.topnav li a {
   text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #111;}
+ul.topnav li a:hover {background-color: #7B8CDE;}
 
 /* ul.topnav li a.active {background-color: #04AA6D;} */
 

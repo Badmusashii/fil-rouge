@@ -33,11 +33,10 @@ export class LoginComponent {
       password: this.loginForm.get('password')?.value,
     };
 
-    this.authService.login(data).subscribe(res => {
-      console.log('je log la reponse', res);
+    this.authService.login(data);
       
      
-    })
+    }
   
     // if (this.loginForm.valid) {
     //   const formData = this.loginForm.value as LoginForm;
@@ -46,4 +45,4 @@ export class LoginComponent {
 
     //   );
   }
-}
+
