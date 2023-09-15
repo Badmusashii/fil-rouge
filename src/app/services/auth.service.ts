@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) { }
   login(data :{ username: string; email: string; password: string; }) {
-    console.log("je suis dans auth service, je récup la data", data); 
+    // console.log("je suis dans auth service, je récup la data", data);
+    //return this.http.post(`http://localhost:8080/api/auth/login`, data).subscribe((res)=>{localStorage.setItem('token', res.accessToken)});
     return this.http.post(`http://localhost:8080/api/auth/login`, data);
   }
 
