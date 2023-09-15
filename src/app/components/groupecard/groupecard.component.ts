@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 import { GroupeService } from 'src/app/services/groupe.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-groupecard',
   templateUrl: './groupecard.component.html',
   styleUrls: ['./groupecard.component.css'],
 })
 export class GroupecardComponent {
-  constructor(private groupeService: GroupeService) {}
+  constructor(private groupeService: GroupeService, private http: HttpClient) {}
   nom: string = '';
   email: string = '';
 
@@ -26,6 +27,8 @@ export class GroupecardComponent {
   }
 
   envoyerInvitation() {
+    this.http.get('http::/localhots');
+
     let templateParams = {
       from_name: 'Votre Nom',
       to_email: this.email, // la variable email que nous avons liée avec ngModel
