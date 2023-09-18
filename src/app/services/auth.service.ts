@@ -9,6 +9,7 @@ export class AuthService {
   login(data :{ username: string; email: string; password: string; }) {
     interface ApiResponse {
       accessToken: string;
+      console.log(acc)
     }
 
     return this.http.post<ApiResponse>(`http://localhost:8080/api/auth/login`, data).subscribe((res:ApiResponse)=>{localStorage.setItem('token',res.accessToken)});

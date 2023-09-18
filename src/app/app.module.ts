@@ -15,6 +15,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageHomeComponent } from './components/page-home/page-home.component';
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
+import { PageMonCompteComponent } from './components/page-mon-compte/page-mon-compte.component';
+import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
+import { MemberdeleteComponent } from './components/memberdelete/memberdelete.component';
+import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
+import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
+import { GroupecardComponent } from './components/groupecard/groupecard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +34,12 @@ import { CategorieListComponent } from './components/categorie-list/categorie-li
     HeadermemberComponent,
     PageHomeComponent,
     CategorieListComponent,
+    PageMonCompteComponent,
+    MemberupdateComponent,
+    MemberdeleteComponent,
+    PageGererGroupeComponent,
+    GroupecreateComponent,
+    GroupecardComponent,
   ],
   imports: [
     ReactiveFormsModule,

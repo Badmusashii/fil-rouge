@@ -26,7 +26,7 @@ export class MemberupdateComponent implements OnInit {
     if (this.updateForm.valid) {
       console.log(this.updateForm.value);
       this.http
-        .post('http://localhost:8080/api/auth', this.updateForm.value)
+        .patch('http://localhost:8080/api/auth', this.updateForm.value)
         .subscribe({
           next: (response) => {
             console.log('Réponse du serveur:', response);
