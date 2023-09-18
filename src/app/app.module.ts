@@ -18,6 +18,7 @@ import { GroupeListComponent } from './components/groupe-list/groupe-list.compon
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
 import { PageGererMesRestosComponent } from './components/page-gerer-mes-restos/page-gerer-mes-restos.component';
 import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourchette-de-prix.component';
+import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourc
     CategorieListComponent,
     GroupeListComponent,
     PageGererMesRestosComponent,
-    FourchetteDePrixComponent
+    FourchetteDePrixComponent,
+    RestaurantListComponent
   ],
   imports: [
     ReactiveFormsModule,
