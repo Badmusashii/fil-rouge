@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
-import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderhomeComponent } from './components/headerhome/headerhome.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeadermemberComponent } from './components/headermember/headermember.component';
+import { LoginComponent } from './components/login/login.component';
+import { PageAuthComponent } from './components/page-auth/page-auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { PageHomeComponent } from './components/page-home/page-home.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,12 @@ import { HeadermemberComponent } from './components/headermember/headermember.co
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    PageAccueilComponent,
     PageNotFoundComponent,
     PageAuthComponent,
     HeaderhomeComponent,
     NavbarComponent,
-    HeadermemberComponent
+    HeadermemberComponent,
+    PageHomeComponent
   ],
   imports: [
     ReactiveFormsModule,
