@@ -16,6 +16,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageHomeComponent } from './components/page-home/page-home.component';
 import { GroupeListComponent } from './components/groupe-list/groupe-list.component';
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
+import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CategorieListComponent } from './components/categorie-list/categorie-li
     HeadermemberComponent,
     PageHomeComponent,
     CategorieListComponent,
-    GroupeListComponent
+    GroupeListComponent,
+    RestaurantListComponent
   ],
   imports: [
     ReactiveFormsModule,
