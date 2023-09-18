@@ -29,4 +29,13 @@ export class GroupeService {
       }
     );
   }
+
+  getAllGroupForMember(){
+    interface Groupe {
+      id: number;
+      name: string;
+    }
+    return this.http.get<[Groupe]>(`http://localhost:8080/api/groupe`);
+  }
+  
 }
