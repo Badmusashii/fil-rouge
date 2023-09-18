@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 import { GroupeService } from 'src/app/services/groupe.service';
 import { HttpClient } from '@angular/common/http';
@@ -8,10 +8,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./groupecard.component.css'],
 })
 export class GroupecardComponent {
+  @Input() groupe: any;
+  member: any[] = [];
   constructor(private groupeService: GroupeService, private http: HttpClient) {}
   nom: string = '';
   email: string = '';
 
+  ngOnInit() {
+    // Assurez-vous que l'ID du groupe est disponible
+    if (this.groupe && this.groupe.id) {
+      this.getAllMemberForGroupe(this.groupe.id);
+    }
+  }
   modifier() {
     console.log('Modifier cliqué. Nom:', this.nom);
     console.log('Email:', this.email);
@@ -55,5 +63,18 @@ export class GroupecardComponent {
           console.log(error.text);
         }
       );
+  }
+  getAllMemberForGroupe(id: number) {
+    this.groupeService.getAllMemberForGroupe(id).subscribe(
+      (res: any) => {
+        this.member = res;
+      },
+      (err) => {
+        console.error(
+          'Erreur lors de la récupération des membres du groupe : ',
+          err
+        );
+      }
+    );
   }
 }
