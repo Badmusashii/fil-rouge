@@ -9,6 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { FormsModule } from '@angular/forms';
+import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
+import { MemberdeleteComponent } from './components/memberdelete/memberdelete.component';
+import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +19,9 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     LoginComponent,
     GroupecardComponent,
+    MemberupdateComponent,
+    MemberdeleteComponent,
+    GroupecreateComponent,
   ],
   imports: [
     ReactiveFormsModule,

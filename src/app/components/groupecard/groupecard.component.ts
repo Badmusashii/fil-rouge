@@ -27,7 +27,12 @@ export class GroupecardComponent {
   }
 
   envoyerInvitation() {
-    this.http.get('http::/localhots');
+    const member = this.http
+      .get('http::/localhost:8080/api/member/user')
+      .subscribe((res) => {
+        console.log(res);
+        return res;
+      });
 
     let templateParams = {
       from_name: 'Votre Nom',

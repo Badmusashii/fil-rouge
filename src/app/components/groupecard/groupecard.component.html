@@ -1,13 +1,17 @@
 <div class="cardGroupe">
   <div class="memberInGroupe">
-    <p>Nom : <input type="text" [(ngModel)]="nom" /></p>
-
-    <label for="email">Inviter dans le groupe</label>
-    <input type="email" name="email" id="email" [(ngModel)]="email" />
+    <div class="inputNom">
+      <p>Nom : <input type="text" [(ngModel)]="nom" /></p>
+    </div>
+    <div class="memberList"></div>
+    <div>
+      <label for="email">Inviter dans le groupe</label>
+      <input type="email" name="email" id="email" [(ngModel)]="email" />
+    </div>
   </div>
   <div class="button">
-    <button (click)="modifier()">Modifier</button>
+    <button id="modifier" (click)="modifier()">Modifier</button>
     <button>Quitter</button>
-    <button (click)="envoyerInvitation()">Envoyer</button>
+    <button id="envoyer" (click)="envoyerInvitation()">Envoyer</button>
   </div>
 </div>
