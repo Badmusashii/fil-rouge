@@ -36,4 +36,7 @@ export class GroupeService {
   getAllMemberForGroupe(id: number): Observable<any> {
     return this.http.get(`http://localhost:8080/api/groupe/${id}`);
   }
+  deleteMemberInGroupe(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8080/api/groupe/${id}`);
+  }
 }

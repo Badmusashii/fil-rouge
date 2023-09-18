@@ -31,7 +31,7 @@ export class GroupecardComponent {
   }
   envoyerInvitationAuGroupe() {
     // Supposons que 4 est l'ID du groupe
-    this.groupeService.ajouterMembreAuGroupe(4);
+    this.groupeService.ajouterMembreAuGroupe(this.groupe.id);
   }
 
   envoyerInvitation() {
@@ -76,5 +76,17 @@ export class GroupecardComponent {
         );
       }
     );
+  }
+  quitterGroupe() {
+    if (this.groupe && this.groupe.id) {
+      this.groupeService.deleteMemberInGroupe(this.groupe.id).subscribe(
+        () => {
+          location.reload();
+        },
+        (err) => {
+          console.error('Erreur lors du retrait du membre du groupe :', err);
+        }
+      );
+    }
   }
 }
