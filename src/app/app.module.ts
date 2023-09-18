@@ -14,6 +14,7 @@ import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageHomeComponent } from './components/page-home/page-home.component';
+import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PageHomeComponent } from './components/page-home/page-home.component';
     HeaderhomeComponent,
     NavbarComponent,
     HeadermemberComponent,
-    PageHomeComponent
+    PageHomeComponent,
+    CategorieListComponent
   ],
   imports: [
     ReactiveFormsModule,
