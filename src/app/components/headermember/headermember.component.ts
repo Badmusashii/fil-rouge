@@ -7,7 +7,7 @@ import { MemberService } from 'src/app/services/member.service';
   styleUrls: ['./headermember.component.css'],
 })
 export class HeadermemberComponent implements OnInit {
-  pseudo: string | undefined = '';
+  pseudo: string | undefined = 'titi';
 
   constructor(private memberService: MemberService) {}
 

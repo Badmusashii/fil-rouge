@@ -11,7 +11,7 @@ ul.topnav {
   border-radius: 1%;
   width: 145%;
   height: 60%;
-  margin-left: -20%;
+  margin-left: -18%;
 }
 
 ul.topnav li {float: left;}
@@ -23,6 +23,7 @@ ul.topnav li a {
   padding: 14px 15px;
   text-decoration: none;
 }
+
 
 ul.topnav li a:hover {background-color: #7B8CDE;}
 
