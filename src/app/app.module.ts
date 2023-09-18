@@ -8,13 +8,11 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PageAccueilComponent } from './components/page-accueil/page-accueil.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { PageAuthComponent } from './components/page-auth/page-auth.component';
-import { HeaderhomeComponent } from './components/headerhome/headerhome.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeadermemberComponent } from './components/headermember/headermember.component';
-
+import { GroupecardComponent } from './components/groupecard/groupecard.component';
+import { FormsModule } from '@angular/forms';
+import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
+import { MemberdeleteComponent } from './components/memberdelete/memberdelete.component';
+import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +31,7 @@ import { HeadermemberComponent } from './components/headermember/headermember.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
