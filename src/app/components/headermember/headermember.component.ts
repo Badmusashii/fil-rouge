@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from 'src/app/services/member.service';
-import { Component, OnInit } from '@angular/core';
-import { MemberService } from 'src/app/services/member.service';
 
 @Component({
   selector: 'app-headermember',
