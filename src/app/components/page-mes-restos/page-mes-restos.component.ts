@@ -9,6 +9,7 @@ import { AvisService } from 'src/app/services/avis.service';
 export class PageMesRestosComponent implements OnInit {
   avis: string[] = [];
   listeDesAvis: string[] = ['Avis 1', 'Avis 2', 'Avis 3'];
+  restaurantList: any[] | undefined;
   
   constructor(private avisService: AvisService) {}
 
@@ -16,5 +17,9 @@ export class PageMesRestosComponent implements OnInit {
     this.avisService.getAvis().subscribe((nouveauxAvis) => {
       this.avis = nouveauxAvis;
     });
+  }
+
+  handleRestaurantList(restaurantList: any[]) {
+   this.restaurantList = restaurantList;
   }
 }
