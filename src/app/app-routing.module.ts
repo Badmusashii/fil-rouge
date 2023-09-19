@@ -6,12 +6,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: PageAccueilComponent },
+  { path: 'mes-restos', component: PageMesRestosComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -1,0 +1,11 @@
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h2>Créer un avis</h2>
+        <form (ngSubmit)="submitReview()">
+            <label for="reviewText">Votre avis :</label>
+            <textarea id="reviewText" name="reviewText" rows="4" cols="50" [(ngModel)]="reviewText"></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+</div>
