@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
@@ -8,12 +8,14 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
+  @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<any[]>();
   
   constructor(private restaurantService: RestaurantService){};
 
   ngOnInit(): void {  
     const objet = this.restaurantService.getRestaurantList().subscribe((res) =>{
       this.restaurantList = res.data;
+      this.restaurantListOutput.emit(this.restaurantList); 
       console.log(res);
     });
   }
