@@ -21,6 +21,7 @@ import { MemberdeleteComponent } from './components/memberdelete/memberdelete.co
 import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
 import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
+import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { GroupecardComponent } from './components/groupecard/groupecard.componen
     PageGererGroupeComponent,
     GroupecreateComponent,
     GroupecardComponent,
+    PageIntermediareComponent,
   ],
   imports: [
     ReactiveFormsModule,

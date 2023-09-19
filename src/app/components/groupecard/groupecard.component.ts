@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class GroupecardComponent {
   @Input() groupe: any;
   member: any[] = [];
+  user: any = '';
   constructor(private groupeService: GroupeService, private http: HttpClient) {}
   nom: string = '';
   email: string = '';
@@ -30,39 +31,55 @@ export class GroupecardComponent {
     console.log('Email:', this.email);
   }
   envoyerInvitationAuGroupe() {
-    // Supposons que 4 est l'ID du groupe
     this.groupeService.ajouterMembreAuGroupe(this.groupe.id);
   }
 
   envoyerInvitation() {
-    const member = this.http
-      .get('http::/localhost:8080/api/member/user')
-      .subscribe((res) => {
-        console.log(res);
-        return res;
-      });
+    this.http
+      .get(`http://localhost:8080/api/member/email?email=${this.email}`)
+      .subscribe((res: any) => {
+        console.log('la reponse que je cherche ' + res);
+        if (res) {
+          const token = res.token;
+          console.log(
+            'le res en retour => ' + JSON.stringify(res.futurMember.id)
+          );
+          this.user = this.http
+            .get('http://localhost:8080/api/member/user')
+            .subscribe((res) => {
+              // console.log(res);
+              return res;
+            });
+          console.log(this.user);
+          console.log(
+            `http://localhost:8080/api/groupe/${this.groupe.id}?token=${token}`
+          );
+          let templateParams = {
+            to_name: res.futurMember.username,
+            from_name: this.user.username,
+            to_email: this.email,
+            // groupe_url: `http://localhost:8080/api/groupe/verifier/${this.groupe.id}?token=${token}`,
+            groupe_url: `http://localhost:4200/intermediaire?groupeId=${this.groupe.id}&token=${token}`,
+          };
 
-    let templateParams = {
-      from_name: 'Votre Nom',
-      to_email: this.email, // la variable email que nous avons liée avec ngModel
-      message: 'Message d’invitation',
-    };
-
-    emailjs
-      .send(
-        'service_3wvcygu',
-        'template_jllzhna',
-        templateParams,
-        '60MgmVGdSHW3usbWU'
-      )
-      .then(
-        (result: EmailJSResponseStatus) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
+          emailjs
+            .send(
+              'service_ffhd2yb',
+              'template_mvqx7k9',
+              templateParams,
+              'bvn_WzKfqlnrjW4Ro'
+            )
+            .then(
+              (result: EmailJSResponseStatus) => {
+                console.log(result.text);
+              },
+              (error) => {
+                console.log(error.text);
+              }
+            );
+        } else {
         }
-      );
+      });
   }
   getAllMemberForGroupe(id: number) {
     this.groupeService.getAllMemberForGroupe(id).subscribe(
