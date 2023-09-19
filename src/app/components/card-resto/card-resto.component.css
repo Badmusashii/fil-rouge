@@ -60,10 +60,9 @@ color: #B97375;
 
 .thumbs-up-down{
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
  }
 
-.thumbs-up-down > :first-child {
-    margin-right: -75%;
-}
-
+ #cadragePouceDown {
+    margin-left: 8px;
+ }

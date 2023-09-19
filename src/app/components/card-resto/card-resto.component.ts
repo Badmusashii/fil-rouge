@@ -14,6 +14,7 @@ export class CardRestoComponent {
   // Initialisez un compteur de pouces en l'air
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
+  avisSubject: any;
   // modalComponent: any;
   constructor(private modalComponent: ModalComponent) {}
 
@@ -23,5 +24,11 @@ export class CardRestoComponent {
 
   handleReviewSubmitted(review: string) {
     // Traitez l'avis soumis ici, par exemple, envoyez-le à un service.
+  }
+
+  ajouterAvis(nouvelAvis: string) {
+    const avisActuels = this.avisSubject.getValue();
+    avisActuels.push(nouvelAvis);
+    this.avisSubject.next(avisActuels);
   }
 }
