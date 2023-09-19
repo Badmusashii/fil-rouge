@@ -13,6 +13,7 @@ export class MemberService {
     interface Member {
       username: string;
     }
+    console.log("GET MEMBER");
     return this.http.get<Member>(`http://localhost:8080/api/member/user`);
   }
 }

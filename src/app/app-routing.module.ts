@@ -8,6 +8,7 @@ import { PageHomeComponent } from './components/page-home/page-home.component';
 import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

@@ -24,22 +24,11 @@ export class LoginComponent {
   });
 
   login() {
-    console.log("je suis dans ma méthode login : ", this.loginForm.value);
-
     const data = {
-      
       username: this.loginForm.get('username')?.value,
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };
-
     this.authService.login(data);
-  
-    // if (this.loginForm.valid) {
-    //   const formData = this.loginForm.value as LoginForm;
-    //   this.authService.login(formData).subscribe((res)
-    //     console.log(res);
-
-    //   );
   }
 }
