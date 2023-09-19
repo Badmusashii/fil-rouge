@@ -2,11 +2,15 @@
   font-family: Arvo;
   color : #2c3d55
 }
+
 .center{
     display: flex;
     justify-content: center;
 }
+
 button {
+    color: white;
+    /* border: 1rem solid black; */
     border-radius: 10%;
     padding-left: 10px;
     padding-right: 10px;

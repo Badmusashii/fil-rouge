@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit{
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder,private authService: AuthService,private router:Router) {
     this.registerForm = new FormGroup({
       pseudo: new FormControl(''),
       prenom: new FormControl(''),
@@ -45,7 +46,8 @@ export class RegisterComponent implements OnInit{
       };
      
       this.authService.register(data).subscribe((response) => {
-        console.log('User ajouté!'+response);     
+        console.log('User ajouté!'+response);
+        this.router.navigate(['/login']);   
       });
     }else{
       alert("Formulaire invalide");
