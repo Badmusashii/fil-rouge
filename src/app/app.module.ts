@@ -22,6 +22,7 @@ import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-re
 import { CardRestoComponent } from './components/card-resto/card-resto.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PageAuthComponent } from './components/page-auth/page-auth.component';
+import { HeaderLoginComponent } from './components/header-login/header-login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PageAuthComponent } from './components/page-auth/page-auth.component';
     GroupeListComponent,
     PageGererMesRestosComponent,
     FourchetteDePrixComponent,
-    RestaurantListComponent
+    RestaurantListComponent,
+    HeaderLoginComponent
   ],
   imports: [
     ReactiveFormsModule,

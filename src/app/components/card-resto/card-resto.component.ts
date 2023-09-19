@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -7,7 +7,9 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./card-resto.component.css'],
 })
 export class CardRestoComponent {
-  pseudo: string | undefined = "'titi'";
+  pseudo: string | undefined = 'titi';
+  nameResto: string | undefined = 'bon ap';
+  @Input() avis: string[] = []; // Propriété pour stocker les avis
 
   // Initialisez un compteur de pouces en l'air
   numberOfThumbsUp: number = 0;

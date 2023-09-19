@@ -1,6 +1,6 @@
 <div class="card">
     <div class="restaurant-info">
-        <h2>Restaurant Name proposé par {{pseudo}}</h2>
+        <h2>Restaurant <span>{{nameResto}}</span> proposé par <span>{{pseudo}}</span></h2>
         <p>Address: 123 Main St, City</p>
         <p>Catégorie: fast food</p>
         <p>Prix</p>
@@ -10,22 +10,15 @@
         <p><i class="fas fa-thumbs-down flip-horizontal" (click)="numberOfThumbsDown = numberOfThumbsDown + 1" style="margin-right: 8px;"></i>{{ numberOfThumbsDown }}</p> <!-- Icône "pouce en bas" -->
     <div class="thumbs-icons">
     </div>
-           
    </div>
-    <div class="reviews">
-        <div class="review">
-            <h3>Avis de {{pseudo}}</h3>
-            <p>This is a great restaurant!</p>
-        </div>
-        <div class="review">
-            <h3>Avis de {{pseudo}}</h3>
-            <p>I love it. Highly recommended.</p>
-        </div>
-        <div class="review">
-            <h3>Avis de {{pseudo}}</h3>
-            <p>Not bad, but could be better.</p>
-        </div>
-        
+
+<div class="reviews">
+    <div class="review" *ngFor="let unAvis of avis">
+        <h3>Avis de {{ pseudo }}</h3>
+        <p>{{ unAvis }}</p>
+    </div>
+</div>
+          
     </div>
     <div class="add-review-button">
         <button (click)="openModal()">Donne ton avis</button>
