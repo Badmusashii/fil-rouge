@@ -29,6 +29,8 @@ export class ModalComponent {
     this.reviewSubmitted.emit(this.reviewText);
     this.reviewText = '';
     this.closeModal();
+
+    
   }
 }
 // Réinitialisez le champ de texte après la soumission.

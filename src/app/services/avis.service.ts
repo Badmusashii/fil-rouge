@@ -12,17 +12,12 @@ export class AvisService {
     return this.avisSubject.asObservable();
   }
 
-  ajouterAvis(nouvelAvis: string) {
-    const avisActuels = this.avisSubject.getValue();
-    avisActuels.push(nouvelAvis);
-    this.avisSubject.next(avisActuels);
-  }
+  
 
-  review(data: {
+  ajouterAvis(data: {
     review: string;
     vote: boolean;
-    
-  }) {
+    }) {
     return this.http.post(`http://localhost:8080/api/review/id`, data);
   }
   
