@@ -1,22 +1,64 @@
 <app-headerhome></app-headerhome>
 
 <div id="creation">
-    <h2> Créer un resto</h2>
-
-    <app-categorie-list></app-categorie-list>
-    <app-fourchette-de-prix></app-fourchette-de-prix>
-    
-
-    <form (ngSubmit)="create()" [formGroup]="createForm">
-
-        <div>
-            <p><input formControlName="nom" /></p>
-            <p><input formControlName="adresse" /></p>
-            <div *ngIf="createForm.get('nom')?.hasError('required')|| createForm.get('adresse')">
-
+    <p> Créer un resto<p>
+    <div id="flexMoiCa">
+        <div id="blocGauche">
+            <div class="selection">
+                <app-categorie-list></app-categorie-list>
+                <app-groupe-list></app-groupe-list>
+            </div>
+            <div>
+                <form (ngSubmit)="create()" [formGroup]="createForm">
+                    <div class="formulaire">
+                        <input formControlName="nom" class="taille" />
+                        <input formControlName="adresse" class="taille" />
+                        <div *ngIf="createForm.get('nom')?.hasError('required')|| createForm.get('adresse')">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="blocDroite">
+            <div class="selection2">
+                <app-fourchette-de-prix></app-fourchette-de-prix>
+            </div>
+            <div id="avis">
+                <p>Avis</p>
+                <textarea id="avis" name="avis" rows="4" cols="50"></textarea>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
 
-</form>
+<div id="modification">
+
+    <p>Modifier ou supprimer un resto:</p>
+
+
+    <div id="left">
+
+        <p>Adresse</p>
+        <p>Categorie</p>
+
+
+    </div>
+
+    <div id="right">
+        <p>proposé par pseudo</p>
+        <app-fourchette-de-prix></app-fourchette-de-prix>
+
+    </div>
+
+    <div id="avis2">
+        <p>Avis</p>
+        <textarea id="avis" name="avis" rows="4" cols="50"></textarea>
+    </div>
+
+
+
+
+
+
 
 </div>
