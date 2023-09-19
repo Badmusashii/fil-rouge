@@ -4,7 +4,7 @@ import { MemberService } from 'src/app/services/member.service';
 @Component({
   selector: 'app-headermember',
   templateUrl: './headermember.component.html',
-  styleUrls: ['./headermember.component.css']
+  styleUrls: ['./headermember.component.css'],
 })
 export class HeadermemberComponent implements OnInit{
   pseudo:string | undefined = "";

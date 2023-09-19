@@ -7,7 +7,10 @@ import { Injectable } from '@angular/core';
 export class RestaurantService {
 
   constructor(private http:HttpClient) { }
+  create(data:{ nom: string; adresse:string;}){
 
+    return this.http.post(`http://localhost:8080/api/restaurant`,data)
+  }
   getRestaurantList(){
     interface RestaurantResponse {
       status: string;
@@ -28,3 +31,4 @@ export class RestaurantService {
     return this.http.get<RestaurantResponse>(`http://localhost:8080/api/restaurant`);
   }
 }
+
