@@ -1,0 +1,66 @@
+ .card {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(100,182,172);
+            margin-left: 18%;
+            margin-bottom: 20%;
+        }
+
+        .restaurant-info {
+            margin-bottom: 15px;
+            
+        }
+
+        .restaurant-info h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .restaurant-info p {
+            margin: 5px 0;
+        }
+
+        .reviews {
+            max-height: 200px;
+            overflow-y: scroll;
+            border: 3px solid #64B6AC;
+             box-shadow: 0 4px 8px 0 rgba(100,182,172);
+            padding: 10px;
+            font-size: small;
+        }
+
+        .review {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .add-review-button {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        h3 {
+            font-size: medium;
+        }
+
+
+/* Ajoutez des marges entre les icônes si nécessaire */
+.thumbs-icons i {
+    margin-right: 10px; /* Espace entre les icônes (personnalisable) */
+}
+
+.flip-horizontal {
+  transform: scaleX(-1);
+}
+
+.thumbs-up-down{
+    display: flex;
+    justify-content: space-between;
+ }
+
+.thumbs-up-down > :first-child {
+    margin-right: -75%;
+}
+

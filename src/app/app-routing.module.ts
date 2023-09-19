@@ -8,8 +8,7 @@ import { PageHomeComponent } from './components/page-home/page-home.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  
   { path: 'home', component: PageHomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
