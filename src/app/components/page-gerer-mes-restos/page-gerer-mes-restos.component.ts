@@ -9,6 +9,11 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class PageGererMesRestosComponent {
   constructor(private fb: FormBuilder, private restaurantService:RestaurantService){}
+  pseudo: string | undefined = "'titi'";
+  // Initialisez un compteur de pouces en l'air
+  numberOfThumbsUp: number = 0;
+  numberOfThumbsDown: number = 0;
+  // modalComponent: any;
 
   createForm: FormGroup = this.fb.group({
     nom:[ '', Validators.required],

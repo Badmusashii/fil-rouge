@@ -1,7 +1,7 @@
 #creation {
     border: 2px solid black;
     padding: 20px; /* Add padding to create space between content and border */
-    
+    margin-left: 15rem;
     
 }
 
@@ -12,7 +12,8 @@ app-fourchette-de-prix, app-groupe-list, app-categorie-list{
 .formulaire input{
     /* border: 1px solid blue; */
     /* box-shadow: 1px 1px 1px red; */
-    width: 100%;
+    width: 96%;
+    margin-left: 15px;
 }
  
 #flexMoiCa {
@@ -23,8 +24,9 @@ app-fourchette-de-prix, app-groupe-list, app-categorie-list{
 }
 
 #blocGauche {
-    border: 1px solid red;
-    margin: 0 20px 0 5rem
+    /* border: 1px solid red; */
+    margin: 0 12px 0 5rem;
+    
    
 }
 
@@ -34,6 +36,7 @@ app-fourchette-de-prix, app-groupe-list, app-categorie-list{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-bottom: 15px;
 }
 
 .selection2{
@@ -42,6 +45,49 @@ app-fourchette-de-prix, app-groupe-list, app-categorie-list{
     justify-content: flex-end;
     
 }
+
+.button{
+    text-align: center;
+    margin-top: 15px;;
+}
+
+
+#modification {
+    border: 2px solid black;
+    padding: 20px; /* Add padding to create space between content and border */
+    margin-left: 15rem;
+   
+    
+}
+
+.cadre{
+    border: 2px solid black;
+    margin-right: 28rem;
+}
+
+ .reviews {
+            /* max-height: 200px; */
+            overflow-y: scroll;
+            border: 3px solid #64B6AC;
+             box-shadow: 0 4px 8px 0 rgba(100,182,172);
+            padding: 10px;
+            font-size: small;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            margin-top: 1rem;
+        }
+
+ .review {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+#flexToutCa{
+    display: flex;
+}
+
+
 
 
 

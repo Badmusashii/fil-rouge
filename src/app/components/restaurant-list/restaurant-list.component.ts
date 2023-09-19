@@ -9,6 +9,8 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
   
+ 
+  
   constructor(private restaurantService: RestaurantService){};
 
   ngOnInit(): void {  

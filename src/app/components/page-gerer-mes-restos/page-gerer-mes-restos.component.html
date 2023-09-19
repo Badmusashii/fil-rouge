@@ -17,6 +17,9 @@
                         </div>
                     </div>
                 </form>
+                <div class="button">
+                    <button >Créer</button>
+                </div>
             </div>
         </div>
         <div id="blocDroite">
@@ -32,14 +35,19 @@
 </div>
 
 <div id="modification">
+    
+<div class="resto">
+    <p>Modifier ou supprimer un resto: <app-restaurant-list></app-restaurant-list></p>
+</div>
 
-    <p>Modifier ou supprimer un resto:</p>
 
-
+<div class="cadre">
+    <div id="flexToutCa">
+        
     <div id="left">
-
+<app-restaurant-list></app-restaurant-list>
         <p>Adresse</p>
-        <p>Categorie</p>
+        <app-categorie-list></app-categorie-list>
 
 
     </div>
@@ -48,17 +56,32 @@
         <p>proposé par pseudo</p>
         <app-fourchette-de-prix></app-fourchette-de-prix>
 
+
     </div>
+    
 
-    <div id="avis2">
-        <p>Avis</p>
-        <textarea id="avis" name="avis" rows="4" cols="50"></textarea>
-    </div>
+    
+</div>
+    <div class="reviews">
+        <div class="review">
+            <h3>Avis de {{pseudo}}</h3>
+            <p>This is a great restaurant!</p>
+        </div>
+        <div class="review">
+            <h3>Avis de {{pseudo}}</h3>
+            <p>I love it. Highly recommended.</p>
+        </div>
+        <div class="review">
+            <h3>Avis de {{pseudo}}</h3>
+            <p>Not bad, but could be better.</p>
+        </div>
 
-
+</div>
 
 
 
 
 
 </div>
+
+
