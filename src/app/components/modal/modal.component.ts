@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AvisService } from 'src/app/services/avis.service'; 
 
 @Component({
   selector: 'app-modal',
@@ -9,6 +10,7 @@ export class ModalComponent {
   @Output() reviewSubmitted = new EventEmitter<string>();
   reviewText: string = '';
 
+  constructor(private avisService: AvisService) {}
   openModal() {
     const modalElement = document.getElementById('myModal');
     if (modalElement !== null) {
@@ -27,6 +29,8 @@ export class ModalComponent {
     this.reviewSubmitted.emit(this.reviewText);
     this.reviewText = '';
     this.closeModal();
+
+    
   }
 }
 // Réinitialisez le champ de texte après la soumission.

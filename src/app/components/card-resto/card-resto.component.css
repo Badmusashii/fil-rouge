@@ -6,8 +6,11 @@
             box-shadow: 0 4px 8px 0 rgba(100,182,172);
             margin-left: 18%;
             margin-bottom: 20%;
+            margin-top: 5%;
         }
-
+span {
+color: #B97375;
+}
         .restaurant-info {
             margin-bottom: 15px;
             
@@ -57,10 +60,9 @@
 
 .thumbs-up-down{
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
  }
 
-.thumbs-up-down > :first-child {
-    margin-right: -75%;
-}
-
+ #cadragePouceDown {
+    margin-left: 8px;
+ }

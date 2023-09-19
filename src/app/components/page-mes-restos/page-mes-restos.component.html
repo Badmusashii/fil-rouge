@@ -1,2 +1,7 @@
 <app-headerhome></app-headerhome>
-<app-card-resto></app-card-resto>
+<div class="container">
+    <div><app-restaurant-list></app-restaurant-list></div>
+    <div><app-categorie-list></app-categorie-list></div>
+    <div><app-groupe-list></app-groupe-list></div>
+</div>
+<app-card-resto [avis]="listeDesAvis"></app-card-resto>
