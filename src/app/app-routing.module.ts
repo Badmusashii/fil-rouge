@@ -8,6 +8,7 @@ import { PageHomeComponent } from './components/page-home/page-home.component';
 import { PageMonCompteComponent } from './components/page-mon-compte/page-mon-compte.component';
 import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
 import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
+import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -16,6 +17,10 @@ const routes: Routes = [
   { path: 'home', component: PageHomeComponent },
   { path: 'gerer', component: PageGererGroupeComponent },
   { path: 'intermediaire', component: PageIntermediareComponent },
+  {
+    path: 'intermediaire/register',
+    component: PageIntermediareRegisterComponent,
+  },
   { path: 'moncompte', component: PageMonCompteComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -1,0 +1,34 @@
+<div class="container">
+  <form (ngSubmit)="register()" [formGroup]="registerForm">
+    <div>
+      <span>Inscription au groupe</span>
+    </div>
+    <div>
+      <p><input formControlName="pseudo" placeholder="Pseudo" /></p>
+      <p><input formControlName="prenom" placeholder="Prenom" /></p>
+      <p><input formControlName="nom" placeholder="Nom" /></p>
+      <p><input formControlName="email" placeholder="Email" /></p>
+      <p>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Mot de passe"
+        />
+      </p>
+      <p>
+        <input
+          type="passwordConf"
+          formControlName="passwordConf"
+          placeholder="Confirmez mot de passe"
+        />
+      </p>
+      <div *ngIf="registerForm.get('email')?.hasError('required')">
+        L'email est requis.
+      </div>
+    </div>
+    <div class="center">
+      <button type="submit"><span>Inscription</span></button>
+    </div>
+  </form>
+</div>
+<!-- <button (click)="register()">Cliquez pour rejoindre le groupe</button> -->

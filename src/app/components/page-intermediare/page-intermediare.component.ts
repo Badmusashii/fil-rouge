@@ -20,8 +20,8 @@ export class PageIntermediareComponent implements OnInit {
   }
 
   joinGroupe() {
-    console.log('groupeId => ' + this.groupeId);
-    console.log('token => ' + this.token);
+    // console.log('groupeId => ' + this.groupeId);
+    // console.log('token => ' + this.token);
     const url = `http://localhost:8080/api/groupe/verifier/${this.groupeId}?token=${this.token}`;
     this.http.put(url, {}).subscribe(
       (response) => {

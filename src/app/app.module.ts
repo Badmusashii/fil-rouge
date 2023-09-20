@@ -22,6 +22,7 @@ import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-ge
 import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
+import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { PageIntermediareComponent } from './components/page-intermediare/page-i
     GroupecreateComponent,
     GroupecardComponent,
     PageIntermediareComponent,
+    PageIntermediareRegisterComponent,
   ],
   imports: [
     ReactiveFormsModule,
