@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Review } from 'src/app/review.interface';
 import { AvisService } from 'src/app/services/avis.service';
 
 @Component({
@@ -7,19 +8,24 @@ import { AvisService } from 'src/app/services/avis.service';
   styleUrls: ['./page-mes-restos.component.css'],
 })
 export class PageMesRestosComponent implements OnInit {
-  avis: string[] = [];
-  listeDesAvis: string[] = ['Avis 1', 'Avis 2', 'Avis 3'];
+  avis: Review[] | undefined;
+  // listeDesAvis: Review[] = [];
   restaurantList: any[] | undefined;
-  
+
   constructor(private avisService: AvisService) {}
 
   ngOnInit() {
-    this.avisService.getAvis().subscribe((nouveauxAvis) => {
+    this.avisService.getAllAvis().subscribe((nouveauxAvis) => {
+      console.log("get all avis" + nouveauxAvis);
+      console.log(nouveauxAvis);
+      
+      
       this.avis = nouveauxAvis;
+
     });
   }
 
   handleRestaurantList(restaurantList: any[]) {
-   this.restaurantList = restaurantList;
+    this.restaurantList = restaurantList;
   }
 }

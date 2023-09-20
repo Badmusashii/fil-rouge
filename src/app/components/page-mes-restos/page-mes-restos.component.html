@@ -4,4 +4,4 @@
     <div><app-categorie-list></app-categorie-list></div>
     <div><app-groupe-list></app-groupe-list></div>
 </div>
-<app-card-resto *ngFor="let restaurant of restaurantList" [avis]="listeDesAvis"></app-card-resto>
+<app-card-resto *ngFor="let restaurant of restaurantList" [restaurant]="restaurant"></app-card-resto>
