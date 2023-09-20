@@ -11,12 +11,18 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageHomeComponent } from './components/page-home/page-home.component';
-import { GroupeListComponent } from './components/groupe-list/groupe-list.component';
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
-import { PageGererMesRestosComponent } from './components/page-gerer-mes-restos/page-gerer-mes-restos.component';
-import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourchette-de-prix.component';
-import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
+import { PageMonCompteComponent } from './components/page-mon-compte/page-mon-compte.component';
+import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
+import { MemberdeleteComponent } from './components/memberdelete/memberdelete.component';
+import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
+import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
+import { GroupecardComponent } from './components/groupecard/groupecard.component';
+import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
+import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
 import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
+import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
+import { GroupeListComponent } from './components/groupe-list/groupe-list.component';
 import { CardRestoComponent } from './components/card-resto/card-resto.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PageAuthComponent } from './components/page-auth/page-auth.component';
@@ -30,13 +36,22 @@ import { CardGroupComponent } from './components/card-group/card-group.component
     RegisterComponent,
     LoginComponent,
     PageNotFoundComponent,
-    PageAuthComponent,
     HeaderhomeComponent,
     PageMesRestosComponent,
     CardRestoComponent,
     ModalComponent,
     PageHomeComponent,
     CategorieListComponent,
+    PageMonCompteComponent,
+    MemberupdateComponent,
+    MemberdeleteComponent,
+    PageGererGroupeComponent,
+    GroupecreateComponent,
+    GroupecardComponent,
+    PageIntermediareComponent,
+    PageIntermediareRegisterComponent,
+    PageMesRestosComponent,
+    RestaurantListComponent,
     GroupeListComponent,
     PageGererMesRestosComponent,
     FourchetteDePrixComponent,
@@ -54,11 +69,11 @@ import { CardGroupComponent } from './components/card-group/card-group.component
   ],
   providers: [
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptorService,
-      multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
     },
-  ModalComponent],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

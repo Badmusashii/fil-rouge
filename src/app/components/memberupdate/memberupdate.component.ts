@@ -11,12 +11,12 @@ export class MemberupdateComponent implements OnInit {
   updateForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.updateForm = this.formBuilder.group({
-      pseudo: ['', Validators.required],
-      prenom: ['', Validators.required],
-      nom: ['', Validators.required],
+      username: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      currentPassword: ['', Validators.required],
+      newPassword: ['', Validators.required],
     });
   }
 
@@ -26,7 +26,7 @@ export class MemberupdateComponent implements OnInit {
     if (this.updateForm.valid) {
       console.log(this.updateForm.value);
       this.http
-        .post('http://localhost:8080/api/auth', this.updateForm.value)
+        .patch('http://localhost:8080/api/auth/update', this.updateForm.value)
         .subscribe({
           next: (response) => {
             console.log('Réponse du serveur:', response);

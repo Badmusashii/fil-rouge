@@ -1,0 +1,17 @@
+<app-headerhome></app-headerhome>
+<div class="container">
+  <div class="creategroupe">
+    <p>Creer un groupe</p>
+    <app-groupecreate></app-groupecreate>
+  </div>
+  <div class="groupecard">
+    <p>Mes Groupes</p>
+    <!-- <app-groupecard></app-groupecard> -->
+    <div class="groupeContainer">
+      <app-groupecard
+        *ngFor="let groupe of groupes"
+        [groupe]="groupe"
+      ></app-groupecard>
+    </div>
+  </div>
+</div>
