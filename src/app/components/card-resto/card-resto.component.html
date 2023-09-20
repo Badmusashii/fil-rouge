@@ -1,6 +1,6 @@
 <div class="card">
     <div class="restaurant-info">
-        <h2>Restaurant <span>{{nameResto}}</span> proposé par <span>{{pseudo}}</span></h2>
+        <h2>Restaurant <span>{{restaurant.name}}</span> proposé par <span>{{pseudo}}</span></h2>
         <p>Address: 123 Main St, City</p>
         <p>Catégorie: fast food</p>
         <p>Prix</p>
@@ -15,9 +15,9 @@
       </div>
 
         <div class="reviews">
-            <div class="review" *ngFor="let unAvis of avis">
+            <div class= "review" *ngFor="let unAvis of restaurant.reviews">
                 <h3>Avis de {{ pseudo }}</h3>
-                <p>{{ unAvis }}</p>
+                <p>{{ unAvis.review }}</p>
             </div>
         </div>
           
