@@ -7,8 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderhomeComponent } from './components/headerhome/headerhome.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeadermemberComponent } from './components/headermember/headermember.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
@@ -33,8 +31,6 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
     PageNotFoundComponent,
     PageAuthComponent,
     HeaderhomeComponent,
-    NavbarComponent,
-    HeadermemberComponent,
     PageMesRestosComponent,
     CardRestoComponent,
     ModalComponent,
