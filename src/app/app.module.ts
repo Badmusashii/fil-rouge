@@ -22,6 +22,11 @@ import { GroupecreateComponent } from './components/groupecreate/groupecreate.co
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
 import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
+import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
+import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
+import { GroupeListComponent } from './components/groupe-list/groupe-list.component';
+import { CardRestoComponent } from './components/card-resto/card-resto.component';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,6 @@ import { PageIntermediareRegisterComponent } from './components/page-intermediar
     RegisterComponent,
     LoginComponent,
     PageNotFoundComponent,
-    PageAuthComponent,
     HeaderhomeComponent,
     NavbarComponent,
     HeadermemberComponent,
@@ -43,6 +47,11 @@ import { PageIntermediareRegisterComponent } from './components/page-intermediar
     GroupecardComponent,
     PageIntermediareComponent,
     PageIntermediareRegisterComponent,
+    PageMesRestosComponent,
+    RestaurantListComponent,
+    GroupeListComponent,
+    CardRestoComponent,
+    ModalComponent,
   ],
   imports: [
     ReactiveFormsModule,

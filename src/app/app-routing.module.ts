@@ -9,6 +9,7 @@ import { PageMonCompteComponent } from './components/page-mon-compte/page-mon-co
 import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
 import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
 import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
+import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
