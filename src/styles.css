@@ -2,7 +2,12 @@
   font-family: Arvo;
   color : #2c3d55
 }
-
+select{
+    background-color: #EFE0E2;
+}
+input{
+    background-color: #EFE0E2;
+}
 .center{
     display: flex;
     justify-content: center;
