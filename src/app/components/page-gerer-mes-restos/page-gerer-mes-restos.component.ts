@@ -16,16 +16,27 @@ export class PageGererMesRestosComponent {
   // modalComponent: any;
 
   createForm: FormGroup = this.fb.group({
-    nom:[ '', Validators.required],
-    Adresse:['',[Validators.required]],
+    name:[ '', Validators.required],
+    adresse:['',[Validators.required]],
+    price:['',[Validators.required]],
+    categorie:['',[Validators.required]],
+    groupe:['',[Validators.required]],
   })
 
   create(){
     const data={
-      "nom": this.createForm.get('Nom')?.value,
-      "adresse":this.createForm.get('Adresse')?.value,
+      "name": this.createForm.get('name')?.value,
+      "adresse":this.createForm.get('adresse')?.value,
+      "price":this.createForm.get('price')?.value,
+      "categorie":this.createForm.get('categorie')?.value,
+      "groupe":this.createForm.get('groupe')?.value,
+
     };
     this.restaurantService.create(data);
   }
+
+  remove(id:number){
+  this.restaurantService.remove(id)
+ }
 
 }
