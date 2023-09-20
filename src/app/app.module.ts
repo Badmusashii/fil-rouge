@@ -21,6 +21,7 @@ import { CardRestoComponent } from './components/card-resto/card-resto.component
 import { ModalComponent } from './components/modal/modal.component';
 import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
+import { CardGroupComponent } from './components/card-group/card-group.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
     PageGererMesRestosComponent,
     FourchetteDePrixComponent,
     RestaurantListComponent,
-    HeaderLoginComponent
+    HeaderLoginComponent,
+    CardGroupComponent
   ],
   imports: [
     ReactiveFormsModule,
