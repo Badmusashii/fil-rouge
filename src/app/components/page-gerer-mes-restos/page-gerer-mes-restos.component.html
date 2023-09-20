@@ -1,0 +1,22 @@
+<app-headerhome></app-headerhome>
+
+<div id="creation">
+    <h2> Créer un resto</h2>
+
+    <app-categorie-list></app-categorie-list>
+    <app-fourchette-de-prix></app-fourchette-de-prix>
+    
+
+    <form (ngSubmit)="create()" [formGroup]="createForm">
+
+        <div>
+            <p><input formControlName="nom" /></p>
+            <p><input formControlName="adresse" /></p>
+            <div *ngIf="createForm.get('nom')?.hasError('required')|| createForm.get('adresse')">
+
+</div>
+</div>
+
+</form>
+
+</div>

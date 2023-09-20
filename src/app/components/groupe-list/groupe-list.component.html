@@ -1,0 +1,6 @@
+<div>
+    <span>Groupe: </span>
+    <select name="idGroupe">
+        <option *ngFor="let groupe of groupeList" [value]="groupe.id">{{groupe.name}}</option>
+    </select>
+</div>

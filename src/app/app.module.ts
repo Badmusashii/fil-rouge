@@ -10,7 +10,6 @@ import { HeaderhomeComponent } from './components/headerhome/headerhome.componen
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeadermemberComponent } from './components/headermember/headermember.component';
 import { LoginComponent } from './components/login/login.component';
-import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageHomeComponent } from './components/page-home/page-home.component';
@@ -48,6 +47,7 @@ import { PageIntermediareRegisterComponent } from './components/page-intermediar
   imports: [
     ReactiveFormsModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

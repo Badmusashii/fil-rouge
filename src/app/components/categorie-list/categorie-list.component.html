@@ -1,4 +1,8 @@
-<p>Catégorie:</p>
-<select name="idCategorie">
-    <option *ngFor="let categorie of categorieList" [value]="categorie.id">{{categorie.name}}</option>
-</select>
+<div>
+    <span>Catégorie: </span>
+    <select name="idCategorie">
+        <option *ngFor="let categorie of categorieList" [value]="categorie.id">{{categorie.name}}</option>
+    </select>
+</div>
+
+

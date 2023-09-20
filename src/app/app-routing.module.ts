@@ -11,6 +11,7 @@ import { PageIntermediareComponent } from './components/page-intermediare/page-i
 import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     component: PageIntermediareRegisterComponent,
   },
   { path: 'moncompte', component: PageMonCompteComponent },
+  { path: 'mes-restos', component: PageMesRestosComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

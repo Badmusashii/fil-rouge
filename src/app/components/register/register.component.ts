@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.registerForm = new FormGroup({
       pseudo: new FormControl(''),
@@ -53,6 +55,7 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register(data).subscribe((response) => {
         console.log('User ajouté!' + response);
+        this.router.navigate(['/login']);
       });
     } else {
       alert('Formulaire invalide');

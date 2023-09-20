@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   login(data: { username: string; email: string; password: string }) {
     interface ApiResponse {
       accessToken: string;
@@ -15,6 +16,7 @@ export class AuthService {
       .post<ApiResponse>(`http://localhost:8080/api/auth/login`, data)
       .subscribe((res: ApiResponse) => {
         localStorage.setItem('token', res.accessToken);
+        this.router.navigate(['/home']);
       });
   }
 
