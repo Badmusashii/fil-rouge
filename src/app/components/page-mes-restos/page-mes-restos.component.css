@@ -7,3 +7,12 @@
     padding: 5px;
     width: 50%;
 }
+.containerCards {
+    margin: auto;
+    display: flex;
+    flex-direction: line;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 60%;
+}

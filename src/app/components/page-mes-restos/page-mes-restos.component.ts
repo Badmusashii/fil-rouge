@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 import { Review } from 'src/app/review.interface';
 import { AvisService } from 'src/app/services/avis.service';
 

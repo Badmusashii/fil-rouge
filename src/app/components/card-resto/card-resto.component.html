@@ -1,10 +1,11 @@
 <div class="card">
     <div class="restaurant-info">
-        <h2>Restaurant <span>{{restaurant.name}}</span> proposé par <span>{{pseudo}}</span></h2>
-        <p>Address: 123 Main St, City</p>
-        <p>Catégorie: fast food</p>
-        <p>Prix</p>
-
+        <div>
+            <h2>Restaurant <span>{{restaurant.name}}</span> proposé par <span>{{restaurant.member.username}}</span></h2>
+            <p>Address: {{restaurant.adresse}}</p>
+            <p>Catégorie: {{restaurant.categorie.name}}</p>
+            <p>Prix: {{restaurant.price}}</p>
+        </div>
         <div class="thumbs-up-down">
             <p>{{ numberOfThumbsUp }}<i class="fas fa-thumbs-up" style="margin-left: 8px;"(click)="numberOfThumbsUp = numberOfThumbsUp + 1"></i></p> <!-- Icône "pouce en l'air" -->
             <p id="cadragePouceDown">
@@ -12,19 +13,18 @@
                 </i>
                 {{ numberOfThumbsDown }}
             </p> <!-- Icône "pouce en bas" -->
-      </div>
-
+        </div>
         <div class="reviews">
             <div class= "review" *ngFor="let unAvis of restaurant.reviews">
                 <h3>Avis de {{ pseudo }}</h3>
                 <p>{{ unAvis.review }}</p>
             </div>
-        </div>
-          
-        </div>
+        </div>    
+    </div>
     <div class="add-review-button">
         <button (click)="openModal()">Donne ton avis</button>
     </div>
-    
-    <app-modal (reviewSubmitted)="handleReviewSubmitted($event)"></app-modal>
+    <div>
+        <app-modal (reviewSubmitted)="handleReviewSubmitted($event)"></app-modal>
+    </div>
 </div>

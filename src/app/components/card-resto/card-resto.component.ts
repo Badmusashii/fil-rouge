@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Review } from 'src/app/review.interface';
 import { ModalComponent } from '../modal/modal.component';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 
 @Component({
   selector: 'app-card-resto',
@@ -9,7 +10,7 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CardRestoComponent implements OnInit {
   pseudo: string | undefined = '';
-   @Input() restaurant: any;
+   @Input() restaurant!: any;
   // Initialisez un compteur de pouces en l'air
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
@@ -19,9 +20,6 @@ export class CardRestoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("avis de l enfant" + this.restaurant.reviews);
-  
-    // console.log(this.avis[0]);
-    
   }
   openModal() {
     this.modalComponent.openModal();
