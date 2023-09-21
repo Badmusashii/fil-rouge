@@ -37,6 +37,9 @@ import { CardGroupComponent } from './components/card-group/card-group.component
     LoginComponent,
     PageNotFoundComponent,
     HeaderhomeComponent,
+    PageMesRestosComponent,
+    CardRestoComponent,
+    ModalComponent,
     PageHomeComponent,
     CategorieListComponent,
     PageMonCompteComponent,
@@ -50,8 +53,11 @@ import { CardGroupComponent } from './components/card-group/card-group.component
     PageMesRestosComponent,
     RestaurantListComponent,
     GroupeListComponent,
-    CardRestoComponent,
-    ModalComponent,
+    PageGererMesRestosComponent,
+    FourchetteDePrixComponent,
+    RestaurantListComponent,
+    HeaderLoginComponent,
+    CardGroupComponent
   ],
   imports: [
     ReactiveFormsModule,
