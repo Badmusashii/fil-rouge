@@ -6,7 +6,6 @@ import { GroupeService } from 'src/app/services/groupe.service';
   selector: 'app-groupe-list',
   templateUrl: './groupe-list.component.html',
   styleUrls: ['./groupe-list.component.css'],
-  styleUrls: ['./groupe-list.component.css'],
 })
 export class GroupeListComponent implements OnInit {
   @Output() groupeChanged = new EventEmitter<string>();

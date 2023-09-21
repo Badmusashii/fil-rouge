@@ -57,10 +57,4 @@ export class PageGererMesRestosComponent  {
   remove(id:number){
   this.restaurantService.remove(id)
  }
-
-
-
-  remove(id: number) {
-    this.restaurantService.remove(id);
-  }
 }

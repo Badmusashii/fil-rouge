@@ -13,11 +13,9 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { PageHomeComponent } from './components/page-home/page-home.component';
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
 import { PageMonCompteComponent } from './components/page-mon-compte/page-mon-compte.component';
-import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
 import { MemberdeleteComponent } from './components/memberdelete/memberdelete.component';
 import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
 import { GroupecreateComponent } from './components/groupecreate/groupecreate.component';
-import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
 import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
 import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
@@ -35,34 +33,30 @@ import { GroupecardComponent } from './components/groupecard/groupecard.componen
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    RegisterComponent,
-    LoginComponent,
-    PageNotFoundComponent,
-    HeaderhomeComponent,
-    PageMesRestosComponent,
+    CardGroupComponent,
     CardRestoComponent,
-    ModalComponent,
-    PageHomeComponent,
     CategorieListComponent,
-    PageMonCompteComponent,
+    FourchetteDePrixComponent,
+    HeaderComponent,
+    HeaderhomeComponent,
+    HeaderLoginComponent,
+    LoginComponent,
+    ModalComponent,
     MemberupdateComponent,
     MemberdeleteComponent,
-    PageGererGroupeComponent,
     GroupecreateComponent,
     GroupecardComponent,
+    GroupeListComponent,
+    PageGererGroupeComponent,
+    PageGererMesRestosComponent,
+    PageHomeComponent,
     PageIntermediareComponent,
     PageIntermediareRegisterComponent,
     PageMesRestosComponent,
-    RestaurantListComponent,
-    GroupeListComponent,
-    PageGererMesRestosComponent,
-    FourchetteDePrixComponent,
-    RestaurantListComponent,
-    HeaderLoginComponent,
-    CardGroupComponent,
-    MemberupdateComponent,
-    GroupecardComponent,
+    PageMonCompteComponent,
+    PageNotFoundComponent,
+    RegisterComponent,
+    RestaurantListComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -76,10 +70,10 @@ import { GroupecardComponent } from './components/groupecard/groupecard.componen
     {
       provide:  HTTP_INTERCEPTORS,
       useClass:  AuthInterceptorService,
-      multi:  true,,
+      multi:  true,
     },
     ModalComponent
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
