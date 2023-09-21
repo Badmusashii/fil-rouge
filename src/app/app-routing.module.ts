@@ -9,6 +9,7 @@ import { PageMonCompteComponent } from './components/page-mon-compte/page-mon-co
 import { PageGererGroupeComponent } from './components/page-gerer-groupe/page-gerer-groupe.component';
 import { PageIntermediareComponent } from './components/page-intermediare/page-intermediare.component';
 import { PageIntermediareRegisterComponent } from './components/page-intermediare-register/page-intermediare-register.component';
+import { PageGererMesRestosComponent } from './components/page-gerer-mes-restos/page-gerer-mes-restos.component';
 import { PageMesRestosComponent } from './components/page-mes-restos/page-mes-restos.component';
 
 const routes: Routes = [
@@ -24,8 +25,10 @@ const routes: Routes = [
     component: PageIntermediareRegisterComponent,
   },
   { path: 'moncompte', component: PageMonCompteComponent },
+  { path: 'create', component: PageGererMesRestosComponent},
   { path: 'mes-restos', component: PageMesRestosComponent },
   { path: '**', component: PageNotFoundComponent },
+  
 ];
 
 @NgModule({

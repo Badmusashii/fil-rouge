@@ -29,6 +29,8 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
 import { CardGroupComponent } from './components/card-group/card-group.component';
 import { PageGererMesRestosComponent } from './components/page-gerer-mes-restos/page-gerer-mes-restos.component';
 import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourchette-de-prix.component';
+import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
+import { GroupecardComponent } from './components/groupecard/groupecard.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourc
     FourchetteDePrixComponent,
     RestaurantListComponent,
     HeaderLoginComponent,
-    CardGroupComponent
+    CardGroupComponent,
+    MemberupdateComponent,
+    GroupecardComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -70,11 +74,12 @@ import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourc
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
+      provide:  HTTP_INTERCEPTORS,
+      useClass:  AuthInterceptorService,
+      multi:  true,,
     },
-    ModalComponent],
+    ModalComponent
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

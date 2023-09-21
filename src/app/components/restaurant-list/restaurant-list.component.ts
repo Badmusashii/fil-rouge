@@ -10,6 +10,8 @@ export class RestaurantListComponent implements OnInit{
   restaurantList: any;
   @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<any[]>();
   
+ 
+  
   constructor(private restaurantService: RestaurantService){};
 
   ngOnInit(): void {  
