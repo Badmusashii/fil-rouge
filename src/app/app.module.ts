@@ -23,6 +23,8 @@ import { CardRestoComponent } from './components/card-resto/card-resto.component
 import { ModalComponent } from './components/modal/modal.component';
 import { PageAuthComponent } from './components/page-auth/page-auth.component';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
+import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
+import { GroupecardComponent } from './components/groupecard/groupecard.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
     PageGererMesRestosComponent,
     FourchetteDePrixComponent,
     RestaurantListComponent,
-    HeaderLoginComponent
+    HeaderLoginComponent,
+    MemberupdateComponent,
+    GroupecardComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -56,11 +60,12 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
   ],
   providers: [
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptorService,
-      multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
     },
-  ModalComponent],
+    ModalComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

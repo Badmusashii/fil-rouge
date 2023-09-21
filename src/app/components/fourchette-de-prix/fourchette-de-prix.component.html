@@ -1,7 +1,6 @@
 <p>Fourchette de prix:</p>
-<select name = "idPrice">
-    <option>€ </option>
-    <option>€€</option>
-    <option>€€€</option>
-
-    </select>
+<select name="idPrice" (change)="onPriceChange($event)">
+  <option>€</option>
+  <option>€€</option>
+  <option>€€€</option>
+</select>

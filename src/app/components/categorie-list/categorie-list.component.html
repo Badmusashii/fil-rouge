@@ -1,8 +1,8 @@
 <div>
-    <span>Catégorie: </span>
-    <select name="idCategorie">
-        <option *ngFor="let categorie of categorieList" [value]="categorie.id">{{categorie.name}}</option>
-    </select>
+  <span>Catégorie: </span>
+  <select name="idCategorie" (change)="onCategorieChange($event)">
+    <option *ngFor="let categorie of categorieList" [value]="categorie.id">
+      {{ categorie.name }}
+    </option>
+  </select>
 </div>
-
-
