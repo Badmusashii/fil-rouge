@@ -30,14 +30,20 @@
                 </li>
             </ul>
         </div>
-    
         <div class="text-center">
-        <i class="fas fa-regular fa-user" style="margin-right: 10px;"></i> <!-- Icône de connexion -->
-        <p class="center">{{pseudo}}</p>
-       
-        <a class="nav-link active" href="/moncompte">Mon Compte</a>
+            <!-- Icône de connexion -->
+            <i class="fas fa-regular fa-user" style="margin-right: 10px;"></i>
+
+            <ng-container *ngIf="pseudo">
+                <p class="center">{{pseudo}}</p>
+                <a class="nav-link active" href="/moncompte">Mon Compte</a>
+                <a class="nav-link active" href="javascript:void(0);" (click)="logout()">Déconnexion</a>
+            </ng-container>
+            
+            <ng-container *ngIf="!pseudo">
+                <a class="nav-link active" href="/login">Connexion</a>
+            </ng-container>
         </div>
-    
     </nav>
         
     

@@ -19,3 +19,7 @@ describe('HeaderhomeComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+logout(){
+  
+}

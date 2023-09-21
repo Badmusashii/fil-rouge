@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { MemberService } from 'src/app/services/member.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { MemberService } from 'src/app/services/member.service';
 export class HeaderhomeComponent {
   pseudo: string | undefined;
 
-  constructor(private memberService: MemberService) {}
+  constructor(private memberService: MemberService,private authService: AuthService) {}
 
   ngOnInit(): void {
     const objet = this.memberService.getMember().subscribe((res) => {
@@ -17,5 +18,9 @@ export class HeaderhomeComponent {
       this.pseudo = res.username;
       // const member = res
     });
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }
