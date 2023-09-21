@@ -1,9 +1,18 @@
 <div class="cardGroupe">
   <div class="memberInGroupe">
     <div class="inputNom">
-      <p>Nom : <input type="text" [(ngModel)]="nom" /></p>
+      <p>
+        Nom :
+        <input type="text" [(ngModel)]="nom" placeholder="{{ groupe.name }}" />
+      </p>
     </div>
-    <div class="memberList"></div>
+    <div class="memberList">
+      <ul>
+        <li *ngFor="let member of member">
+          {{ member.username }}
+        </li>
+      </ul>
+    </div>
     <div>
       <label for="email">Inviter dans le groupe</label>
       <input type="email" name="email" id="email" [(ngModel)]="email" />
@@ -11,7 +20,7 @@
   </div>
   <div class="button">
     <button id="modifier" (click)="modifier()">Modifier</button>
-    <button>Quitter</button>
+    <button (click)="quitterGroupe()">Quitter</button>
     <button id="envoyer" (click)="envoyerInvitation()">Envoyer</button>
   </div>
 </div>
