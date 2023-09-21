@@ -10,7 +10,7 @@ export class PageHomeComponent {
   groupeList: any;
   constructor(private groupeService: GroupeService){}
   ngOnInit(): void {
-    const objet = this.groupeService.getAllGroupForMember().subscribe((res) =>{
+    const objet = this.groupeService.getAllGroupeForUser().subscribe((res) =>{
       this.groupeList = res;
     });
   }
