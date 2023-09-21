@@ -33,10 +33,10 @@
               "
             ></div>
           </div>
+          <div class="button">
+            <button type="submit" [disabled]="!createForm.valid">Créer</button>
+          </div>
         </form>
-        <div class="button">
-          <button type="submit">Créer</button>
-        </div>
       </div>
     </div>
     <div id="blocDroite">
@@ -47,7 +47,13 @@
       </div>
       <div id="avis">
         <p>Avis</p>
-        <textarea id="avis" name="avis" rows="4" cols="50"></textarea>
+        <textarea
+          id="avis"
+          name="avis"
+          rows="4"
+          cols="50"
+          (input)="handleReviewChange($event)"
+        ></textarea>
       </div>
     </div>
   </div>
