@@ -50,7 +50,6 @@ import { CardGroupComponent } from './components/card-group/card-group.component
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
   ],
   providers: [
     {
