@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,6 +16,7 @@ export class PageIntermediareRegisterComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {
     this.registerForm = this.formBuilder.group({
@@ -49,7 +51,7 @@ export class PageIntermediareRegisterComponent implements OnInit {
         .post('http://localhost:8080/api/auth/register', userData)
         .subscribe((res) => {
           const userDataLog = {
-            username: userData.username,
+            email: userData.email,
             password: userData.password,
           };
           this.login(userDataLog);
@@ -57,13 +59,14 @@ export class PageIntermediareRegisterComponent implements OnInit {
     }
   }
   login(userDataLog: any) {
+    console.log(userDataLog);
     this.http
       .post('http://localhost:8080/api/auth/login', userDataLog)
       .subscribe(
         (response: any) => {
           console.log(response);
           this.token = response.accessToken;
-          // console.log('token => ' + this.token);
+          console.log('token => ' + this.token);
           this.joinGroupe();
         },
         (error) => {
@@ -73,11 +76,13 @@ export class PageIntermediareRegisterComponent implements OnInit {
   }
 
   joinGroupe() {
+    console.log(this.token);
+    console.log(this.groupeId);
     const url = `http://localhost:8080/api/groupe/verifier/${this.groupeId}?token=${this.token}`;
     this.http.put(url, {}).subscribe(
       (response) => {
         console.log('Réponse du serveur: ', response);
-        // Traitement en cas de succès
+        this.router.navigate(['/mes-restos']);
       },
       (error) => {
         console.log('Erreur: ', error);
