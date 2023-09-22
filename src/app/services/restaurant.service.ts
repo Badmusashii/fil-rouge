@@ -1,16 +1,16 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Restaurant } from '../models/restaurant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RestaurantService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-  create(data:{ name: string; adresse:string; price:string; categorie:string;groupe:string} ){
- const token = localStorage.getItem('token')
-    
-    return this.http.post(`http://localhost:8080/api/restaurant`,data )
+  create(restaurant: Restaurant) {
+    console.log('okokokokok');
+    return this.http.post(`http://localhost:8080/api/restaurant`, restaurant);
   }
 
   remove(id:number){
@@ -18,7 +18,7 @@ export class RestaurantService {
     return this.http.delete(`http://localhost:8080/api/restaurant/${id}`)
   }
 
-  getRestaurantList(){
+  getRestaurantList() {
     interface RestaurantResponse {
       status: string;
       message: string;
@@ -35,7 +35,8 @@ export class RestaurantService {
         username: string;
       };
     }
-    return this.http.get<RestaurantResponse>(`http://localhost:8080/api/restaurant`);
+    return this.http.get<RestaurantResponse>(
+      `http://localhost:8080/api/restaurant`
+    );
   }
 }
-
