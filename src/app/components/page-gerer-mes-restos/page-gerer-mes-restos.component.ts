@@ -9,7 +9,9 @@ import { Restaurant } from 'src/app/models/restaurant';
 })
 export class PageGererMesRestosComponent {
   selectedGroupe!: number;
-  reviews: Array<{ review: string; groupe: number }> = [];
+  // reviews: Array<{ review: string; groupe: number }> = [];
+  reviews: Array<{ review: string; groupes: Array<{ id: number }> }> = [];
+
   review!: string;
   constructor(
     private fb: FormBuilder,
@@ -40,7 +42,6 @@ export class PageGererMesRestosComponent {
   handleGroupeChange(newGroupe: number): void {
     console.log('la Groupe est de  => ' + newGroupe);
     this.selectedGroupe = newGroupe;
-    // this.createForm.get('groupe')?.setValue(newGroupe);
   }
   handleReviewChange(event: any) {
     this.review = event.target.value;
@@ -58,7 +59,7 @@ export class PageGererMesRestosComponent {
       if (this.review && this.review.trim() !== '') {
         this.reviews.push({
           review: this.review,
-          groupe: +this.selectedGroupe,
+          groupes: [{ id: +this.selectedGroupe }],
         });
         restaurant.reviews = this.reviews;
       }
