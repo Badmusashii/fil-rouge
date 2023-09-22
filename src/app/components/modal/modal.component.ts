@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AvisService } from 'src/app/services/avis.service';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 
 @Component({
   selector: 'app-modal',
@@ -7,18 +8,20 @@ import { AvisService } from 'src/app/services/avis.service';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent {
-// Appel du setter si la valeur transmise par le parent change
-  @Input() set idResto(value: {id: number}) {
+    // Appel du setter si la valeur transmise par le parent change
+  @Input() set idResto(value: { id: number, name: string }) {
     this._idResto = value.id;
-    if (value !== undefined) {
+    this.nameResto = value.name;
+            if (value !== undefined) {
       this.openModal();
     }
   } // Ajoutez une variable pour suivre l'état de la modale
-  @Output() reviewSubmitted = new EventEmitter<string>();
+
+    @Output() reviewSubmitted = new EventEmitter<string>();
   reviewText: string = '';
   isModalOpen: boolean = false;
   _idResto: number | undefined;
-
+ nameResto: string | undefined;
   constructor(private avisService: AvisService) {}
 
   openModal() {
@@ -34,7 +37,7 @@ export class ModalComponent {
     let reviewData = {
       review: this.reviewText,
       vote: true, // Vous devrez déterminer comment gérer le vote ici.
-      idResto: String (this._idResto) 
+      idResto: String(this._idResto),
     };
     // Enregistrez l'avis dans le backend via un service (AvisService) ici.
     this.avisService.ajouterAvis(reviewData).subscribe(() => {

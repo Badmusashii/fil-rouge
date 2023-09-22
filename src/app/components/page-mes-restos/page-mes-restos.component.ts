@@ -12,7 +12,7 @@ export class PageMesRestosComponent implements OnInit {
   avis: Review[] | undefined;
   // listeDesAvis: Review[] = [];
   restaurantList: any[] | undefined;
-  idResto!: { id: number };
+  idResto!: { id: number; name: string };
   isModalOpen: boolean = false;
 
   constructor(private avisService: AvisService) {}
@@ -20,8 +20,8 @@ export class PageMesRestosComponent implements OnInit {
   ngOnInit() {
     this.avisService.getAllAvis().subscribe((nouveauxAvis) => {
       // Inversez l'ordre des avis pour que le dernier avis soit en haut
-           
-            console.log('get all avis' + nouveauxAvis);
+
+      console.log('get all avis' + nouveauxAvis);
       console.log(nouveauxAvis);
 
       this.avis = nouveauxAvis;
@@ -58,7 +58,10 @@ export class PageMesRestosComponent implements OnInit {
     }
   }
 
-  handleClickOpenModal(idResto: number) {
-    this.idResto = { id: idResto }; //cette propriété = this.
+  // handleClickOpenModal(idResto: number, nameResto: string) {
+  //   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
+  // }
+  handleClickOpenModal(restaurant: Restaurant ) {
+    this.idResto = { id: restaurant.id, name: restaurant.name }; //cette propriété = this.
   }
 }
