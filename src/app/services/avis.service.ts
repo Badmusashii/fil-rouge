@@ -8,7 +8,7 @@ import { Review } from '../interfaces/review.interface';
 })
 export class AvisService {
   private avisSubject = new BehaviorSubject<Review[]>([]);
- 
+
   constructor(private http: HttpClient) {}
 
   getAllAvis(): Observable<Review[]> {
@@ -29,12 +29,13 @@ getReview(id:number) {
 
 
 
-  ajouterAvis(data: {
+  ajouterAvis(reviewdata: {
     review: string;
-    vote: boolean;
+    vote: boolean; idResto: string;
     }) {
-    return this.http.post(`http://localhost:8080/api/review/id`, data);
+    return this.http.post(
+      'http://localhost:8080/api/review/' + reviewdata.idResto,
+      reviewdata
+    );
   }
-
-  
 }

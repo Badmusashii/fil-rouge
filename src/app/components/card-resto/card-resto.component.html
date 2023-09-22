@@ -15,14 +15,14 @@
             </p> <!-- Icône "pouce en bas" -->
         </div>
         <div class="reviews">
-            <div class= "review" *ngFor="let unAvis of restaurant.reviews">
+            <div class= "review" *ngFor="let unAvis of restaurant.reviews.reverse()">
                 <h3>Avis de {{ pseudo }}</h3>
                 <p>{{ unAvis.review }}</p>
             </div>
         </div>    
     </div>
     <div class="add-review-button">
-        <button (click)="openModal()">Donne ton avis</button>
+        <button (click)="clickOpenModal.emit(restaurant.id)">Donne ton avis</button>
     </div>
     <div>
         <app-modal (reviewSubmitted)="handleReviewSubmitted($event)"></app-modal>
