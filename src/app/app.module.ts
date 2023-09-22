@@ -64,7 +64,6 @@ import { GroupecardComponent } from './components/groupecard/groupecard.componen
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
   ],
   providers: [
     {

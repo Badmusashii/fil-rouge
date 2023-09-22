@@ -1,10 +1,12 @@
 <app-headerhome></app-headerhome>
+
 <div class="container">
     <div><app-restaurant-list (restaurantListOutput)="handleRestaurantList($event)"></app-restaurant-list></div>
     <div><app-categorie-list></app-categorie-list></div>
     <div><app-groupe-list></app-groupe-list></div>
 </div>
 <div class="containerCards">
-    <app-card-resto *ngFor="let restaurant of restaurantList" [restaurant]="restaurant"></app-card-resto>
+    <app-card-resto *ngFor="let restaurant of restaurantList" [restaurant]="restaurant" (clickOpenModal)="handleClickOpenModal(restaurant)"></app-card-resto>
 </div>
 
+<app-modal (reviewSubmitted)="handleReviewSubmitted($event)" [idResto]="idResto"></app-modal>
