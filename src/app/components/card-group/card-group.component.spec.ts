@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { CardGroupComponent } from './card-group.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('CardGroupComponent', () => {
+  let component: CardGroupComponent;
+  let fixture: ComponentFixture<CardGroupComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavbarComponent]
+      declarations: [CardGroupComponent]
     });
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(CardGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

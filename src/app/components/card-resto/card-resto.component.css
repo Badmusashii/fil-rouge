@@ -1,13 +1,15 @@
  .card {
-            width: 400px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px 0 rgba(100,182,172);
-            margin-left: 18%;
-            margin-bottom: 20%;
-            margin-top: 5%;
-        }
+    width: 25rem;
+    height: 25rem;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(100,182,172);
+    margin: 1rem;
+    /* margin-left: 18%;
+    margin-bottom: 20%;
+    margin-top: 5%; */
+}
 span {
 color: #B97375;
 }

@@ -1,0 +1,20 @@
+.card {
+    width: 30rem;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(100,182,172);
+    margin: 1rem;
+    background-color: #AED8D3;
+    color: #2C3D55;
+    font-size: 20px;
+}
+span {
+color: #B97375;
+}
+.container{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

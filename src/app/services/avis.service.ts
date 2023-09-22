@@ -7,13 +7,12 @@ import { Review } from '../interfaces/review.interface';
   providedIn: 'root',
 })
 export class AvisService {
-  private avisSubject = new BehaviorSubject<string[]>([]);
-  
+  private avisSubject = new BehaviorSubject<Review[]>([]);
+ 
+  constructor(private http: HttpClient) {}
 
- constructor(private http: HttpClient) {}
-
-  getAvis(): Observable<string[]> {
-    return this.avisSubject.asObservable();
+  getAllAvis(): Observable<Review[]> {
+    return this.http.get<Review[]>(`http://localhost:8080/api/review`);
   }
 
   
@@ -36,6 +35,6 @@ getReview(id:number) {
     }) {
     return this.http.post(`http://localhost:8080/api/review/id`, data);
   }
+
   
- 
 }

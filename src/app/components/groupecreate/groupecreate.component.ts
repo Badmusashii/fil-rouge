@@ -13,6 +13,7 @@ export class GroupecreateComponent {
     this.http.post('http://localhost:8080/api/groupe', payload).subscribe({
       next: (response) => {
         console.log('Groupe créé avec succès.', response);
+        location.reload();
       },
       error: (error) => {
         console.log('Erreur lors de la création du groupe.', error);

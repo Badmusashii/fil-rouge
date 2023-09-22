@@ -1,0 +1,18 @@
+<div class="card">
+    <h2>Groupe <span>{{groupe.name}}</span></h2>
+    <div class="container">
+        <div>
+            <p>Membres</p>
+            <ul>
+                <li *ngFor="let member of memberList">{{member.username}}</li>
+            </ul>
+        </div>
+        <div>
+            <p>Derniers restos créés</p>
+            <ul>
+                <li *ngFor="let restaurant of restaurantList">{{restaurant.name}}</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>

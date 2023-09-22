@@ -10,9 +10,9 @@ import { GroupeService } from 'src/app/services/groupe.service';
 export class GroupeListComponent implements OnInit {
   @Output() groupeChanged = new EventEmitter<number>();
   groupeList!: Groupes[];
-  constructor(private groupeService: GroupeService) {}
+  constructor(private groupeService: GroupeService)  {}
   ngOnInit(): void {
-    this.groupeService.getAllGroupForMember().subscribe((res) => {
+    const objet = this.groupeService.getAllGroupeForUser().subscribe((res) => {
       this.groupeList = res;
       console.log(this.groupeList);
     });

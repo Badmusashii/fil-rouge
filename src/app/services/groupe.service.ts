@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,13 +30,13 @@ export class GroupeService {
       }
     );
   }
-
-  getAllGroupForMember(){
-    interface Groupe {
-      id: number;
-      name: string;
-    }
-    return this.http.get<[Groupe]>(`http://localhost:8080/api/groupe`);
+  getAllGroupeForUser(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/groupe');
   }
-  
+  getAllMemberForGroupe(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/groupe/${id}`);
+  }
+  deleteMemberInGroupe(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8080/api/groupe/${id}`);
+  }
 }
