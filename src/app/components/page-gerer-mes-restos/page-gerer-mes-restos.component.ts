@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AvisService } from 'src/app/services/avis.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurant } from 'src/app/models/restaurant';
@@ -24,12 +22,6 @@ export class PageGererMesRestosComponent {
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
   // modalComponent: any;
-
-  ngOnInit(): void {
-    this.avisService.getReview().subscribe((data) => {
-      this.reviews = data;
-    });
-  }
 
   createForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -56,18 +48,25 @@ export class PageGererMesRestosComponent {
   }
 
   create() {
-    const data = {
-      name: this.createForm.get('name')?.value,
-      adresse: this.createForm.get('adresse')?.value,
-      price: this.createForm.get('price')?.value,
-      categorie: this.createForm.get('categorie')?.value,
-      groupe: this.createForm.get('groupe')?.value,
-    };
-    this.restaurantService.create(data);
-  }
-
-  remove(id: number) {
-    this.restaurantService.remove(id);
+    console.log('okokokokokoko' + this.selectedGroupe);
+    if (this.createForm.valid) {
+      const restaurant: Restaurant = {
+        name: this.createForm.get('name')?.value,
+        adresse: this.createForm.get('adresse')?.value,
+        price: this.createForm.get('price')?.value,
+        categorie: +this.createForm.get('categorie')?.value,
+      };
+      if (this.review && this.review.trim() !== '') {
+        this.reviews.push({
+          review: this.review,
+          groupes: [{ id: +this.selectedGroupe }],
+        });
+        restaurant.reviews = this.reviews;
+      }
+      this.restaurantService.create(restaurant).subscribe((res) => {
+        console.log(res);
+      });
+    }
   }
 
   remove(id: number) {
