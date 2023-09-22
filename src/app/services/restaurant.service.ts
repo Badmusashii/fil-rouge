@@ -29,22 +29,6 @@ export class RestaurantService {
       data: Restaurant[];
     }
 
-<<<<<<< HEAD
-    interface Restaurant {
-      id: number;
-      name: string;
-      adresse: string;
-      price: string;
-      member: {
-        id: number;
-        username: string;
-      };
-    }
-    return this.http.get<RestaurantResponse>(
-      `http://localhost:8080/api/restaurant`
-    );
-=======
     return this.http.get<RestaurantResponse>(`http://localhost:8080/api/restaurant`);
->>>>>>> 69f062b8192a05dcce8b56c9effe0447d087f77f
   }
 }
