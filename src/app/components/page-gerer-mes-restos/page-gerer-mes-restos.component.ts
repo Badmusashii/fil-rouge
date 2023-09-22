@@ -26,7 +26,6 @@ export class PageGererMesRestosComponent {
     adresse: ['', [Validators.required]],
     price: ['', [Validators.required]],
     categorie: ['', [Validators.required]],
-
     reviews: this.fb.array([]),
   });
 
