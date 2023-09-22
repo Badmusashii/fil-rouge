@@ -2,24 +2,20 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurant } from 'src/app/models/restaurant';
+import { AvisService } from 'src/app/services/avis.service';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
   styleUrls: ['./page-gerer-mes-restos.component.css'],
 })
-export class PageGererMesRestosComponent {
-  selectedGroupe!: number;
+
+export class PageGererMesRestosComponent  {
+selectedGroupe!: number;
   // reviews: Array<{ review: string; groupe: number }> = [];
-  reviews: Array<{ review: string; groupes: Array<{ id: number }> }> = [];
+  reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> = [];
 
   review!: string;
-  constructor(
-    private fb: FormBuilder,
-    private restaurantService: RestaurantService
-  ) {}
-  pseudo: string | undefined = "'titi'";
-export class PageGererMesRestosComponent  {
-restaurant:any = [];
+  restaurant:any = [];
   restaurantList: any[] | undefined;
   reviews:any[] = [];
   constructor(private fb: FormBuilder, private restaurantService:RestaurantService, private avisService:AvisService){}
@@ -72,11 +68,11 @@ restaurant:any = [];
         categorie: +this.createForm.get('categorie')?.value,
       };
       if (this.review && this.review.trim() !== '') {
-        this.reviews.push({
+        this.reviewsFromForm.push({
           review: this.review,
           groupes: [{ id: +this.selectedGroupe }],
         });
-        restaurant.reviews = this.reviews;
+        restaurant.reviews = this.reviewsFromForm;
       }
       this.restaurantService.create(restaurant).subscribe((res) => {
         console.log(res);
@@ -87,6 +83,16 @@ restaurant:any = [];
   remove(id: number) {
     this.restaurantService.remove(id);
   }
+
+  handleRestaurant(restaurant: any) {
+  this.restaurant = restaurant;
+  console.log('la maison' + this.restaurant);
+  this.avisService.getReview(this.restaurant).subscribe(data => {
+    this.reviews = data.data
+    console.log( data)
+  }) 
 }
+}
+
 
 
