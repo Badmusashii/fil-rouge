@@ -1,5 +1,6 @@
 <div>
-    <select name="idRestaurant">
+    <span>Restaurant: </span>
+    <select name="idRestaurant" (change) = "onRestaurantChange($event)">
         <option *ngFor="let restaurant of restaurantList" [value]="restaurant.id">{{restaurant.name}}</option>
     </select>
 </div>

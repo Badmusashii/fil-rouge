@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AvisService } from 'src/app/services/avis.service';
+import { MemberService } from 'src/app/services/member.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
@@ -9,10 +10,11 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
   styleUrls: ['./page-gerer-mes-restos.component.css'],
 })
 export class PageGererMesRestosComponent  {
-
-  reviews:any[] = []
+restaurant:any = [];
+  restaurantList: any[] | undefined;
+  reviews:any[] = [];
   constructor(private fb: FormBuilder, private restaurantService:RestaurantService, private avisService:AvisService){}
-  pseudo: string | undefined = "'titi'";
+  
   // Initialisez un compteur de pouces en l'air
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
@@ -21,9 +23,9 @@ export class PageGererMesRestosComponent  {
   
 
   ngOnInit():void{
-    this.avisService.getReview().subscribe(data => {
-      this.reviews=data;
-    });
+    // this.avisService.getReview(1).subscribe(data => {
+    //   this.reviews=data;
+    // });
   }
 
   createForm: FormGroup = this.fb.group({
@@ -58,9 +60,14 @@ export class PageGererMesRestosComponent  {
   this.restaurantService.remove(id)
  }
 
-
-
-  remove(id: number) {
-    this.restaurantService.remove(id);
-  }
+handleRestaurant(restaurant: any) {
+  this.restaurant = restaurant;
+  console.log('la maison' + this.restaurant);
+  this.avisService.getReview(this.restaurant).subscribe(data => {
+    this.reviews = data.data
+    console.log( data)
+  }) 
 }
+}
+
+

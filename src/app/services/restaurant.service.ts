@@ -15,7 +15,7 @@ export class RestaurantService {
 
   remove(id:number){
     const toke = localStorage.getItem('token')
-    return this.http.delete('http://localhost:8080/api/restaurant/${id}')
+    return this.http.delete(`http://localhost:8080/api/restaurant/${id}`)
   }
 
   getRestaurantList(){

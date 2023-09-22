@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
+ @Output() restaurantSelected = new EventEmitter<any>();
+
   
  
   
@@ -18,6 +20,12 @@ export class RestaurantListComponent implements OnInit{
       this.restaurantList = res.data;
       console.log(res);
     });
+  }
+
+  onRestaurantChange(event:Event){
+    const restaurantChoice=event.target as HTMLSelectElement;
+    console.log(restaurantChoice.value);
+    this.restaurantSelected.emit(restaurantChoice.value)
   }
 }
 

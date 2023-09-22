@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Review } from '../interfaces/review.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,14 @@ export class AvisService {
   }
 
   
-getReview(): Observable<string[]> {
-    return this.http.get<string[]>(`http://localhost:8080/api/review/restaurant/:id`);
+getReview(id:number) {
+ interface ReviewResponse {
+      status: string;
+      message: string;
+      data: Review[];
+    }
+
+    return this.http.get<ReviewResponse>(`http://localhost:8080/api/review/restaurant/${id}`);
   }
 
 
