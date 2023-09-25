@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Categories } from 'src/app/models/categories';
 import { CategorieService } from 'src/app/services/categorie.service';
 import { ResponseApi } from 'src/app/models/response-api';
@@ -9,6 +9,8 @@ import { ResponseApi } from 'src/app/models/response-api';
 })
 export class CategorieListComponent implements OnInit {
   @Output() categorieChanged = new EventEmitter<string>();
+  // La propriété allList = true permet d'afficher une option "Tous" dans le Select
+  @Input() allList: boolean | undefined; 
   selectedCategorie!: string;
   // prices: any;
 
@@ -16,7 +18,7 @@ export class CategorieListComponent implements OnInit {
   constructor(private categorieService: CategorieService) {}
   ngOnInit(): void {
     this.categorieService.getCategorieList().subscribe((res) => {
-      // console.log('Ce que je cherche ' + JSON.stringify(res));
+      console.log(res);
       this.categorieList = res;
     });
   }
