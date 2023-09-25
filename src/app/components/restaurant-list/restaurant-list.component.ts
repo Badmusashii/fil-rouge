@@ -9,7 +9,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
   @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<any[]>();
- @Output() restaurantSelected = new EventEmitter<any>();
+  @Output() restaurantSelected = new EventEmitter<any>();
 
   
  
@@ -26,7 +26,7 @@ export class RestaurantListComponent implements OnInit{
 
   onRestaurantChange(event:Event){
     const restaurantChoice=event.target as HTMLSelectElement;
-    console.log(restaurantChoice.value);
+    // console.log("que recupere t on de cet event : ",restaurantChoice.value);
     this.restaurantSelected.emit(restaurantChoice.value)
   }
 }

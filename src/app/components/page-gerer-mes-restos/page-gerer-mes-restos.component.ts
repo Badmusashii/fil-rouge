@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
-import { Restaurant } from 'src/app/models/restaurant';
+import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
 @Component({
   selector: 'app-page-gerer-mes-restos',
@@ -13,9 +13,8 @@ export class PageGererMesRestosComponent  {
 selectedGroupe!: number;
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> = [];
-
   review!: string;
-  restaurant:any = [];
+  restaurant:any ;
   restaurantList: any[] | undefined;
   reviews:any[] = [];
   constructor(private fb: FormBuilder, private restaurantService:RestaurantService, private avisService:AvisService){}
@@ -61,7 +60,7 @@ selectedGroupe!: number;
   create() {
     console.log('okokokokokoko' + this.selectedGroupe);
     if (this.createForm.valid) {
-      const restaurant: Restaurant = {
+      const restaurant: Restaurants = {
         name: this.createForm.get('name')?.value,
         adresse: this.createForm.get('adresse')?.value,
         price: this.createForm.get('price')?.value,
