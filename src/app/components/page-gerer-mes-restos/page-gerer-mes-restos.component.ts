@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
+import { Review } from 'src/app/interfaces/review.interface';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
@@ -16,7 +17,7 @@ export class PageGererMesRestosComponent {
   review!: string;
   restaurant: any;
   restaurantList: any[] | undefined;
-  reviews: any[] = [];
+  reviews: Review[] = [];
   constructor(
     private fb: FormBuilder,
     private restaurantService: RestaurantService,
@@ -31,8 +32,8 @@ export class PageGererMesRestosComponent {
   message: string = ''; // Initialisation du message vide
 
   ngOnInit(): void {
-    this.avisService.getReview().subscribe((data) => {
-      this.reviews = data;
+    this.avisService.getReview(1).subscribe((response) => {
+      this.reviews = response.data;
     });
   }
 
