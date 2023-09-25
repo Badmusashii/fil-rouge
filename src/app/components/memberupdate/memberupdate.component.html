@@ -1,16 +1,38 @@
 <div class="memberupdate">
   <p>Modifier mon compte</p>
   <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="form">
-    <input type="text" formControlName="username" placeholder="Pseudo" />
-    <input type="text" formControlName="firstname" placeholder="Prénom" />
-    <input type="text" formControlName="lastname" placeholder="Nom" />
-    <input type="email" formControlName="email" placeholder="Email" />
     <input
+      id="input1"
+      type="text"
+      formControlName="username"
+      placeholder="Pseudo"
+    />
+    <input
+      id="input2"
+      type="text"
+      formControlName="firstname"
+      placeholder="Prénom"
+    />
+    <input
+      id="input3"
+      type="text"
+      formControlName="lastname"
+      placeholder="Nom"
+    />
+    <input
+      id="input4"
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+    />
+    <input
+      id="input5"
       type="password"
       formControlName="currentPassword"
       placeholder="ancien mot de passe"
     />
     <input
+      id="input6"
       type="password"
       formControlName="newPassword"
       placeholder="nouveau mot de passe"

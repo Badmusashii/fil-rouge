@@ -1,4 +1,3 @@
-
 <!-- <div class="test d-flex flex-row justify-content-between align-items-">
     
         <img src="./assets/images/logo-svg.svg" alt="logo" width="200px">
@@ -8,44 +7,50 @@
     <app-headermember></app-headermember>
     </div> -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img src="./assets/images/logo-svg.svg" class="navbar-brand" href="#" width="150px">
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img
+    src="./assets/images/logo-svg.svg"
+    class="navbar-brand"
+    href="#"
+    width="150px"
+  />
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
-        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'/home'">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'/mes-restos'">Mes Restos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'/create'">Gérer mes Restos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'/gerer'">Gérer mes Groupes</a>
-                </li>
-            </ul>
-        </div>
-        <div class="text-center">
-            <!-- Icône de connexion -->
-            <i class="fas fa-regular fa-user" style="margin-right: 10px;"></i>
+  <div
+    class="collapse navbar-collapse d-flex justify-content-between"
+    id="navbarNav"
+  >
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/home'">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/mes-restos'">Mes Restos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/create'">Gérer mes Restos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/gerer'">Gérer mes Groupes</a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-center">
+    <!-- Icône de connexion -->
+    <i class="fas fa-regular fa-user" style="margin-right: 10px"></i>
 
-            <ng-container *ngIf="pseudo">
-                <p class="center">{{pseudo}}</p>
-                <a class="nav-link active" [routerLink]="'/moncompte'">Mon Compte</a>
-                <a class="nav-link active" href="javascript:void(0);" (click)="logout()">Déconnexion</a>
-            </ng-container>
-            
-            <ng-container *ngIf="!pseudo">
-                <a class="nav-link active" [routerLink]="'/login'">Connexion</a>
-            </ng-container>
-        </div>
-    </nav>
-        
-    
-    
+    <ng-container *ngIf="pseudo">
+      <p class="center">{{ pseudo }}</p>
+      <a class="nav-link active" [routerLink]="'/moncompte'">Mon Compte</a>
+      <a class="nav-link active" href="javascript:void(0);" (click)="logout()"
+        >Déconnexion</a
+      >
+    </ng-container>
 
+    <ng-container *ngIf="!pseudo">
+      <a class="nav-link active" [routerLink]="'/login'">Connexion</a>
+    </ng-container>
+  </div>
+</nav>

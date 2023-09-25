@@ -1,25 +1,27 @@
-.center{
+.center {
   color: white;
 }
 
-.fas{
+.fas {
   color: white;
 }
 
 /* Couleur du texte des liens de la barre de navigation */
 .navbar-nav .nav-link {
-    color: white; /* Texte en blanc */
+  color: white; /* Texte en blanc */
 }
 
 /* Couleur au survol des liens de la barre de navigation */
 .navbar-nav .nav-link:hover {
-    color: blue; /* Texte en bleu au survol */
+  transition: 1s ease;
+  color: blue; /* Texte en bleu au survol */
+  /* margin-bottom: 1rem; */
 }
 
 /* .test{
     margin-left: 20px;
     gap: 50px;
-} */ 
+} */
 
 /* Style du logo */
 /* .logo img {

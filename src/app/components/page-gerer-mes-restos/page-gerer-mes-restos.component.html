@@ -61,75 +61,94 @@
     </p>
   </div>
 
-<div class="twocardcontainer">
-<div class="cadre">
-    <div id="flexToutCa">
-        
-    <div id="left">
-        <form (ngSubmit)="create()" [formGroup]="createForm">
+  <div class="twocardcontainer">
+    <div class="cadre">
+      <div id="flexToutCa">
+        <div id="left">
+          <form (ngSubmit)="create()" [formGroup]="createForm">
             <div class="formulaire">
-                <input formControlName="name" class="taille" placeholder="Nom du resto" />
-                <div *ngIf="createForm.get('name')?.hasError('required')">
-                </div>
+              <input
+                formControlName="name"
+                class="taille"
+                placeholder="Nom du resto"
+              />
+              <div *ngIf="createForm.get('name')?.hasError('required')"></div>
             </div>
-        </form>
-        <p>Adresse</p>
-        <app-categorie-list></app-categorie-list>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
-            viewBox="0 0 16 16">
+          </form>
+          <p>Adresse</p>
+          <app-categorie-list></app-categorie-list>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-pencil-square"
+            viewBox="0 0 16 16"
+          >
             <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-            <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-        </svg>
+              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+            />
+          </svg>
+        </div>
 
-
+        <div id="right">
+          <p>proposé par pseudo</p>
+          <app-fourchette-de-prix></app-fourchette-de-prix>
+          <div class="thumbs-up-down">
+            <p>
+              {{ numberOfThumbsUp
+              }}<i
+                class="fas fa-thumbs-up"
+                style="margin-left: 8px"
+                (click)="numberOfThumbsUp = numberOfThumbsUp + 1"
+              ></i>
+            </p>
+            <!-- Icône "pouce en l'air" -->
+            <p id="cadragePouceDown">
+              <i
+                class="fas fa-thumbs-down flip-horizontal"
+                (click)="numberOfThumbsDown = numberOfThumbsDown + 1"
+                style="margin-right: 8px"
+              >
+              </i>
+              {{ numberOfThumbsDown }}
+            </p>
+            <!-- Icône "pouce en bas" -->
+          </div>
+        </div>
+      </div>
+      <div class="reviews">
+        <div *ngFor="let review of reviews">
+          <h3>{{ pseudo }}</h3>
+          <p>{{ review }}</p>
+        </div>
+      </div>
     </div>
 
-    <div id="right">
-        <p>proposé par pseudo</p>
-        <app-fourchette-de-prix></app-fourchette-de-prix>
-<div class="thumbs-up-down">
-    <p>{{ numberOfThumbsUp }}<i class="fas fa-thumbs-up" style="margin-left: 8px;"
-            (click)="numberOfThumbsUp = numberOfThumbsUp + 1"></i></p> <!-- Icône "pouce en l'air" -->
-    <p id="cadragePouceDown">
-        <i class="fas fa-thumbs-down flip-horizontal" (click)="numberOfThumbsDown = numberOfThumbsDown + 1"
-            style="margin-right: 8px;">
-        </i>
-        {{ numberOfThumbsDown }}
-    </p> <!-- Icône "pouce en bas" -->
-</div>
-
-    </div>
-    
-
-    
-</div>
-    <div class="reviews">
-
-<div *ngFor="let review of reviews">
-    <h3>{{pseudo}}</h3>
-    <p>{{ review}}</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="updateButton">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
-        viewBox="0 0 16 16">
+    <div class="updateButton">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-pencil-square"
+        viewBox="0 0 16 16"
+      >
         <path
-            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-        <path fill-rule="evenodd"
-            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-    </svg>
-    <button class="update">Modifier</button>
-    
-    
+          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+        />
+      </svg>
+      <button class="update">Modifier</button>
 
-    <button (click)="remove">Supprimer</button>
+      <button (click)="(remove)">Supprimer</button>
+    </div>
+  </div>
 </div>
-</div>
-
-
