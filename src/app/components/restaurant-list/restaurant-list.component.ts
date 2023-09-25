@@ -9,6 +9,8 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
   @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() restaurantSelected = new EventEmitter<any>();
+
   // La propriété allList = true permet d'afficher une option "Tous" dans le Select
   @Input() allList: boolean | undefined; 
  
@@ -20,6 +22,12 @@ export class RestaurantListComponent implements OnInit{
       this.restaurantListOutput.emit(this.restaurantList); 
       console.log(res);
     });
+  }
+
+  onRestaurantChange(event:Event){
+    const restaurantChoice=event.target as HTMLSelectElement;
+    // console.log("que recupere t on de cet event : ",restaurantChoice.value);
+    this.restaurantSelected.emit(restaurantChoice.value)
   }
 }
 

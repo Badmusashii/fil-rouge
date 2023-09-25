@@ -3,5 +3,9 @@ export interface Restaurant {
     name: string;
     adresse: string;
     price: string;
+     member?: {
+                username: string;
+    }
+    
     
 }

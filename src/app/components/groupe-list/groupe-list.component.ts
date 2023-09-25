@@ -8,7 +8,7 @@ import { GroupeService } from 'src/app/services/groupe.service';
   styleUrls: ['./groupe-list.component.css'],
 })
 export class GroupeListComponent implements OnInit {
-  @Output() groupeChanged = new EventEmitter<string>();
+  @Output() groupeChanged = new EventEmitter<number>();
    // La propriété allList = true permet d'afficher une option "Tous" dans le Select
   @Input() allList: boolean | undefined; 
   groupeList!: Groupes[];
@@ -26,6 +26,6 @@ export class GroupeListComponent implements OnInit {
     const selectedCategorie = this.groupeList.find(
       (groupe: { id: number }) => groupe.id === +selectedId
     );
-    this.groupeChanged.emit(selectedCategorie?.name);
+    this.groupeChanged.emit(selectedCategorie?.id);
   }
 }
