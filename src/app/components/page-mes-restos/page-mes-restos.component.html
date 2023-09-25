@@ -1,9 +1,9 @@
 <app-headerhome></app-headerhome>
 
 <div class="container">
-    <div><app-restaurant-list (restaurantListOutput)="handleRestaurantList($event)"></app-restaurant-list></div>
-    <div><app-categorie-list></app-categorie-list></div>
-    <div><app-groupe-list></app-groupe-list></div>
+    <div><app-restaurant-list [allList]=true (restaurantListOutput)="handleRestaurantList($event)"></app-restaurant-list></div>
+    <div><app-categorie-list [allList]=true></app-categorie-list></div>
+    <div><app-groupe-list [allList]=true></app-groupe-list></div>
 </div>
 <div class="containerCards">
     <app-card-resto *ngFor="let restaurant of restaurantList" [restaurant]="restaurant" (clickOpenModal)="handleClickOpenModal(restaurant)"></app-card-resto>

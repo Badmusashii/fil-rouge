@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
-  login(data: { username: string; email: string; password: string }) {
+  login(data: { email: string; password: string }) {
     interface ApiResponse {
       accessToken: string;
     }

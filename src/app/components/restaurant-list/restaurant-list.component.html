@@ -1,5 +1,7 @@
 <div>
+    <span>Restaurant: </span>
     <select name="idRestaurant">
+        <option *ngIf="allList">Tous les restaurants</option>
         <option *ngFor="let restaurant of restaurantList" [value]="restaurant.id">{{restaurant.name}}</option>
     </select>
 </div>

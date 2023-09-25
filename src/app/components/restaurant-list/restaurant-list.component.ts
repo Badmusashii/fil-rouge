@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
   @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<any[]>();
-  
+  // La propriété allList = true permet d'afficher une option "Tous" dans le Select
+  @Input() allList: boolean | undefined; 
  
-  
   constructor(private restaurantService: RestaurantService){};
 
   ngOnInit(): void {  
