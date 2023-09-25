@@ -8,30 +8,31 @@ import { AvisService } from 'src/app/services/avis.service';
   templateUrl: './page-gerer-mes-restos.component.html',
   styleUrls: ['./page-gerer-mes-restos.component.css'],
 })
-
-export class PageGererMesRestosComponent  {
-selectedGroupe!: number;
+export class PageGererMesRestosComponent {
+  selectedGroupe!: number;
   // reviews: Array<{ review: string; groupe: number }> = [];
-  reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> = [];
+  reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
+    [];
   review!: string;
-  restaurant:any ;
+  restaurant: any;
   restaurantList: any[] | undefined;
-  reviews:any[] = [];
-  constructor(private fb: FormBuilder, private restaurantService:RestaurantService, private avisService:AvisService){}
-  
+  reviews: any[] = [];
+  constructor(
+    private fb: FormBuilder,
+    private restaurantService: RestaurantService,
+    private avisService: AvisService
+  ) {}
+
   // Initialisez un compteur de pouces en l'air
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
   // modalComponent: any;
- 
-  
 
-  ngOnInit():void{
+  ngOnInit(): void {
     // this.avisService.getReview(1).subscribe(data => {
     //   this.reviews=data;
     // });
   }
-
 
   createForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -84,14 +85,11 @@ selectedGroupe!: number;
   }
 
   handleRestaurant(restaurant: any) {
-  this.restaurant = restaurant;
-  console.log('la maison' + this.restaurant);
-  this.avisService.getReview(this.restaurant).subscribe(data => {
-    this.reviews = data.data
-    console.log( data)
-  }) 
+    this.restaurant = restaurant;
+    console.log('la maison' + this.restaurant);
+    this.avisService.getReview(this.restaurant).subscribe((data) => {
+      this.reviews = data.data;
+      console.log(data);
+    });
+  }
 }
-}
-
-
-
