@@ -16,8 +16,14 @@ export class AvisService {
   }
 
   
-getReview(): Observable<Review[]> {
-    return this.http.get<Review[]>(`http://localhost:8080/api/review/restaurant/:id`);
+getReview(id:number) {
+ interface ReviewResponse {
+      status: string;
+      message: string;
+      data: Review[];
+    }
+
+    return this.http.get<ReviewResponse>(`http://localhost:8080/api/review/restaurant/${id}`);
   }
 
 

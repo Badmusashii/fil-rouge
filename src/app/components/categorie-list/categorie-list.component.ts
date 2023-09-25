@@ -25,10 +25,10 @@ export class CategorieListComponent implements OnInit {
     console.log(selectElement);
     const selectedId = selectElement.value;
     // console.log(selectElement.value);
-    const selectedCategorie = this.categorieList.find(
-      (categorie) => categorie.id === +selectedId
-    );
+    // const selectedCategorie = this.categorieList.find(
+    //   (categorie) => categorie.id === +selectedId
+    // );
     // console.log(selectedCategorie);
-    this.categorieChanged.emit(selectedCategorie?.name);
+    this.categorieChanged.emit(selectedId);
   }
 }
