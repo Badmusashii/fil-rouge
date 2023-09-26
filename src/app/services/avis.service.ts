@@ -55,7 +55,7 @@ export class AvisService {
     restaurantId: number
   ): Observable<{ thumbsUp: number; thumbsDown: number }> {
     return this.http.get<{ thumbsUp: number; thumbsDown: number }>(
-      `http://localhost:8080/api/restaurants/${restaurantId}/votes`
+      `http://localhost:8080/api/review-votes/${restaurantId}/votes`
     );
   }
 }
