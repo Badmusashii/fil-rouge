@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
+import { AvisService } from 'src/app/services/avis.service';
 
 @Component({
   selector: 'app-card-resto',
@@ -18,10 +19,24 @@ export class CardRestoComponent implements OnInit {
   hasClicked: boolean = false;
   lastVote: 'up' | 'down' | null = null;
   // modalComponent: any;
-  constructor(private modalComponent: ModalComponent) {}
+  constructor(
+    private modalComponent: ModalComponent,
+    private avisService: AvisService
+  ) {}
 
   ngOnInit(): void {
-    console.log('avis de l enfant' + this.restaurant.reviews);
+    // console.log('avis de l enfant' + this.restaurant.reviews);
+    console.log("a l'initialisation " + this.restaurant.id);
+    this.avisService.getThumbsUpDown(this.restaurant.id).subscribe(
+      (data) => {
+        this.numberOfThumbsUp = data.thumbsUp;
+        this.numberOfThumbsDown = data.thumbsDown;
+      },
+      (error) => {
+        console.log('Erreur lors de la récupération des votes', error);
+      }
+    );
+    console.log(this.numberOfThumbsUp, this.numberOfThumbsDown);
   }
   openModal() {
     this.modalComponent.openModal();
@@ -54,6 +69,14 @@ export class CardRestoComponent implements OnInit {
       this.numberOfThumbsUp++;
       this.lastVote = 'up'; // Met à jour le dernier vote
     }
+    this.avisService.voteUp(+this.restaurant.id).subscribe(
+      (res) => {
+        console.log('Vote Up réussi', res);
+      },
+      (err) => {
+        console.log('Erreur lors du Vote Up', err);
+      }
+    );
   }
   voteDown() {
     if (this.lastVote === 'down') {
@@ -69,5 +92,13 @@ export class CardRestoComponent implements OnInit {
       this.numberOfThumbsDown++;
       this.lastVote = 'down'; // Met à jour le dernier vote
     }
+    this.avisService.voteDown(+this.restaurant.id).subscribe(
+      (res) => {
+        console.log('Vote Down réussi', res);
+      },
+      (err) => {
+        console.log('Erreur lors du Vote Down', err);
+      }
+    );
   }
 }
