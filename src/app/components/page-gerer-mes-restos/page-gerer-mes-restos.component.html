@@ -37,6 +37,9 @@
             <button type="submit" [disabled]="!createForm.valid">Créer</button>
           </div>
         </form>
+        <div class="message">
+          {{ message }}
+        </div>
       </div>
     </div>
     <div id="blocDroite">
@@ -142,8 +145,13 @@
         />
       </svg>
       <button class="update">Modifier</button>
-
+<div class="message">
+  {{ message }}
+</div>
       <button (click)="(remove)">Supprimer</button>
+      <div class="message">
+        {{ message }}
+      </div>
     </div>
   </div>
 </div>

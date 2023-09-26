@@ -38,4 +38,14 @@ getReview(id:number) {
       reviewdata
     );
   }
+
+  // A faire apres la requete: enregistrer les vote dans le back!
+
+//    enregistrerVote(idResto: number, vote: boolean): Observable<any> {
+//     const voteData = {
+//       idResto: idResto,
+//       vote: vote,
+//     };
+ //return this.http.post<any>(`${this.apiUrl}/voter`, voteData); // Remplacez "/voter" par l'URL de votre endpoint de vote
+// }
 }

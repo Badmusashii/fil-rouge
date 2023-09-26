@@ -1,4 +1,12 @@
 <app-headerhome></app-headerhome>
+
+<div class="container">
+    <div><app-restaurant-list [allList]=true
+            ></app-restaurant-list></div>
+    <div><app-categorie-list [allList]=true></app-categorie-list></div>
+    <div><app-groupe-list [allList]=true></app-groupe-list></div>
+</div>
+
 <div class="container">
     <app-card-group *ngFor="let groupe of groupeList" [groupe]="groupe"></app-card-group>
 </div>
