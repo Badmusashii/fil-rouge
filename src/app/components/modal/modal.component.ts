@@ -8,20 +8,23 @@ import { Restaurant } from 'src/app/interfaces/restaurant.interface';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent {
-    // Appel du setter si la valeur transmise par le parent change
-  @Input() set idResto(value: { id: number, name: string }) {
-    this._idResto = value.id;
-    this.nameResto = value.name;
-            if (value !== undefined) {
+  // Appel du setter si la valeur transmise par le parent change
+  @Input() set idResto(value: { id: number; name: string }) {
+    if (value) {
+      // Ajoutez cette vérification
+      this._idResto = value.id;
+      this.nameResto = value.name;
       this.openModal();
+    } else {
+      // Gérez le cas où value est undefined, si nécessaire
     }
   } // Ajoutez une variable pour suivre l'état de la modale
 
-    @Output() reviewSubmitted = new EventEmitter<string>();
+  @Output() reviewSubmitted = new EventEmitter<string>();
   reviewText: string = '';
   isModalOpen: boolean = false;
   _idResto: number | undefined;
- nameResto: string | undefined;
+  nameResto: string | undefined;
   constructor(private avisService: AvisService) {}
 
   openModal() {
