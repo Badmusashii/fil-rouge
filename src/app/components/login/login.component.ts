@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,18 +14,23 @@ export interface LoginForm {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
+  ngOnInit(): void {
+    // Suppression de l'ancien token
+    this.authService.logout();
+  }
+
   loginForm: FormGroup = this.fb.group({
-    username: ['', Validators.required],
+    // username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
   login() {
     const data = {
-      username: this.loginForm.get('username')?.value,
+      //username: this.loginForm.get('username')?.value,
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };

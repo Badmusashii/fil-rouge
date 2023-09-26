@@ -1,6 +1,7 @@
 <div>
   <span>Catégorie: </span>
   <select name="idCategorie" (change)="onCategorieChange($event)">
+    <option *ngIf="allList">Toutes les catégories</option>
     <option *ngFor="let categorie of categorieList" [value]="categorie.id">
       {{ categorie.name }}
     </option>

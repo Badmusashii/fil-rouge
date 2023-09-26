@@ -3,7 +3,7 @@
     <div>
       <h2>
         Restaurant <span>{{ restaurant.name }}</span> proposé par
-        <span>{{ restaurant.member.username }}</span>
+        <span>{{ restaurant.member?.username }}</span>
       </h2>
       <p>Address: {{ restaurant.adresse }}</p>
       <p>Catégorie: {{ restaurant.categorie.name }}</p>
@@ -31,7 +31,7 @@
       <!-- Icône "pouce en bas" -->
     </div>
     <div class="reviews">
-      <div class="review" *ngFor="let unAvis of restaurant.reviews.reverse()">
+      <div class="review" *ngFor="let unAvis of restaurant.reviews?.reverse()">
         <h3>Avis de {{ pseudo }}</h3>
         <p>{{ unAvis.review }}</p>
       </div>
