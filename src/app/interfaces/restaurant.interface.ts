@@ -3,9 +3,12 @@ export interface Restaurant {
     name: string;
     adresse: string;
     price: string;
+    categorie: {
+        id: number;
+        name: string;
+    };
      member?: {
                 username: string;
     }
-    
-    
+    reviews?: { review: string }[];
 }

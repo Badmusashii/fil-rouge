@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
+import { Review } from 'src/app/interfaces/review.interface';
 
 @Component({
   selector: 'app-card-resto',
@@ -8,20 +10,20 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CardRestoComponent implements OnInit {
   pseudo: string | undefined = '';
-  @Input() restaurant!: any;
+  @Input() restaurant!: Restaurant;
   @Output() clickOpenModal = new EventEmitter<number>();
   // Initialisez un compteur de pouces en l'air
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
   avisSubject: any;
-  avis: any;
+  avis!: string[];
   hasClicked: boolean = false;
   lastVote: 'up' | 'down' | null = null;
   // modalComponent: any;
   constructor(private modalComponent: ModalComponent) {}
 
   ngOnInit(): void {
-    console.log('avis de l enfant' + this.restaurant.reviews);
+    //console.log('avis de l enfant' + this.restaurant.reviews);
   }
   openModal() {
     this.modalComponent.openModal();
