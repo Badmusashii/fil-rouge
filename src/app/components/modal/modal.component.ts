@@ -36,18 +36,20 @@ export class ModalComponent {
   }
 
   submitReview() {
-    // Créez un objet avec l'avis et un vote factice (par exemple, true).
+    if (this._idResto === undefined) {
+      console.error("L'ID du restaurant n'est pas défini");
+      return;
+    }
+
     let reviewData = {
       review: this.reviewText,
-      vote: true, // Vous devrez déterminer comment gérer le vote ici.
-      idResto: String(this._idResto),
+      vote: true,
     };
-    // Enregistrez l'avis dans le backend via un service (AvisService) ici.
-    this.avisService.ajouterAvis(reviewData).subscribe(() => {
-      // Une fois l'avis enregistré, émettez l'événement pour le faire apparaître dans la card.
+
+    this.avisService.ajouterAvis(this._idResto, reviewData).subscribe(() => {
       this.reviewSubmitted.emit(this.reviewText);
-      this.reviewText = ''; // Réinitialisez le champ de texte après la soumission.
-      this.closeModal(); // Fermez la modale après la soumission.
+      this.reviewText = '';
+      this.closeModal();
     });
   }
 }

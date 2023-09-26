@@ -39,6 +39,15 @@ export class CardRestoComponent implements OnInit {
         console.log('Erreur lors de la récupération des votes', error);
       }
     );
+    this.avisService.getReview(this.restaurant.id).subscribe(
+      (data) => {
+        this.avis = data.data.map((review) => review.review);
+        console.log('Avis récupérés:', this.avis);
+      },
+      (error) => {
+        console.log('Erreur lors de la récupération des avis', error);
+      }
+    );
   }
   openModal() {
     this.modalComponent.openModal();
@@ -57,52 +66,6 @@ export class CardRestoComponent implements OnInit {
     // Ajoutez le nouvel avis au début de la liste
     this.avis.unshift(nouvelAvis);
   }
-  // voteUp() {
-  //   if (this.lastVote === 'up') {
-  //     // Si le dernier vote était déjà un "pouce en haut", réduis le compteur
-  //     this.numberOfThumbsUp--;
-  //     this.lastVote = null; // Réinitialise le dernier vote
-  //   } else {
-  //     if (this.lastVote === 'down') {
-  //       // Si le dernier vote était un "pouce en bas", réduis ce compteur
-  //       this.numberOfThumbsDown--;
-  //     }
-  //     // Augmente le compteur du "pouce en haut"
-  //     this.numberOfThumbsUp++;
-  //     this.lastVote = 'up'; // Met à jour le dernier vote
-  //   }
-  //   this.avisService.voteUp(+this.restaurant.id).subscribe(
-  //     (res) => {
-  //       console.log('Vote Up réussi', res);
-  //     },
-  //     (err) => {
-  //       console.log('Erreur lors du Vote Up', err);
-  //     }
-  //   );
-  // }
-  // voteDown() {
-  //   if (this.lastVote === 'down') {
-  //     // Si le dernier vote était déjà un "pouce en bas", réduis le compteur
-  //     this.numberOfThumbsDown--;
-  //     this.lastVote = null; // Réinitialise le dernier vote
-  //   } else {
-  //     if (this.lastVote === 'up') {
-  //       // Si le dernier vote était un "pouce en haut", réduis ce compteur
-  //       this.numberOfThumbsUp--;
-  //     }
-  //     // Augmente le compteur du "pouce en bas"
-  //     this.numberOfThumbsDown++;
-  //     this.lastVote = 'down'; // Met à jour le dernier vote
-  //   }
-  //   this.avisService.voteDown(+this.restaurant.id).subscribe(
-  //     (res) => {
-  //       console.log('Vote Down réussi', res);
-  //     },
-  //     (err) => {
-  //       console.log('Erreur lors du Vote Down', err);
-  //     }
-  //   );
-  // }
 
   voteUp() {
     this.avisService.voteUp(+this.restaurant.id).subscribe(

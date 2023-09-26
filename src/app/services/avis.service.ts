@@ -27,10 +27,15 @@ export class AvisService {
     );
   }
 
-  ajouterAvis(reviewdata: { review: string; vote: boolean; idResto: string }) {
+  // ajouterAvis(restoId: number, reviewdata: { review: string; vote: boolean }) {
+  //   return this.http.post(
+  //     (`http://localhost:8080/api/review/${idResto}`, reviewdata)
+  //   );
+  // }
+  ajouterAvis(idResto: number, reviewData: { review: string; vote: boolean }) {
     return this.http.post(
-      'http://localhost:8080/api/review/' + reviewdata.idResto,
-      reviewdata
+      `http://localhost:8080/api/review/${idResto}`,
+      reviewData
     );
   }
 

@@ -11,21 +11,19 @@ import { AvisService } from 'src/app/services/avis.service';
 export class PageMesRestosComponent implements OnInit {
   avis: Review[] | undefined;
   // listeDesAvis: Review[] = [];
-  restaurantList: any[] | undefined;
+  restaurantList: Restaurant[] | undefined;
   idResto!: { id: number; name: string };
   isModalOpen: boolean = false;
 
   constructor(private avisService: AvisService) {}
 
   ngOnInit() {
-    this.avisService.getAllAvis().subscribe((nouveauxAvis) => {
-      // Inversez l'ordre des avis pour que le dernier avis soit en haut
-
-      console.log('get all avis' + nouveauxAvis);
-      console.log(nouveauxAvis);
-
-      this.avis = nouveauxAvis;
-    });
+    // this.avisService.getAllAvis().subscribe((nouveauxAvis) => {
+    //   // Inversez l'ordre des avis pour que le dernier avis soit en haut
+    //   console.log('get all avis' + nouveauxAvis);
+    //   console.log(nouveauxAvis);
+    //   this.avis = nouveauxAvis;
+    // });
   }
 
   handleRestaurantList(restaurantList: any[]) {
@@ -50,7 +48,10 @@ export class PageMesRestosComponent implements OnInit {
 
         // Appelez le service pour enregistrer l'avis dans le backend
         this.avisService
-          .ajouterAvis({ review: '', vote: true, idResto: restaurant.id })
+          .ajouterAvis(idResto, {
+            review: review,
+            vote: true,
+          })
           .subscribe(() => {
             console.log('Avis enregistré dans le backend avec succès.');
           });
@@ -61,7 +62,7 @@ export class PageMesRestosComponent implements OnInit {
   // handleClickOpenModal(idResto: number, nameResto: string) {
   //   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
   // }
-  handleClickOpenModal(restaurant: Restaurant ) {
+  handleClickOpenModal(restaurant: Restaurant) {
     this.idResto = { id: restaurant.id, name: restaurant.name }; //cette propriété = this.
   }
 }
