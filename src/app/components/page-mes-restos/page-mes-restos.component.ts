@@ -18,9 +18,9 @@ export class PageMesRestosComponent implements OnInit {
   isModalOpen: boolean = false;
 
   // Filtres
-  selectedRestaurant ?: string;
-  selectedCategory ?: string;
-  selectedGroup ?: string;
+  selectedRestaurant?: string;
+  selectedCategory?: string;
+  selectedGroup?: string;
 
   constructor(private avisService: AvisService) {}
 
@@ -46,19 +46,19 @@ export class PageMesRestosComponent implements OnInit {
     this.filterRestaurantList();
   }
 
-  filterRestaurantList(){
+  filterRestaurantList() {
     this.restaurantListToDisplay = this.restaurantList;
-    if(this.selectedRestaurant&&Number(this.selectedRestaurant)){
+    if (this.selectedRestaurant && Number(this.selectedRestaurant)) {
       this.restaurantListToDisplay = this.restaurantList?.filter(
         (restaurant) => restaurant.id == Number(this.selectedRestaurant)
       );
     }
-    if(this.selectedCategory&&Number(this.selectedCategory)){
+    if (this.selectedCategory && Number(this.selectedCategory)) {
       this.restaurantListToDisplay = this.restaurantList?.filter(
         (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
       );
     }
-    if(this.selectedGroup&&Number(this.selectedGroup)){
+    if (this.selectedGroup && Number(this.selectedGroup)) {
       // this.restaurantListToDisplay = this.restaurantList?.filter(
       //   (restaurant) => restaurant.id == Number(this.selectedGroup)
       // );
@@ -87,11 +87,11 @@ export class PageMesRestosComponent implements OnInit {
         restaurant.reviews.push({ review: review.review, vote: review.vote });
 
         // Appelez le service pour enregistrer l'avis dans le backend
-        this.avisService
-          .ajouterAvis({ review: '', vote: true, idResto: String(restaurant.id) })
-          .subscribe(() => {
-            console.log('Avis enregistré dans le backend avec succès.');
-          });
+        // this.avisService
+        //   .ajouterAvis({ review: '', vote: true, idResto: String(restaurant.id) })
+        //   .subscribe(() => {
+        //     console.log('Avis enregistré dans le backend avec succès.');
+        //   });
       }
     }
   }
@@ -99,7 +99,7 @@ export class PageMesRestosComponent implements OnInit {
   // handleClickOpenModal(idResto: number, nameResto: string) {
   //   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
   // }
-  handleClickOpenModal(restaurant: Restaurant ) {
+  handleClickOpenModal(restaurant: Restaurant) {
     this.idResto = { id: restaurant.id, name: restaurant.name }; //cette propriété = this.
   }
 }

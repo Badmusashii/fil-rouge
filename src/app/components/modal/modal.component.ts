@@ -42,11 +42,11 @@ export class ModalComponent {
       idResto: String(this._idResto),
     };
     // Enregistrez l'avis dans le backend via un service (AvisService) ici.
-    this.avisService.ajouterAvis(reviewData).subscribe(() => {
-      // Une fois l'avis enregistré, émettez l'événement pour le faire apparaître dans la card.
-      this.reviewSubmitted.emit(reviewData);
-      this.reviewText = ''; // Réinitialisez le champ de texte après la soumission.
-      this.closeModal(); // Fermez la modale après la soumission.
-    });
+    // this.avisService.ajouterAvis(reviewData).subscribe(() => {
+    //   // Une fois l'avis enregistré, émettez l'événement pour le faire apparaître dans la card.
+    //   this.reviewSubmitted.emit(reviewData);
+    //   this.reviewText = ''; // Réinitialisez le champ de texte après la soumission.
+    //   this.closeModal(); // Fermez la modale après la soumission.
+    // });
   }
 }

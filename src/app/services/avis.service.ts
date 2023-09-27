@@ -27,9 +27,22 @@ export class AvisService {
     );
   }
 
-  ajouterAvis(reviewdata: { review: string; vote: boolean; idResto: string }) {
+  // ajouterAvis(
+  //   restaurantId: number,
+  //   reviewdata: { review: string; vote: boolean; idResto: string }
+  // ) {
+  //   return this.http.post(
+  //     `http://localhost:8080/api/review/${restaurantId}`,
+  //     reviewdata
+  //   );
+  // }
+
+  ajouterAvis(
+    restaurantId: number,
+    reviewdata: { review: string; vote: boolean; idgroupe: number }
+  ) {
     return this.http.post(
-      'http://localhost:8080/api/review/' + reviewdata.idResto,
+      `http://localhost:8080/api/review/${restaurantId}`,
       reviewdata
     );
   }
