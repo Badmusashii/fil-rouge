@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 import { Review } from 'src/app/interfaces/review.interface';
+import { ReviewData } from 'src/app/interfaces/reviewData.interface';
 
 @Component({
   selector: 'app-card-resto',
@@ -16,7 +17,7 @@ export class CardRestoComponent implements OnInit {
   numberOfThumbsUp: number = 0;
   numberOfThumbsDown: number = 0;
   avisSubject: any;
-  avis!: string[];
+  avis!: ReviewData[];
   hasClicked: boolean = false;
   lastVote: 'up' | 'down' | null = null;
   // modalComponent: any;
@@ -30,12 +31,12 @@ export class CardRestoComponent implements OnInit {
     console.log('Modal opened');
   }
 
-  handleReviewSubmitted(review: string) {
+  handleReviewSubmitted(review: ReviewData) {
     // Traitez l'avis soumis ici, par exemple, envoyez-le à un service.
     this.ajouterAvis(review);
   }
 
-  ajouterAvis(nouvelAvis: string) {
+  ajouterAvis(nouvelAvis: ReviewData) {
     // alert('coucou');
     // this.avis = [...this.avis,nouvelAvis];
     this.avis.push(nouvelAvis);

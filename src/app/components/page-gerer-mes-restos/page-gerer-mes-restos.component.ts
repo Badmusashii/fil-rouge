@@ -34,6 +34,7 @@ export class PageGererMesRestosComponent {
   ngOnInit(): void {
     this.avisService.getReview(1).subscribe((response) => {
       this.reviews = response.data;
+      console.log(response.data);
     });
   }
 
@@ -53,9 +54,9 @@ export class PageGererMesRestosComponent {
     console.log('la categorie est de  => ' + newCategorie);
     this.createForm.get('categorie')?.setValue(newCategorie);
   }
-  handleGroupeChange(newGroupe: number): void {
+  handleGroupeChange(newGroupe: string): void {
     console.log('la Groupe est de  => ' + newGroupe);
-    this.selectedGroupe = newGroupe;
+    this.selectedGroupe = Number(newGroupe);
   }
   handleReviewChange(event: any) {
     this.review = event.target.value;

@@ -9,7 +9,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 export class RestaurantListComponent implements OnInit{
   restaurantList: any;
   @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<any[]>();
-  @Output() restaurantSelected = new EventEmitter<any>();
+  @Output() restaurantSelected = new EventEmitter<string>();
 
   // La propriété allList = true permet d'afficher une option "Tous" dans le Select
   @Input() allList: boolean | undefined; 
