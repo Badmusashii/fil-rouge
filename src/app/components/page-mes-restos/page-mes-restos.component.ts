@@ -49,17 +49,17 @@ export class PageMesRestosComponent implements OnInit {
   filterRestaurantList(){
     this.restaurantListToDisplay = this.restaurantList;
     if(this.selectedRestaurant&&Number(this.selectedRestaurant)){
-      this.restaurantListToDisplay = this.restaurantList?.filter(
+      this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
         (restaurant) => restaurant.id == Number(this.selectedRestaurant)
       );
     }
     if(this.selectedCategory&&Number(this.selectedCategory)){
-      this.restaurantListToDisplay = this.restaurantList?.filter(
+      this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
         (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
       );
     }
     if(this.selectedGroup&&Number(this.selectedGroup)){
-      // this.restaurantListToDisplay = this.restaurantList?.filter(
+      // this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
       //   (restaurant) => restaurant.id == Number(this.selectedGroup)
       // );
     }
