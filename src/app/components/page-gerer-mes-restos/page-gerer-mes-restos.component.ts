@@ -16,6 +16,7 @@ export class PageGererMesRestosComponent {
     [];
   review!: string;
   restaurant: any;
+  restaurantData: any;
   restaurantList: any[] | undefined;
   reviews: Review[] = [];
   constructor(
@@ -95,5 +96,12 @@ export class PageGererMesRestosComponent {
       this.reviews = data.data;
       console.log(data);
     });
+    this.restaurantService
+      .getOneRestaurant(+this.restaurant)
+      .subscribe((data) => {
+        this.restaurantData = data;
+        console.log('La data que je veut ' + JSON.stringify(data));
+      });
+    console.log('La data que je veut ' + this.restaurantData);
   }
 }

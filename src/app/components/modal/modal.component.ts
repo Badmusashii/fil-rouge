@@ -8,12 +8,14 @@ import { AvisService } from 'src/app/services/avis.service';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent {
-    // Appel du setter si la valeur transmise par le parent change
-    @Input() set idResto(value: { id: number, name: string }) {
+  // Appel du setter si la valeur transmise par le parent change
+  @Input() set idResto(value: { id: number; name: string }) {
     this._idResto = value.id;
     this.nameResto = value.name;
     if (value !== undefined) {
       this.openModal();
+    } else {
+      // Gérez le cas où value est undefined, si nécessaire
     }
   } // Ajoutez une variable pour suivre l'état de la modale
 
@@ -34,7 +36,7 @@ export class ModalComponent {
 
   submitReview() {
     // Créez un objet avec l'avis et un vote factice (par exemple, true).
-    let reviewData : ReviewData = {
+    let reviewData: ReviewData = {
       review: this.reviewText,
       vote: true, // Vous devrez déterminer comment gérer le vote ici.
       idResto: String(this._idResto),

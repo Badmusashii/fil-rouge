@@ -15,37 +15,47 @@ export class AvisService {
     return this.http.get<Review[]>(`http://localhost:8080/api/review`);
   }
 
-  
-getReview(id:number) {
- interface ReviewResponse {
+  getReview(id: number) {
+    interface ReviewResponse {
       status: string;
       message: string;
       data: Review[];
     }
 
-    return this.http.get<ReviewResponse>(`http://localhost:8080/api/review/restaurant/${id}`);
+    return this.http.get<ReviewResponse>(
+      `http://localhost:8080/api/review/restaurant/${id}`
+    );
   }
 
-
-
-
-  ajouterAvis(reviewdata: {
-    review: string;
-    vote: boolean; idResto: string;
-    }) {
+  ajouterAvis(reviewdata: { review: string; vote: boolean; idResto: string }) {
     return this.http.post(
       'http://localhost:8080/api/review/' + reviewdata.idResto,
       reviewdata
     );
   }
 
-  // A faire apres la requete: enregistrer les vote dans le back!
+  voteUp(idRestaurant: number): Observable<any> {
+    const payload = {
+      idRestaurant: idRestaurant,
+      thumbs_up: true,
+      thumbs_down: false,
+    };
+    return this.http.post('http://localhost:8080/api/review-votes', payload);
+  }
 
-//    enregistrerVote(idResto: number, vote: boolean): Observable<any> {
-//     const voteData = {
-//       idResto: idResto,
-//       vote: vote,
-//     };
- //return this.http.post<any>(`${this.apiUrl}/voter`, voteData); // Remplacez "/voter" par l'URL de votre endpoint de vote
-// }
+  voteDown(idRestaurant: number): Observable<any> {
+    const payload = {
+      idRestaurant: idRestaurant,
+      thumbs_up: false,
+      thumbs_down: true,
+    };
+    return this.http.post('http://localhost:8080/api/review-votes', payload);
+  }
+  getThumbsUpDown(
+    restaurantId: number
+  ): Observable<{ thumbsUp: number; thumbsDown: number }> {
+    return this.http.get<{ thumbsUp: number; thumbsDown: number }>(
+      `http://localhost:8080/api/review-votes/${restaurantId}/votes`
+    );
+  }
 }
