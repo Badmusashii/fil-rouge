@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Groupes } from '../models/groupes';
+import { Member } from '../interfaces/member.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -30,13 +32,13 @@ export class GroupeService {
       }
     );
   }
-  getAllGroupeForUser(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/groupe');
+  getAllGroupeForUser(): Observable<Groupes[]> {
+    return this.http.get<Groupes[]>('http://localhost:8080/api/groupe');
   }
-  getAllMemberForGroupe(id: number): Observable<any> {
-    return this.http.get(`http://localhost:8080/api/groupe/${id}`);
+  getAllMemberForGroupe(id: number): Observable<Member[]> {
+    return this.http.get<Member[]>(`http://localhost:8080/api/groupe/${id}`);
   }
-  deleteMemberInGroupe(id: number): Observable<any> {
+  deleteMemberInGroupe(id: number) {
     return this.http.delete(`http://localhost:8080/api/groupe/${id}`);
   }
 }

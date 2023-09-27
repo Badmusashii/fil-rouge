@@ -8,15 +8,13 @@ import { MemberService } from 'src/app/services/member.service';
   styleUrls: ['./headerhome.component.css'],
 })
 export class HeaderhomeComponent {
-  pseudo: string | undefined;
+  pseudo?: string;
 
   constructor(private memberService: MemberService,private authService: AuthService) {}
 
   ngOnInit(): void {
     const objet = this.memberService.getMember().subscribe((res) => {
-      console.log('Username:' + res.username);
       this.pseudo = res.username;
-      // const member = res
     });
   }
 

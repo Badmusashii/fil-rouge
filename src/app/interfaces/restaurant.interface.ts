@@ -10,5 +10,5 @@ export interface Restaurant {
      member?: {
                 username: string;
     }
-    reviews?: { review: string }[];
+    reviews?: { review: string ; vote: boolean}[];
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Groupes } from 'src/app/models/groupes';
 import { GroupeService } from 'src/app/services/groupe.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { GroupeService } from 'src/app/services/groupe.service';
   styleUrls: ['./page-home.component.css']
 })
 export class PageHomeComponent {
-  groupeList: any;
+  groupeList?: Groupes[];
   constructor(private groupeService: GroupeService){}
   ngOnInit(): void {
     const objet = this.groupeService.getAllGroupeForUser().subscribe((res) =>{

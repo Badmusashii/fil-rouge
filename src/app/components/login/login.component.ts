@@ -23,14 +23,12 @@ export class LoginComponent implements OnInit{
   }
 
   loginForm: FormGroup = this.fb.group({
-    // username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
   login() {
     const data = {
-      //username: this.loginForm.get('username')?.value,
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };

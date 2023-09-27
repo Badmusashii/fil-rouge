@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 import { Review } from 'src/app/interfaces/review.interface';
+import { ReviewData } from 'src/app/interfaces/reviewData.interface';
 import { AvisService } from 'src/app/services/avis.service';
 
 @Component({
@@ -10,29 +11,66 @@ import { AvisService } from 'src/app/services/avis.service';
 })
 export class PageMesRestosComponent implements OnInit {
   avis: Review[] | undefined;
-  // listeDesAvis: Review[] = [];
-  restaurantList: any[] | undefined;
+  listeDesAvis: Review[] = [];
+  restaurantList?: Restaurant[];
+  restaurantListToDisplay?: Restaurant[];
   idResto!: { id: number; name: string };
   isModalOpen: boolean = false;
+
+  // Filtres
+  selectedRestaurant ?: string;
+  selectedCategory ?: string;
+  selectedGroup ?: string;
 
   constructor(private avisService: AvisService) {}
 
   ngOnInit() {
     this.avisService.getAllAvis().subscribe((nouveauxAvis) => {
       // Inversez l'ordre des avis pour que le dernier avis soit en haut
-
       console.log('get all avis' + nouveauxAvis);
       console.log(nouveauxAvis);
-
       this.avis = nouveauxAvis;
     });
   }
 
-  handleRestaurantList(restaurantList: any[]) {
-    this.restaurantList = restaurantList;
+  handleSelectedRestaurant(selectedRestaurant: string) {
+    this.selectedRestaurant = selectedRestaurant;
+    this.filterRestaurantList();
+  }
+  handleSelectedCategory(selectedCategory: string) {
+    this.selectedCategory = selectedCategory;
+    this.filterRestaurantList();
+  }
+  handleSelectedGroup(selectedGroup: string) {
+    this.selectedGroup = selectedGroup;
+    this.filterRestaurantList();
   }
 
-  handleReviewSubmitted(review: string) {
+  filterRestaurantList(){
+    this.restaurantListToDisplay = this.restaurantList;
+    if(this.selectedRestaurant&&Number(this.selectedRestaurant)){
+      this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
+        (restaurant) => restaurant.id == Number(this.selectedRestaurant)
+      );
+    }
+    if(this.selectedCategory&&Number(this.selectedCategory)){
+      this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
+        (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
+      );
+    }
+    if(this.selectedGroup&&Number(this.selectedGroup)){
+      // this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
+      //   (restaurant) => restaurant.id == Number(this.selectedGroup)
+      // );
+    }
+  }
+
+  handleRestaurantList(restaurantList: Restaurant[]) {
+    this.restaurantList = restaurantList;
+    this.restaurantListToDisplay = [...restaurantList];
+  }
+
+  handleReviewSubmitted(review: ReviewData) {
     if (this.idResto && this.restaurantList) {
       // Récupérez l'ID du restaurant pour lequel l'avis est soumis
       const idResto = this.idResto.id;
@@ -46,11 +84,11 @@ export class PageMesRestosComponent implements OnInit {
         }
 
         // Ajoutez  l'avis soumis au tableau des avis du restaurant
-        restaurant.reviews.push({ review: review });
+        restaurant.reviews.push({ review: review.review, vote: review.vote });
 
         // Appelez le service pour enregistrer l'avis dans le backend
         this.avisService
-          .ajouterAvis({ review: '', vote: true, idResto: restaurant.id })
+          .ajouterAvis({ review: '', vote: true, idResto: String(restaurant.id) })
           .subscribe(() => {
             console.log('Avis enregistré dans le backend avec succès.');
           });
