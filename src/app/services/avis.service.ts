@@ -51,11 +51,22 @@ export class AvisService {
     };
     return this.http.post('http://localhost:8080/api/review-votes', payload);
   }
+
+  upDateVote(idReview: number, newVote: boolean) {
+    const payload = {
+      vote: newVote,
+    };
+    return this.http.patch(
+      `http://localhost:8080/api/reviews/${idReview}`,
+      payload
+    );
+  }
+
   getThumbsUpDown(
     restaurantId: number
   ): Observable<{ thumbsUp: number; thumbsDown: number }> {
     return this.http.get<{ thumbsUp: number; thumbsDown: number }>(
-      `http://localhost:8080/api/review-votes/${restaurantId}/votes`
+      `http://localhost:8080/api/review/countVotes/${restaurantId}`
     );
   }
 }
