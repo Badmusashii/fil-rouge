@@ -1,15 +1,38 @@
-
-<div id="myModal" class="modal" [ngClass]="{ 'is-open': isModalOpen }">>
-    <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <h2>Créer un avis pour <span class="nameResto">{{nameResto}}</span></h2>
-        <div>
-            <app-groupe-list></app-groupe-list>
-        </div>
-        <form (ngSubmit)="submitReview()">
-            <label for="reviewText">Votre avis :</label>
-            <textarea id="reviewText" name="reviewText" rows="4" cols="50" [(ngModel)]="reviewText"></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
+<div id="myModal" class="modal" [ngClass]="{ 'is-open': isModalOpen }">
+  >
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>
+      Créer un avis pour <span class="nameResto">{{ nameResto }}</span>
+    </h2>
+    <div class="flex-container">
+      <app-groupe-list
+        (groupeChanged)="handleGroupeChanged($event)"
+      ></app-groupe-list>
+      <div class="icon-container">
+        <i
+          class="fas fa-thumbs-up"
+          style="margin-left: 8px"
+          (click)="setVote(true)"
+        ></i>
+        <i
+          class="fas fa-thumbs-down flip-horizontal"
+          style="margin-right: 8px"
+          (click)="setVote(false)"
+        ></i>
+      </div>
     </div>
+
+    <form (ngSubmit)="submitReview()">
+      <label for="reviewText">Votre avis :</label>
+      <textarea
+        id="reviewText"
+        name="reviewText"
+        rows="4"
+        cols="50"
+        [(ngModel)]="reviewText"
+      ></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
 </div>

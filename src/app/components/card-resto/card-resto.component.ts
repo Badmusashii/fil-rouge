@@ -21,6 +21,7 @@ export class CardRestoComponent implements OnInit {
   avis!: ReviewData[];
   hasClicked: boolean = false;
   lastVote: 'up' | 'down' | null = null;
+  selectGroupeId: string | null = null;
   // modalComponent: any;
   constructor(
     private modalComponent: ModalComponent,
@@ -106,26 +107,28 @@ export class CardRestoComponent implements OnInit {
   // }
 
   voteUp() {
-    this.avisService.voteUp(+this.restaurant.id).subscribe(
-      (res) => {
-        this.lastVote = 'down';
-        if (this.lastVote === 'down' && this.numberOfThumbsDown !== 0) {
-          this.numberOfThumbsDown--;
-        }
-        this.numberOfThumbsUp++;
-        this.lastVote = 'up';
-        console.log('Vote Up réussi', res);
-      },
-      (err) => {
-        if (err.status === 400) {
-          // Gérer l'erreur comme vous le souhaitez, par exemple :
-          console.log(
-            'Vous avez déjà voté de cette manière pour ce restaurant'
-          );
-        }
-        console.log('Erreur lors du Vote Up', err);
-      }
-    );
+    // this.avisService
+    //   .upDateVote(this.restaurant.id, this.group.id, true)
+    //   .subscribe(
+    //     (res) => {
+    //       this.lastVote = 'down';
+    //       if (this.lastVote === 'down' && this.numberOfThumbsDown !== 0) {
+    //         this.numberOfThumbsDown--;
+    //       }
+    //       this.numberOfThumbsUp++;
+    //       this.lastVote = 'up';
+    //       console.log('Vote Up réussi', res);
+    //     },
+    //     (err) => {
+    //       if (err.status === 400) {
+    //         // Gérer l'erreur comme vous le souhaitez, par exemple :
+    //         console.log(
+    //           'Vous avez déjà voté de cette manière pour ce restaurant'
+    //         );
+    //       }
+    //       console.log('Erreur lors du Vote Up', err);
+    //     }
+    //   );
   }
 
   voteDown() {
