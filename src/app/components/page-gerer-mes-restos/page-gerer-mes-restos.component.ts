@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
@@ -14,8 +14,10 @@ export class PageGererMesRestosComponent {
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
+    
   review!: string;
   restaurant: any;
+  restaurantData: any;
   restaurantList: any[] | undefined;
   reviews: Review[] = [];
   constructor(
@@ -62,6 +64,54 @@ export class PageGererMesRestosComponent {
     this.review = event.target.value;
   }
 
+  // create() {
+  //   console.log('okokokokokoko' + this.selectedGroupe);
+  //   if (this.createForm.valid) {
+  //     const restaurant: Restaurants = {
+  //       name: this.createForm.get('name')?.value,
+  //       adresse: this.createForm.get('adresse')?.value,
+  //       price: this.createForm.get('price')?.value,
+  //       categorie: +this.createForm.get('categorie')?.value,
+  //     };
+  //     if (this.review && this.review.trim() !== '') {
+  //       this.reviewsFromForm.push({
+  //         review: this.review,
+  //         groupes: [{ id: +this.selectedGroupe }],
+  //       });
+  //       restaurant.reviews = this.reviewsFromForm;
+  //     }
+  //     this.restaurantService.create(restaurant).subscribe((res) => {
+  //       console.log(res);
+  //     });
+  //   }
+  // }
+  // create() {
+  //   console.log('okokokokokoko' + this.selectedGroupe);
+  //   if (this.createForm.valid) {
+  //     const restaurant: Restaurants = {
+  //       name: this.createForm.get('name')?.value,
+  //       adresse: this.createForm.get('adresse')?.value,
+  //       price: this.createForm.get('price')?.value,
+  //       categorie: +this.createForm.get('categorie')?.value,
+  //     };
+  //     if (this.review && this.review.trim() !== '') {
+  //       const reviewPayload = {
+  //         review: this.review,
+  //         vote: true,
+  //         idgroupe: this.selectedGroupe,
+  //       };
+  //     }
+  //     this.avisService.ajouterAvis(this.restaurant.id, reviewPayload).subscribe(
+  //       (reviewRes: any) => {
+  //         console.log('Review ajoutée : ', reviewRes);
+  //       },
+  //       (reviewError) => {
+  //         console.log('Erreur lors de l’ajout de la revue : ', reviewError);
+  //       }
+  //     );
+  //   }
+  // }
+
   create() {
     console.log('okokokokokoko' + this.selectedGroupe);
     if (this.createForm.valid) {
@@ -84,16 +134,35 @@ export class PageGererMesRestosComponent {
     }
   }
 
-  remove(id: number) {
-    this.restaurantService.remove(id);
+  remove(id:number) {
+
+    const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
+  if (!confirmDelete) {
+    return; // L'utilisateur a annulé l'opération de suppression
+  }
+    
+     console.log('le toi est' + id);
+     console.log(this.restaurant);
+    this.restaurantService.remove(id).subscribe((response) => {
+     
+      console.log('le resto a bien été supprimé.' + response);
+    });
   }
 
+
   handleRestaurant(restaurant: any) {
-    this.restaurant = restaurant;
+    this.restaurant=restaurant
     console.log('la maison' + this.restaurant);
     this.avisService.getReview(this.restaurant).subscribe((data) => {
       this.reviews = data.data;
-      console.log(data);
+      console.log(data.data);
     });
+    this.restaurantService
+      .getOneRestaurant(+this.restaurant)
+      .subscribe((data) => {
+        this.restaurantData = data;
+        console.log('La data que je veut ' + JSON.stringify(data));
+      });
+    console.log('La data que je veut ' + this.restaurantData);
   }
 }

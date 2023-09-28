@@ -19,7 +19,7 @@ export class RestaurantListComponent implements OnInit{
   ngOnInit(): void {  
     const objet = this.restaurantService.getRestaurantList().subscribe((res) =>{
       this.restaurantList = res.data;
-      this.restaurantListOutput.emit(this.restaurantList); 
+      this.restaurantListOutput.emit(this.restaurantList);
       console.log(res);
     });
   }

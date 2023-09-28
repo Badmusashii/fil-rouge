@@ -49,7 +49,7 @@ export class PageIntermediareRegisterComponent implements OnInit {
         .post('http://localhost:8080/api/auth/register', userData)
         .subscribe((res) => {
           const userDataLog = {
-            username: userData.username,
+            email: userData.email,
             password: userData.password,
           };
           this.login(userDataLog);

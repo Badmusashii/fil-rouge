@@ -13,7 +13,6 @@ export class GroupeService {
   ajouterMembreAuGroupe(groupeId: number) {
     const url = `${this.apiUrl}/${groupeId}`;
 
-    // Supposons que vous ayez un token JWT stocké dans le localStorage
     const token = localStorage.getItem('access_token');
 
     const httpOptions = {
@@ -40,5 +39,14 @@ export class GroupeService {
   }
   deleteMemberInGroupe(id: number) {
     return this.http.delete(`http://localhost:8080/api/groupe/${id}`);
+  }
+
+  updateGroupName(groupeId: number, newName: string): Observable<any> {
+    console.log(groupeId, newName);
+    const payload = {
+      newName: newName,
+    };
+    const url = `http://localhost:8080/api/groupe/${groupeId}/update-name`;
+    return this.http.put(url, payload);
   }
 }
