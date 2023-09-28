@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
@@ -13,6 +14,7 @@ export class PageGererMesRestosComponent {
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
+    
   review!: string;
   restaurant: any;
   restaurantList: any[] | undefined;
@@ -29,10 +31,27 @@ export class PageGererMesRestosComponent {
   // modalComponent: any;
 
   ngOnInit(): void {
-    // this.avisService.getReview(1).subscribe(data => {
-    //   this.reviews=data;
-    // });
+   
   }
+
+  updateForm: FormGroup = this.fb.group({
+    name:['', Validators.required],
+    adresse:['', Validators.required],
+    price: ['', [Validators.required]],
+    categorie: ['', [Validators.required]],
+  })
+
+
+  
+//   update(){
+//      if (this.updateForm.valid) {
+//       // Le formulaire est valide, vous pouvez accéder aux valeurs ainsi :
+//       const name = this.updateForm.get('name').value;
+//       const adresse = this.updateForm.get('adresse').value;
+//       const price = this.updateForm.get('price').value;
+//       const categorie = this.updateForm.get('categorie').value;
+//   }
+// }
 
   createForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -80,16 +99,33 @@ export class PageGererMesRestosComponent {
     }
   }
 
-  remove(id: number) {
-    this.restaurantService.remove(id);
+  remove(id:number) {
+
+    const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
+  if (!confirmDelete) {
+    return; // L'utilisateur a annulé l'opération de suppression
+  }
+    
+     console.log('le toi est' + id);
+     console.log(this.restaurant);
+    this.restaurantService.remove(id).subscribe((response) => {
+     
+      console.log('le resto a bien été supprimé.' + response);
+    });
   }
 
+
   handleRestaurant(restaurant: any) {
-    this.restaurant = restaurant;
+    this.restaurant=restaurant
     console.log('la maison' + this.restaurant);
     this.avisService.getReview(this.restaurant).subscribe((data) => {
       this.reviews = data.data;
-      console.log(data);
+      console.log(data.data);
     });
+
+    this.restaurantService.getOneRestaurant(restaurant).subscribe((data) =>{
+      restaurant = data.data;
+    });
+
   }
 }
