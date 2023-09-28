@@ -16,6 +16,7 @@ export class PageMesRestosComponent implements OnInit {
   restaurantListToDisplay?: Restaurant[];
   idResto!: { id: number; name: string };
   isModalOpen: boolean = false;
+  message: string = '';
 
   // Filtres
   selectedRestaurant ?: string;
@@ -92,6 +93,8 @@ export class PageMesRestosComponent implements OnInit {
           .subscribe(() => {
             console.log('Avis enregistré dans le backend avec succès.');
           });
+
+        this.message=("L'avis a été enregistré.");
       }
     }
   }

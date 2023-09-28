@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageAuthComponent } from './page-auth.component';
+import { FooterComponent } from './footer.component';
 
-describe('PageAuthComponent', () => {
-  let component: PageAuthComponent;
-  let fixture: ComponentFixture<PageAuthComponent>;
+describe('FooterComponent', () => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageAuthComponent]
+      declarations: [FooterComponent]
     });
-    fixture = TestBed.createComponent(PageAuthComponent);
+    fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

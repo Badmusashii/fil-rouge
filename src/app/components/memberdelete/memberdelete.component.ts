@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./memberdelete.component.css'],
 })
 export class MemberdeleteComponent {
+  message: string = "";
   constructor(private http: HttpClient, private router: Router) {}
   deleteAccount(): void {
     this.http.delete('http://localhost:8080/api/member').subscribe({
@@ -17,9 +18,11 @@ export class MemberdeleteComponent {
       },
       error: (error) => {
         console.log('Erreur lors de la suppression du compte.', error);
+        this.message = "Erreur lors de la suppression du compte.";
       },
       complete: () => {
         console.log('Requête de suppression du compte complétée.');
+        this.message = "Le compte a bien été supprimé.";
       },
     });
   }

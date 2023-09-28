@@ -11,6 +11,7 @@ import { Member } from 'src/app/models/member';
 })
 export class MemberupdateComponent implements OnInit {
   updateForm: FormGroup;
+  message: string = "";
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private memberService : MemberService) {
     this.updateForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -45,9 +46,11 @@ export class MemberupdateComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Réponse du serveur:', response);
+            this.message = "Les modifications sont enregistrées.";
           },
           error: (error) => {
             console.log('Erreur:', error);
+            this.message = "Erreur lors de l'enregistrement des modifications.";
           },
           complete: () => {
             console.log('Requête complétée');

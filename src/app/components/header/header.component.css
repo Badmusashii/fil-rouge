@@ -37,6 +37,7 @@
     background-color: #b9c3ec;
     box-shadow: inset 0 0 2em #7B8CDE;
     border-radius: 1%;
+    height: 50%;
 }
 
 .text {
@@ -45,9 +46,9 @@
 }
 
 img {
-  width: 250%;
+  width: 100%;
   height: auto;
-
+  padding: 2rem;
 }
 
 .texteimage{
@@ -70,6 +71,6 @@ h2{
 }
 
 p{
-    padding-top: 10%;
-    padding-right: 10%;
+    /* padding-top: 10%;
+    padding-right: 10%; */
 }

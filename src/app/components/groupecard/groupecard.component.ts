@@ -16,6 +16,7 @@ export class GroupecardComponent implements OnInit {
   user!: Partial<Member>;
   nom: string = '';
   email: string = '';
+  message: string = "";
 
   constructor(private groupeService: GroupeService, private http: HttpClient) {}
 
@@ -28,6 +29,7 @@ export class GroupecardComponent implements OnInit {
   modifier() {
     console.log('Modifier cliqué. Nom:', this.nom);
     console.log('Email:', this.email);
+    this.message=("Le nom du groupe a été modifié.");
   }
 
   envoyer() {
@@ -100,6 +102,7 @@ export class GroupecardComponent implements OnInit {
             );
         }
       });
+      this.message="L'invitation a été envoyée.";
   }
 
   getAllMemberForGroupe(id: number) {
@@ -120,10 +123,12 @@ export class GroupecardComponent implements OnInit {
     if (this.groupe && this.groupe.id) {
       this.groupeService.deleteMemberInGroupe(this.groupe.id).subscribe(
         () => {
+          this.message="Vous avez quitté le groupe";
           location.reload();
         },
         (err) => {
           console.error('Erreur lors du retrait du membre du groupe :', err);
+          this.message="Erreur lors du retrait du groupe.";
         }
       );
     }

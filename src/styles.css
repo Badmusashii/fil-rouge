@@ -2,6 +2,12 @@
   font-family: Arvo;
   color : #2c3d55
 }
+.message{
+    font-family: Arvo;
+    color : #b97375;
+    display: flex;
+    justify-content: center;
+}
 select{
     background-color: #EFE0E2;
 }

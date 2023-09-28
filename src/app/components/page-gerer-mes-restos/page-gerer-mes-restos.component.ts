@@ -4,6 +4,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
 import { Review } from 'src/app/interfaces/review.interface';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
@@ -80,12 +81,14 @@ export class PageGererMesRestosComponent {
       }
       this.restaurantService.create(restaurant).subscribe((res) => {
         console.log(res);
+        this.message="Le restaurant a été créé.";
       });
     }
   }
 
   remove(id: number) {
     this.restaurantService.remove(id);
+    this.message="Le restaurant a été supprimé.";
   }
 
   handleRestaurant(restaurant: any) {
