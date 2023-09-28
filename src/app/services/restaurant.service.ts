@@ -40,3 +40,4 @@ export class RestaurantService {
     return this.http.get(`http://localhost:8080/api/review/byMemberGroups`);
   }
 }
+

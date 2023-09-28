@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
@@ -14,6 +14,7 @@ export class PageGererMesRestosComponent {
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
+    
   review!: string;
   restaurant: any;
   restaurantData: any;
@@ -120,51 +121,41 @@ export class PageGererMesRestosComponent {
         price: this.createForm.get('price')?.value,
         categorie: +this.createForm.get('categorie')?.value,
       };
-
-      this.restaurantService.create(restaurant).subscribe(
-        (res: any) => {
-          console.log('Restaurant créé : ', res);
-          console.log(this.selectedGroupe);
-
-          if (this.review && this.review.trim() !== '') {
-            const reviewPayload = {
-              review: this.review,
-              vote: true,
-              idgroupe: this.selectedGroupe,
-            };
-            console.log('le log que je cherche ' + typeof res.id);
-            console.log('Review payload:', reviewPayload);
-
-            this.avisService.ajouterAvis(res.id, reviewPayload).subscribe(
-              (reviewRes: any) => {
-                console.log('Review ajoutée : ', reviewRes);
-              },
-              (reviewError) => {
-                console.log(
-                  'Erreur lors de l’ajout de la revue : ',
-                  reviewError
-                );
-              }
-            );
-          }
-        },
-        (error) => {
-          console.log('Erreur lors de la création du restaurant : ', error);
-        }
-      );
+      if (this.review && this.review.trim() !== '') {
+        this.reviewsFromForm.push({
+          review: this.review,
+          groupes: [{ id: +this.selectedGroupe }],
+        });
+        restaurant.reviews = this.reviewsFromForm;
+      }
+      this.restaurantService.create(restaurant).subscribe((res) => {
+        console.log(res);
+      });
     }
   }
 
-  remove(id: number) {
-    this.restaurantService.remove(id);
+  remove(id:number) {
+
+    const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
+  if (!confirmDelete) {
+    return; // L'utilisateur a annulé l'opération de suppression
+  }
+    
+     console.log('le toi est' + id);
+     console.log(this.restaurant);
+    this.restaurantService.remove(id).subscribe((response) => {
+     
+      console.log('le resto a bien été supprimé.' + response);
+    });
   }
 
+
   handleRestaurant(restaurant: any) {
-    this.restaurant = restaurant;
+    this.restaurant=restaurant
     console.log('la maison' + this.restaurant);
     this.avisService.getReview(this.restaurant).subscribe((data) => {
       this.reviews = data.data;
-      console.log(data);
+      console.log(data.data);
     });
     this.restaurantService
       .getOneRestaurant(+this.restaurant)
