@@ -19,9 +19,9 @@ export class PageMesRestosComponent implements OnInit {
   message: string = '';
 
   // Filtres
-  selectedRestaurant ?: string;
-  selectedCategory ?: string;
-  selectedGroup ?: string;
+  selectedRestaurant?: string;
+  selectedCategory?: string;
+  selectedGroup?: string;
 
   constructor(private avisService: AvisService) {}
 
@@ -47,19 +47,19 @@ export class PageMesRestosComponent implements OnInit {
     this.filterRestaurantList();
   }
 
-  filterRestaurantList(){
+  filterRestaurantList() {
     this.restaurantListToDisplay = this.restaurantList;
-    if(this.selectedRestaurant&&Number(this.selectedRestaurant)){
+    if (this.selectedRestaurant && Number(this.selectedRestaurant)) {
       this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
         (restaurant) => restaurant.id == Number(this.selectedRestaurant)
       );
     }
-    if(this.selectedCategory&&Number(this.selectedCategory)){
+    if (this.selectedCategory && Number(this.selectedCategory)) {
       this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
         (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
       );
     }
-    if(this.selectedGroup&&Number(this.selectedGroup)){
+    if (this.selectedGroup && Number(this.selectedGroup)) {
       // this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
       //   (restaurant) => restaurant.id == Number(this.selectedGroup)
       // );
@@ -102,7 +102,7 @@ export class PageMesRestosComponent implements OnInit {
   // handleClickOpenModal(idResto: number, nameResto: string) {
   //   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
   // }
-  handleClickOpenModal(restaurant: Restaurant ) {
+  handleClickOpenModal(restaurant: Restaurant) {
     this.idResto = { id: restaurant.id, name: restaurant.name }; //cette propriété = this.
   }
 }

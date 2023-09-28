@@ -17,6 +17,7 @@ export class PageGererMesRestosComponent {
     [];
   review!: string;
   restaurant: any;
+  restaurantData: any;
   restaurantList: any[] | undefined;
   reviews: Review[] = [];
   constructor(
@@ -63,6 +64,54 @@ export class PageGererMesRestosComponent {
     this.review = event.target.value;
   }
 
+  // create() {
+  //   console.log('okokokokokoko' + this.selectedGroupe);
+  //   if (this.createForm.valid) {
+  //     const restaurant: Restaurants = {
+  //       name: this.createForm.get('name')?.value,
+  //       adresse: this.createForm.get('adresse')?.value,
+  //       price: this.createForm.get('price')?.value,
+  //       categorie: +this.createForm.get('categorie')?.value,
+  //     };
+  //     if (this.review && this.review.trim() !== '') {
+  //       this.reviewsFromForm.push({
+  //         review: this.review,
+  //         groupes: [{ id: +this.selectedGroupe }],
+  //       });
+  //       restaurant.reviews = this.reviewsFromForm;
+  //     }
+  //     this.restaurantService.create(restaurant).subscribe((res) => {
+  //       console.log(res);
+  //     });
+  //   }
+  // }
+  // create() {
+  //   console.log('okokokokokoko' + this.selectedGroupe);
+  //   if (this.createForm.valid) {
+  //     const restaurant: Restaurants = {
+  //       name: this.createForm.get('name')?.value,
+  //       adresse: this.createForm.get('adresse')?.value,
+  //       price: this.createForm.get('price')?.value,
+  //       categorie: +this.createForm.get('categorie')?.value,
+  //     };
+  //     if (this.review && this.review.trim() !== '') {
+  //       const reviewPayload = {
+  //         review: this.review,
+  //         vote: true,
+  //         idgroupe: this.selectedGroupe,
+  //       };
+  //     }
+  //     this.avisService.ajouterAvis(this.restaurant.id, reviewPayload).subscribe(
+  //       (reviewRes: any) => {
+  //         console.log('Review ajoutée : ', reviewRes);
+  //       },
+  //       (reviewError) => {
+  //         console.log('Erreur lors de l’ajout de la revue : ', reviewError);
+  //       }
+  //     );
+  //   }
+  // }
+
   create() {
     console.log('okokokokokoko' + this.selectedGroupe);
     if (this.createForm.valid) {
@@ -72,17 +121,38 @@ export class PageGererMesRestosComponent {
         price: this.createForm.get('price')?.value,
         categorie: +this.createForm.get('categorie')?.value,
       };
-      if (this.review && this.review.trim() !== '') {
-        this.reviewsFromForm.push({
-          review: this.review,
-          groupes: [{ id: +this.selectedGroupe }],
-        });
-        restaurant.reviews = this.reviewsFromForm;
-      }
-      this.restaurantService.create(restaurant).subscribe((res) => {
-        console.log(res);
-        this.message="Le restaurant a été créé.";
-      });
+
+      this.restaurantService.create(restaurant).subscribe(
+        (res: any) => {
+          console.log('Restaurant créé : ', res);
+          console.log(this.selectedGroupe);
+
+          if (this.review && this.review.trim() !== '') {
+            const reviewPayload = {
+              review: this.review,
+              vote: true,
+              idgroupe: this.selectedGroupe,
+            };
+            console.log('le log que je cherche ' + typeof res.id);
+            console.log('Review payload:', reviewPayload);
+
+            this.avisService.ajouterAvis(res.id, reviewPayload).subscribe(
+              (reviewRes: any) => {
+                console.log('Review ajoutée : ', reviewRes);
+              },
+              (reviewError) => {
+                console.log(
+                  'Erreur lors de l’ajout de la revue : ',
+                  reviewError
+                );
+              }
+            );
+          }
+        },
+        (error) => {
+          console.log('Erreur lors de la création du restaurant : ', error);
+        }
+      );
     }
   }
 
@@ -98,5 +168,12 @@ export class PageGererMesRestosComponent {
       this.reviews = data.data;
       console.log(data);
     });
+    this.restaurantService
+      .getOneRestaurant(+this.restaurant)
+      .subscribe((data) => {
+        this.restaurantData = data;
+        console.log('La data que je veut ' + JSON.stringify(data));
+      });
+    console.log('La data que je veut ' + this.restaurantData);
   }
 }

@@ -27,8 +27,16 @@ export class GroupecardComponent implements OnInit {
   }
 
   modifier() {
-    console.log('Modifier cliqué. Nom:', this.nom);
-    console.log('Email:', this.email);
+    // console.log('Modifier cliqué. Nom:', this.nom);
+    this.groupeService.updateGroupName(this.groupe.id, this.nom).subscribe(
+      (res) => {
+        this.groupe.name = this.nom;
+        alert(res.message);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
     this.message=("Le nom du groupe a été modifié.");
   }
 
