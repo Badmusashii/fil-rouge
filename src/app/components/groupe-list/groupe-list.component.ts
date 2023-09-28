@@ -11,6 +11,7 @@ export class GroupeListComponent implements OnInit {
   @Output() groupeChanged = new EventEmitter<string>();
   // La propriété allList = true permet d'afficher une option "Tous" dans le Select
   @Input() allList: boolean | undefined;
+  @Input() choixgroupe: boolean | undefined;
   groupeList!: Groupes[];
   constructor(private groupeService: GroupeService) {}
   ngOnInit(): void {

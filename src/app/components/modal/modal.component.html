@@ -7,6 +7,7 @@
     </h2>
     <div class="flex-container">
       <app-groupe-list
+        [choixgroupe]="true"
         (groupeChanged)="handleGroupeChanged($event)"
       ></app-groupe-list>
       <div class="icon-container">

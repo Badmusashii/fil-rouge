@@ -45,35 +45,65 @@ export class ModalComponent {
     this.idGroupe = id;
   }
 
+  // submitReview() {
+  //   console.log('idresto modal' + this._idResto);
+  //   // Créez un objet avec l'avis et un vote factice (par exemple, true).
+  //   let reviewData = {
+  //     review: this.reviewText,
+  //     vote: this.vote,
+  //     idgroupe: +this.idGroupe,
+  //   };
+  //   if (this._idResto !== undefined && this.idGroupe !== undefined) {
+  //     this.avisService.ajouterAvis(this._idResto, reviewData).subscribe(
+  //       (res) => {
+  //         // const { status, message } = res;
+  //         // Gérez la réponse du serveur ici. Par exemple, fermez la modale et réinitialisez le formulaire.
+  //         this.reviewText = '';
+  //         this.closeModal();
+  //       },
+  //       (error) => {
+  //         // Gérez l'erreur ici
+  //         console.error("Erreur lors de l'ajout de l'avis: ", error);
+  //       }
+  //     );
+  //   } else {
+  //     console.error('idGroupe est undefined');
+  //   }
+  //   // Enregistrez l'avis dans le backend via un service (AvisService) ici.
+  //   // this.avisService.ajouterAvis(reviewData).subscribe(() => {
+  //   //   // Une fois l'avis enregistré, émettez l'événement pour le faire apparaître dans la card.
+  //   //   this.reviewSubmitted.emit(reviewData);
+  //   //   this.reviewText = ''; // Réinitialisez le champ de texte après la soumission.
+  //   //   this.closeModal(); // Fermez la modale après la soumission.
+  //   // });
+  // }
+
   submitReview() {
-    console.log('idresto modal' + this.idResto);
-    // Créez un objet avec l'avis et un vote factice (par exemple, true).
     let reviewData = {
       review: this.reviewText,
       vote: this.vote,
       idgroupe: +this.idGroupe,
     };
+
     if (this._idResto !== undefined && this.idGroupe !== undefined) {
       this.avisService.ajouterAvis(this._idResto, reviewData).subscribe(
-        () => {
-          // Gérez la réponse du serveur ici. Par exemple, fermez la modale et réinitialisez le formulaire.
+        (res: any) => {
+          const { status, message } = res;
           this.reviewText = '';
           this.closeModal();
+
+          if (status === 'success') {
+            alert(`Succès: ${message}`);
+          } else if (status === 'error') {
+            alert(`Erreur: ${message}`);
+          }
         },
         (error) => {
-          // Gérez l'erreur ici
           console.error("Erreur lors de l'ajout de l'avis: ", error);
         }
       );
     } else {
-      console.error('idGroupe est undefined');
+      console.error('idGroupe ou idResto est undefined');
     }
-    // Enregistrez l'avis dans le backend via un service (AvisService) ici.
-    // this.avisService.ajouterAvis(reviewData).subscribe(() => {
-    //   // Une fois l'avis enregistré, émettez l'événement pour le faire apparaître dans la card.
-    //   this.reviewSubmitted.emit(reviewData);
-    //   this.reviewText = ''; // Réinitialisez le champ de texte après la soumission.
-    //   this.closeModal(); // Fermez la modale après la soumission.
-    // });
   }
 }
