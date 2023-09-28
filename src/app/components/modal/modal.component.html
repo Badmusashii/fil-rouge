@@ -2,10 +2,9 @@
 <div id="myModal" class="modal" [ngClass]="{ 'is-open': isModalOpen }">>
     <div class="modal-content">
         <span class="close" (click)="closeModal()">&times;</span>
-        
         <h2>Créer un avis pour <span class="nameResto">{{nameResto}}</span></h2>
         <div>
-                        <app-groupe-list></app-groupe-list>
+            <app-groupe-list></app-groupe-list>
         </div>
         <form (ngSubmit)="submitReview()">
             <label for="reviewText">Votre avis :</label>

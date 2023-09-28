@@ -3,12 +3,13 @@
     <div>
       <h2>
         Restaurant <span>{{ restaurant.name }}</span> proposé par
-        <span>{{ restaurant.member.username }}</span>
+        <span>{{ restaurant.member?.username }}</span>
       </h2>
       <p>Address: {{ restaurant.adresse }}</p>
       <p>Catégorie: {{ restaurant.categorie.name }}</p>
       <p>Prix: {{ restaurant.price }}</p>
     </div>
+
     <div class="thumbs-up-down">
       <p>
         {{ numberOfThumbsUp
@@ -18,7 +19,7 @@
           (click)="voteUp()"
         ></i>
       </p>
-      <!-- Icône "pouce en l'air" -->
+
       <p id="cadragePouceDown">
         <i
           class="fas fa-thumbs-down flip-horizontal"
@@ -28,12 +29,23 @@
         </i>
         {{ numberOfThumbsDown }}
       </p>
-      <!-- Icône "pouce en bas" -->
     </div>
     <div class="reviews">
-      <div class="review" *ngFor="let unAvis of restaurant.reviews.reverse()">
-        <h3>Avis de {{ pseudo }}</h3>
-        <p>{{ unAvis.review }}</p>
+      <div class="review" *ngFor="let unAvis of restaurant.reviews?.reverse()">
+        <h3>Avis de {{ restaurant.member?.username }}</h3>
+        <div>
+          <span>{{ unAvis.review }}</span>
+          <i
+            *ngIf="unAvis.vote"
+            class="fas fa-thumbs-up"
+            style="margin-left: 8px"
+          ></i>
+          <i
+            *ngIf="!unAvis.vote"
+            class="fas fa-thumbs-down"
+            style="margin-left: 8px"
+          ></i>
+        </div>
       </div>
     </div>
   </div>

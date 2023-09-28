@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Groupes } from 'src/app/models/groupes';
 import { GroupeService } from 'src/app/services/groupe.service';
 
@@ -8,7 +8,9 @@ import { GroupeService } from 'src/app/services/groupe.service';
   styleUrls: ['./groupe-list.component.css'],
 })
 export class GroupeListComponent implements OnInit {
-  @Output() groupeChanged = new EventEmitter<number>();
+  @Output() groupeChanged = new EventEmitter<string>();
+   // La propriété allList = true permet d'afficher une option "Tous" dans le Select
+  @Input() allList: boolean | undefined; 
   groupeList!: Groupes[];
   constructor(private groupeService: GroupeService)  {}
   ngOnInit(): void {
@@ -24,6 +26,6 @@ export class GroupeListComponent implements OnInit {
     const selectedCategorie = this.groupeList.find(
       (groupe: { id: number }) => groupe.id === +selectedId
     );
-    this.groupeChanged.emit(selectedCategorie?.id);
+    this.groupeChanged.emit(selectedId);
   }
 }

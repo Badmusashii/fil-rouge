@@ -1,6 +1,7 @@
 <div>
   <span>Groupe: </span>
   <select name="idGroupe" (change)="onGroupeChange($event)">
+    <option *ngIf="allList">Tous les groupes</option>
     <option *ngFor="let groupe of groupeList" [value]="groupe.id">
       {{ groupe.name }}
     </option>

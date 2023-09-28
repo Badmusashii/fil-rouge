@@ -37,6 +37,9 @@
             <button type="submit" [disabled]="!createForm.valid">Créer</button>
           </div>
         </form>
+        <div class="message">
+          {{ message }}
+        </div>
       </div>
     </div>
     <div id="blocDroite">
@@ -87,7 +90,7 @@
           <app-categorie-list></app-categorie-list>
         </div>
 
-        <!-- {{restaurant.member.username}} -->
+        <!-- {{ restaurantData.member.username }} -->
 
         <div id="right">
           <p>proposé par: <span></span></p>
@@ -142,8 +145,13 @@
         />
       </svg>
       <button class="update">Modifier</button>
-
-      <button (click)="remove(restaurant)">Supprimer</button>
+<div class="message">
+  {{ message }}
+</div>
+      <button (click)="(remove)">Supprimer</button>
+      <div class="message">
+        {{ message }}
+      </div>
     </div>
   </div>
 </div>
