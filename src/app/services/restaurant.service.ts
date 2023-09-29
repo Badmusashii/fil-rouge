@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RestaurantService {
-  update: any;
+  
   constructor(private http: HttpClient) {}
 
   create(restaurant: Restaurants) {
@@ -19,6 +19,11 @@ export class RestaurantService {
   remove(id: number) {
     const toke = localStorage.getItem('token');
     return this.http.delete(`http://localhost:8080/api/restaurant/${id}`);
+  }
+
+  update(restaurantId:number, nouveauRestaurant:Restaurants){
+
+    return this.http.patch(`http://localhost:8080/api/restaurant/${restaurantId}`, nouveauRestaurant);
   }
 
   getRestaurantList() {

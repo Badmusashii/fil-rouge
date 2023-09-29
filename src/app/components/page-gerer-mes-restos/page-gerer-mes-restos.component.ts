@@ -62,10 +62,12 @@ export class PageGererMesRestosComponent {
   handlePriceChange(newPrice: string): void {
     console.log('le prix est de  => ' + newPrice);
     this.createForm.get('price')?.setValue(newPrice);
+    this.updateForm.get('price')?.setValue(newPrice);
   }
   handleCategorieChange(newCategorie: string): void {
     console.log('la categorie est de  => ' + newCategorie);
     this.createForm.get('categorie')?.setValue(newCategorie);
+     this.updateForm.get('categorie')?.setValue(newCategorie);
   }
   handleGroupeChange(newGroupe: string): void {
     console.log('la Groupe est de  => ' + newGroupe);
@@ -159,19 +161,24 @@ export class PageGererMesRestosComponent {
     });
   }
 
-  update(id:number) {
+  update() {
+    console.log('dit moi ' + JSON.stringify(this.updateForm.value))
     if (this.updateForm.valid) {
     const updateRestaurant = this.updateForm.value;
-      this.restaurantService.update(id, updateRestaurant).subscribe((response: any) => {
+    console.log('oulala' + updateRestaurant)
+      this.restaurantService.update(this.restaurantData.id, updateRestaurant).subscribe((response: any) => {
         console.log('Restaurant mis à jour avec succès' , response);
+        alert("Restaurant mis à jour avec succès");
       },
       (error: any) =>{
         console.error('erreur lors de la mise à jur du restaurant', error);
+        alert("erreur lors de la mise à jur du restaurant")
 
       }
       );
      } else{
 console.error('Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.');
+alert("Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.")
       }
   }
 
