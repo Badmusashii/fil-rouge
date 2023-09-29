@@ -30,7 +30,7 @@ import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourc
 import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
-import { ModificationComponent } from './components/modification/modification.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +60,6 @@ import { ModificationComponent } from './components/modification/modification.co
     RegisterComponent,
     RestaurantListComponent,
     InfoMessageComponent,
-    ModificationComponent
   ],
   imports: [
     ReactiveFormsModule,

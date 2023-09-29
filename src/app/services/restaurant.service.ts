@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RestaurantService {
+  update: any;
   constructor(private http: HttpClient) {}
 
   create(restaurant: Restaurants) {

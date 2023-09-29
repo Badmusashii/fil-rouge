@@ -39,6 +39,9 @@ export class PageGererMesRestosComponent {
       this.reviews = response.data;
       console.log(response.data);
     });
+
+
+    
   }
 
   createForm: FormGroup = this.fb.group({
@@ -156,14 +159,25 @@ export class PageGererMesRestosComponent {
     });
   }
 
-  // update(id:number) {
-  //   if (this.updateForm.valid) {
-  //     const name = this.updateForm.get('name').value;
-  //     const adresse = this.updateForm.get('adresse').value;
-  //     const price = this.updateForm.get('price').value;
-  //     const categorie = this.updateForm.get('categorie').value;
-  //   }
-  // }
+  update(id:number) {
+    if (this.updateForm.valid) {
+    const updateRestaurant = this.updateForm.value;
+      this.restaurantService.update(id, updateRestaurant).subscribe((response: any) => {
+        console.log('Restaurant mis à jour avec succès' , response);
+      },
+      (error: any) =>{
+        console.error('erreur lors de la mise à jur du restaurant', error);
+
+      }
+      );
+     } else{
+console.error('Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.');
+      }
+  }
+
+
+
+
 
 
   handleRestaurant(restaurantId: string) {
@@ -182,4 +196,10 @@ export class PageGererMesRestosComponent {
       });
     
   }
+
+
+
 }
+
+
+
