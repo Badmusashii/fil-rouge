@@ -79,6 +79,11 @@ export class ModalComponent {
   // }
 
   submitReview() {
+    if (this._idResto === undefined) {
+      console.error("L'ID du restaurant n'est pas défini");
+      return;
+    }
+
     let reviewData = {
       review: this.reviewText,
       vote: this.vote,
