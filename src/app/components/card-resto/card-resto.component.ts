@@ -43,7 +43,9 @@ export class CardRestoComponent implements OnInit {
     );
     this.avisService.getReview(this.restaurant.id).subscribe(
       (data) => {
-        this.avis = data.data.map((review) => review.review);
+        this.avis = data.data.map(
+          (review) => review.review
+        ) as unknown as ReviewData[];
         console.log('Avis récupérés:', this.avis);
       },
       (error) => {

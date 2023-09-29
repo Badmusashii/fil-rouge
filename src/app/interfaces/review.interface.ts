@@ -6,4 +6,18 @@ export interface Review {
     id: number;
     username: string;
   };
+  restaurant: {
+    id: number;
+    name: string;
+    adresse: string;
+    price: string;
+    categorie: {
+      id: number;
+      name: string;
+    };
+  };
+  groupe: {
+    id: number;
+    name: string;
+  };
 }
