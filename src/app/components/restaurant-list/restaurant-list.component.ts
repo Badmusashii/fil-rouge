@@ -26,7 +26,7 @@ export class RestaurantListComponent implements OnInit{
 
   onRestaurantChange(event:Event){
     const restaurantChoice=event.target as HTMLSelectElement;
-    // console.log("que recupere t on de cet event : ",restaurantChoice.value);
+    console.log(restaurantChoice.value);
     this.restaurantSelected.emit(restaurantChoice.value)
   }
 }

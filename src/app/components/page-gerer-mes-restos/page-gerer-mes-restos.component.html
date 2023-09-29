@@ -83,10 +83,10 @@
                 class="taille"
                 placeholder="Nom du resto"
               />
-              <div *ngIf="createForm.get('name')?.hasError('required')"></div>
+              <input formControlName="adresse" class="taille" placeholder="Adresse du resto" />
+              <div *ngIf="createForm.get('name')?.hasError('required') || createForm.get('adresse') "></div>
             </div>
           </form>
-          <p>Adresse</p>
           <app-categorie-list></app-categorie-list>
         </div>
 
@@ -148,7 +148,7 @@
 <div class="message">
   {{ message }}
 </div>
-      <button (click)="(remove)">Supprimer</button>
+      <button (click)="remove(restaurant.id)">Supprimer</button>
       <div class="message">
         {{ message }}
       </div>

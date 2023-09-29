@@ -4,6 +4,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
 import { Review } from 'src/app/interfaces/review.interface';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
@@ -16,7 +17,7 @@ export class PageGererMesRestosComponent {
     [];
     
   review!: string;
-  restaurant: any;
+  restaurant!: Restaurant;
   restaurantData: any;
   restaurantList: any[] | undefined;
   reviews: Review[] = [];
@@ -47,6 +48,13 @@ export class PageGererMesRestosComponent {
     categorie: ['', [Validators.required]],
     reviews: this.fb.array([]),
   });
+
+  updateForm: FormGroup = this.fb.group({
+    name:['', Validators.required],
+    adresse:['', Validators.required],
+    price: ['', [Validators.required]],
+    categorie: ['', [Validators.required]],
+  })
 
   handlePriceChange(newPrice: string): void {
     console.log('le prix est de  => ' + newPrice);
@@ -149,20 +157,30 @@ export class PageGererMesRestosComponent {
     });
   }
 
+  // update(id:number) {
+  //   if (this.updateForm.valid) {
+  //     const name = this.updateForm.get('name').value;
+  //     const adresse = this.updateForm.get('adresse').value;
+  //     const price = this.updateForm.get('price').value;
+  //     const categorie = this.updateForm.get('categorie').value;
+  //   }
+  // }
 
-  handleRestaurant(restaurant: any) {
-    this.restaurant=restaurant
-    console.log('la maison' + this.restaurant);
-    this.avisService.getReview(this.restaurant).subscribe((data) => {
+
+  handleRestaurant(restaurantId: string) {
+    
+    
+    this.avisService.getReview(parseInt(restaurantId)).subscribe((data) => {
       this.reviews = data.data;
-      console.log(data.data);
+      console.log("get review", data);
     });
     this.restaurantService
-      .getOneRestaurant(+this.restaurant)
+      .getOneRestaurant(parseInt(restaurantId))
       .subscribe((data) => {
         this.restaurantData = data;
         console.log('La data que je veut ' + JSON.stringify(data));
+        console.log('La data que je veut ' + this.restaurantData);
       });
-    console.log('La data que je veut ' + this.restaurantData);
+    
   }
 }
