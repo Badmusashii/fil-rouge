@@ -169,7 +169,6 @@ export class PageMesRestosComponent implements OnInit {
   //   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
   // }
   handleClickOpenModal(restaurant: Restaurant) {
-  handleClickOpenModal(restaurant: Restaurant) {
     this.idResto = { id: restaurant.id, name: restaurant.name }; //cette propriété = this.
   }
 }
