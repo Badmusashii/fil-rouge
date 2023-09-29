@@ -1,17 +1,18 @@
-import { Component, Input, } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
 import { Review } from 'src/app/interfaces/review.interface';
 import { Restaurant } from 'src/app/interfaces/restaurant.interface';
+
 @Component({
-  selector: 'app-page-gerer-mes-restos',
-  templateUrl: './page-gerer-mes-restos.component.html',
-  styleUrls: ['./page-gerer-mes-restos.component.css'],
+  selector: 'app-modification',
+  templateUrl: './modification.component.html',
+  styleUrls: ['./modification.component.css']
 })
-export class PageGererMesRestosComponent {
-  selectedGroupe!: number;
+export class ModificationComponent {
+ selectedGroupe!: number;
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
@@ -72,53 +73,7 @@ export class PageGererMesRestosComponent {
     this.review = event.target.value;
   }
 
-  // create() {
-  //   console.log('okokokokokoko' + this.selectedGroupe);
-  //   if (this.createForm.valid) {
-  //     const restaurant: Restaurants = {
-  //       name: this.createForm.get('name')?.value,
-  //       adresse: this.createForm.get('adresse')?.value,
-  //       price: this.createForm.get('price')?.value,
-  //       categorie: +this.createForm.get('categorie')?.value,
-  //     };
-  //     if (this.review && this.review.trim() !== '') {
-  //       this.reviewsFromForm.push({
-  //         review: this.review,
-  //         groupes: [{ id: +this.selectedGroupe }],
-  //       });
-  //       restaurant.reviews = this.reviewsFromForm;
-  //     }
-  //     this.restaurantService.create(restaurant).subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   }
-  // }
-  // create() {
-  //   console.log('okokokokokoko' + this.selectedGroupe);
-  //   if (this.createForm.valid) {
-  //     const restaurant: Restaurants = {
-  //       name: this.createForm.get('name')?.value,
-  //       adresse: this.createForm.get('adresse')?.value,
-  //       price: this.createForm.get('price')?.value,
-  //       categorie: +this.createForm.get('categorie')?.value,
-  //     };
-  //     if (this.review && this.review.trim() !== '') {
-  //       const reviewPayload = {
-  //         review: this.review,
-  //         vote: true,
-  //         idgroupe: this.selectedGroupe,
-  //       };
-  //     }
-  //     this.avisService.ajouterAvis(this.restaurant.id, reviewPayload).subscribe(
-  //       (reviewRes: any) => {
-  //         console.log('Review ajoutée : ', reviewRes);
-  //       },
-  //       (reviewError) => {
-  //         console.log('Erreur lors de l’ajout de la revue : ', reviewError);
-  //       }
-  //     );
-  //   }
-  // }
+  
 
   create() {
     console.log('okokokokokoko' + this.selectedGroupe);
@@ -142,14 +97,14 @@ export class PageGererMesRestosComponent {
     }
   }
 
-  remove(id:number) {    
+  remove(id:number) {
+ console.log('le toi est' + id);
     const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
   if (!confirmDelete) {
     return; // L'utilisateur a annulé l'opération de suppression
   }
-    
-     console.log('le toi est' + id);
-    //  console.log(this.restaurant);
+     
+     
     this.restaurantService.remove(id).subscribe((response) => {
      
       console.log('le resto a bien été supprimé.' + response);
@@ -175,11 +130,12 @@ export class PageGererMesRestosComponent {
     });
     this.restaurantService
       .getOneRestaurant(parseInt(restaurantId))
-      .subscribe((data: {data: Restaurant} ) => {
-        this.restaurantData = data.data;
+      .subscribe((data) => {
+        this.restaurantData = data;
         console.log('La data que je veut ' + JSON.stringify(data));
-        console.log('La data que je veut ', this.restaurantData);
+        console.log('La data que je veut ' + this.restaurantData);
       });
     
   }
 }
+

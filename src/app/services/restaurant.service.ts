@@ -33,7 +33,7 @@ export class RestaurantService {
   }
 
   getOneRestaurant(id: number) {
-    return this.http.get(`http://localhost:8080/api/restaurant/${id}`);
+    return this.http.get<{data: Restaurant }>(`http://localhost:8080/api/restaurant/${id}`);
   }
 
   findRestaurantsByMemberGroups(): Observable<any> {
