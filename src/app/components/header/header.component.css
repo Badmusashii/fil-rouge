@@ -67,3 +67,90 @@ h1 {
 h2 {
   font-size: 175%;
 }
+@media screen and (max-width: 1287px) {
+  #logo {
+    position: relative;
+    width: 40%;
+    left: -1.2rem;
+    margin-bottom: 0.5rem;
+    /* border: 2px solid red; */
+  }
+  .title {
+    display: flex;
+    width: 50rem;
+    margin-top: 4.5rem;
+  }
+  .rectangle {
+    margin: 0% 2% 0 2%;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  #logo {
+    position: relative;
+    width: 30%;
+    left: -1.2rem;
+    /* border: 2px solid red; */
+  }
+  .title {
+    display: flex;
+    width: 50rem;
+    margin-top: 2rem;
+  }
+  .rectangle {
+    margin: 0% 2% 0 2%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #logo {
+    position: relative;
+    width: 40%;
+    left: -1.2rem;
+  }
+  .rectangle {
+    /* height: 5rem; */
+    /* border: 1px solid red; */
+    height: 25rem;
+  }
+  .rectangle p {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .title h1 {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  #logo {
+    position: relative;
+    width: 50%;
+    left: -1.2rem;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  img {
+    width: 110%;
+  }
+}
+
+@media screen and (max-width: 623px) {
+  .rectangle p {
+    font-size: 0.85rem;
+    line-height: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .rectangle p {
+    font-size: 0.7rem;
+    line-height: 0.8rem;
+  }
+  .title h1 {
+    font-size: 1.2rem;
+  }
+}
