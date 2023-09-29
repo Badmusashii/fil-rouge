@@ -2,6 +2,20 @@
   display: block;
 }
 
-.nameResto{
-  color: #B97375;
+.nameResto {
+  color: #b97375;
+}
+.flex-container {
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon-container {
+  margin-left: 2rem;
+  display: flex;
+}
+.icon-container i {
+  margin-left: 1rem;
 }

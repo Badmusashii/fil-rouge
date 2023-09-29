@@ -1,153 +1,130 @@
 #creation {
-    border: 2px solid black;
-    padding: 20px; /* Add padding to create space between content and border */
-    margin-left: 15rem;
-    
+  border: 2px solid black;
+
+  margin: 1rem 1.3rem;
 }
 
-app-fourchette-de-prix, app-groupe-list, app-categorie-list{
-  display: inline-flex; 
-  
- 
+app-fourchette-de-prix,
+app-groupe-list,
+app-categorie-list {
+  display: inline-flex;
 }
-.formulaire input{
-    /* border: 1px solid blue; */
-    /* box-shadow: 1px 1px 1px red; */
-    width: 96%;
-    margin-left: 15px;
+.formulaire input {
+  /* border: 1px solid blue; */
+  /* box-shadow: 1px 1px 1px red; */
+  width: 96%;
+  margin-left: 15px;
 }
- 
+
 #flexMoiCa {
-    /* border: 2px solid yellow; */
-    display: flex;
-    align-items: flex-start;
-    /* position: relative; */
+  /* border: 2px solid yellow; */
+  display: flex;
+  align-items: flex-start;
+  /* position: relative; */
 }
 
 #blocGauche {
-    /* border: 1px solid red; */
-    margin: 0 12px 0 5rem;   
-   
+  /* border: 1px solid red; */
+  margin: 0 12px 0 5rem;
 }
 
 .selection {
-    /* border: 1px solid red */
-    width: 25rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-bottom: 15px;
+  /* border: 1px solid red */
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 15px;
 }
 
-
-
-input{
-    background-color: #EFE0E2;
+input {
+  background-color: #efe0e2;
 }
 
-textarea{
-    border-color: #64B6AC;
+textarea {
+  border-color: #64b6ac;
 }
 
-.selection2{
-    /* border:1px solid blue; */
-    display: flex;
-    justify-content: flex-end;
-    
+.selection2 {
+  /* border:1px solid blue; */
+  display: flex;
+  margin-right: 2rem;
+  justify-content: flex-end;
 }
 
-.button{
-    text-align: center;
-    margin-top: 15px;
+.button {
+  text-align: center;
+  margin-top: 15px;
 }
-
 
 #modification {
-    border: 2px solid black;
-    padding: 20px; /* Add padding to create space between content and border */
-    margin-left: 15rem;
-    margin-top: 10px;
-   
-    
+  border: 2px solid black;
+  margin: 1rem 1.3rem;
 }
 .twocardcontainer {
-    /* border: 3px solid red; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.cadre{
-    border: 2px solid black;
-    width: 50%;
-    margin-right: 20px;
-    
+.cadre {
+  border: 2px solid black;
+  width: 50%;
+  margin: 0 5rem 0 2rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.2rem;
 }
 
- .reviews {
-            /* max-height: 200px; */
-            overflow-y: scroll;
-            border: 3px solid #64B6AC;
-             box-shadow: 0 4px 8px 0 rgba(100,182,172);
-            padding: 10px;
-            font-size: small;
-            margin-left: 3rem;
-            margin-right: 3rem;
-            margin-top: 1rem;
-        }
-
- .review {
-            margin-bottom: 15px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-
-#flexToutCa{
-    display: flex;
+.reviews {
+  /* max-height: 200px; */
+  overflow-y: scroll;
+  border: 3px solid #64b6ac;
+  box-shadow: 0 4px 8px 0 rgba(100, 182, 172);
+  padding: 10px;
+  font-size: small;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
 }
 
-#right{
-    /* border: 3 solid red; */
-    display: flex;
-    flex-direction: column;
-    float:right;   
+.review {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+#flexToutCa {
+  display: flex;
+}
+
+#right {
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  float: right;
+  padding-left: 0.3rem;
 }
 
 .thumbs-icons i {
-    margin-right: 10px; /* Espace entre les icônes (personnalisable) */
+  margin-right: 10px; /* Espace entre les icônes (personnalisable) */
 }
 
-.thumbs-up-down{
-    display: flex;
-    justify-content: right;
- }
-
- #cadragePouceDown {
-    margin-left: 8px;
- }
-
-.updateButton{
-    /* border: 2px solid yellow; */
-    /* display: ; */
-    display: flex;
-    flex-direction: column;
-
-
-    
-}
-.updateButton button{
-    /* padding-bottom: 1rem; */
-    margin-bottom: 1rem;
-    
+.thumbs-up-down {
+  display: flex;
+  justify-content: right;
 }
 
+#cadragePouceDown {
+  margin-left: 8px;
+}
 
-
-
-
-
-
-
-
-
-
+.updateButton {
+  /* border: 2px solid yellow; */
+  /* display: ; */
+  display: flex;
+  flex-direction: column;
+}
+.updateButton button {
+  /* padding-bottom: 1rem; */
+  margin-bottom: 1rem;
+}

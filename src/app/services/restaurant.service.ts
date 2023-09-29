@@ -36,7 +36,7 @@ export class RestaurantService {
     return this.http.get(`http://localhost:8080/api/restaurant/${id}`);
   }
 
-  findRestaurantsByMemberGroups(groupId: number): Observable<any> {
+  findRestaurantsByMemberGroups(): Observable<any> {
     return this.http.get(`http://localhost:8080/api/review/byMemberGroups`);
   }
 }

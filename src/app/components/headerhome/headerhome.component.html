@@ -36,12 +36,12 @@
 
             <ng-container *ngIf="pseudo">
                 <p class="center">{{pseudo}}</p>
-                <a class="nav-link active" [routerLink]="'/moncompte'">Mon Compte</a>
-                <a class="nav-link active" href="javascript:void(0);" (click)="logout()">Déconnexion</a>
+                <a class="nav-link" [routerLink]="'/moncompte'">Mon Compte</a>
+                <a class="nav-link" href="javascript:void(0);" (click)="logout()">Déconnexion</a>
             </ng-container>
             
             <ng-container *ngIf="!pseudo">
-                <a class="nav-link active" [routerLink]="'/login'">Connexion</a>
+                <a class="nav-link" [routerLink]="'/login'">Connexion</a>
             </ng-container>
         </div>
     </nav>

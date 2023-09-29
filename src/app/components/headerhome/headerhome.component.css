@@ -7,13 +7,19 @@
 }
 
 /* Couleur du texte des liens de la barre de navigation */
-.navbar-nav .nav-link {
-    color: white; /* Texte en blanc */
+.navbar-nav .nav-link{
+    color: #B97375;
+}
+a {
+    color: #B97375;
 }
 
 /* Couleur au survol des liens de la barre de navigation */
-.navbar-nav .nav-link:hover {
-    color: blue; /* Texte en bleu au survol */
+.navbar-nav:hover .nav-link:hover {
+    color: white; /* Texte en blanc */
+}
+a:hover {
+    color: white; /* Texte en blanc */
 }
 
 
