@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MemberService } from 'src/app/services/member.service';
-import { Member } from 'src/app/interfaces/member.interface';
+import { Member } from 'src/app/models/member';
 
 @Component({
   selector: 'app-memberupdate',
@@ -31,7 +31,29 @@ export class MemberupdateComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let member: Member;
+    this.memberService.getMember().subscribe((res: Member) => {
+      member = res;
+      this.updateForm = this.formBuilder.group({
+        username: [
+          member.username,
+          [Validators.required, Validators.minLength(2)],
+        ],
+        firstname: [
+          member.firstname,
+          [Validators.required, Validators.minLength(2)],
+        ],
+        lastname: [
+          member.lastname,
+          [Validators.required, Validators.minLength(2)],
+        ],
+        email: [member.email, [Validators.required, Validators.email]],
+        currentPassword: ['', [Validators.required, Validators.minLength(5)]],
+        newPassword: ['', [Validators.required, Validators.minLength(5)]],
+      });
+    });
+  }
 
   onSubmit(): void {
     if (this.updateForm.valid) {
