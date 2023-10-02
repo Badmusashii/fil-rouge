@@ -64,8 +64,6 @@ export class CardRestoComponent implements OnInit {
   }
 
   ajouterAvis(nouvelAvis: ReviewData) {
-    // alert('coucou');
-    // this.avis = [...this.avis,nouvelAvis];
     this.avis.push(nouvelAvis);
     // Ajoutez le nouvel avis au début de la liste
     this.avis.unshift(nouvelAvis);
