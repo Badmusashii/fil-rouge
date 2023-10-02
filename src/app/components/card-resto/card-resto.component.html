@@ -13,39 +13,23 @@
     <div class="thumbs-up-down">
       <p>
         {{ numberOfThumbsUp
-        }}<i
-          class="fas fa-thumbs-up"
-          style="margin-left: 8px"
-          (click)="voteUp()"
-        ></i>
+        }}<i class="fas fa-thumbs-up" style="margin-left: 8px"></i>
       </p>
 
       <p id="cadragePouceDown">
-        <i
-          class="fas fa-thumbs-down flip-horizontal"
-          (click)="voteDown()"
-          style="margin-right: 8px"
-        >
+        <i class="fas fa-thumbs-down flip-horizontal" style="margin-right: 8px">
         </i>
         {{ numberOfThumbsDown }}
       </p>
     </div>
     <div class="reviews">
-      <div class="review" *ngFor="let unAvis of restaurant.reviews?.reverse()">
-        <h3>Avis de {{ restaurant.member?.username }}</h3>
-        <div>
-          <span>{{ unAvis.review }}</span>
-          <i
-            *ngIf="unAvis.vote"
-            class="fas fa-thumbs-up"
-            style="margin-left: 8px"
-          ></i>
-          <i
-            *ngIf="!unAvis.vote"
-            class="fas fa-thumbs-down"
-            style="margin-left: 8px"
-          ></i>
-        </div>
+      <!-- <div class="review" *ngFor="let unAvis of restaurant.reviews?.reverse()">
+        <h3>Avis de {{ pseudo }}</h3>
+        <p>{{ unAvis.review }}</p>
+      </div> -->
+      <div class="review" *ngFor="let unAvis of avis">
+        <h3>Avis de {{ pseudo }}</h3>
+        <p>{{ unAvis }}</p>
       </div>
     </div>
   </div>

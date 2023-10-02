@@ -31,6 +31,7 @@ import { MemberupdateComponent } from './components/memberupdate/memberupdate.co
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,7 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     PageNotFoundComponent,
     RegisterComponent,
     RestaurantListComponent,
-    InfoMessageComponent
+    InfoMessageComponent,
   ],
   imports: [
     ReactiveFormsModule,

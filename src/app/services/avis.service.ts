@@ -65,12 +65,14 @@ export class AvisService {
     return this.http.post('http://localhost:8080/api/review-votes', payload);
   }
 
-  upDateVote(idReview: number, newVote: boolean) {
+  upDateVote(idRestaurant: number, idGroupe: number, newVote: boolean) {
     const payload = {
+      restaurantId: idRestaurant,
+      groupeId: idGroupe,
       vote: newVote,
     };
-    return this.http.patch(
-      `http://localhost:8080/api/reviews/${idReview}`,
+    return this.http.post(
+      `http://localhost:8080/api/review/vote/addVote`,
       payload
     );
   }

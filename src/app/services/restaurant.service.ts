@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RestaurantService {
+  
   constructor(private http: HttpClient) {}
 
   create(restaurant: Restaurants) {
@@ -18,6 +19,11 @@ export class RestaurantService {
   remove(id: number) {
     const toke = localStorage.getItem('token');
     return this.http.delete(`http://localhost:8080/api/restaurant/${id}`);
+  }
+
+  update(restaurantId:number, nouveauRestaurant:Restaurants){
+
+    return this.http.patch(`http://localhost:8080/api/restaurant/${restaurantId}`, nouveauRestaurant);
   }
 
   getRestaurantList() {
@@ -33,10 +39,10 @@ export class RestaurantService {
   }
 
   getOneRestaurant(id: number) {
-    return this.http.get(`http://localhost:8080/api/restaurant/${id}`);
+    return this.http.get<{data: Restaurant }>(`http://localhost:8080/api/restaurant/${id}`);
   }
 
-  findRestaurantsByMemberGroups(groupId: number): Observable<any> {
+  findRestaurantsByMemberGroups(): Observable<any> {
     return this.http.get(`http://localhost:8080/api/review/byMemberGroups`);
   }
 }

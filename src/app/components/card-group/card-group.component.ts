@@ -35,20 +35,18 @@ export class CardGroupComponent implements OnInit {
     //     this.restaurantList = res[this.groupe.id.toString()]; // Ajustez cette ligne selon la structure de vos données.
     //   });
 
-    this.restaurantService
-      .findRestaurantsByMemberGroups(this.groupe.id)
-      .subscribe((res) => {
-        console.log('Réponse complète:', res);
-        console.log('ID du groupe:', this.groupe.id);
+    this.restaurantService.findRestaurantsByMemberGroups().subscribe((res) => {
+      console.log('Réponse complète:', res);
+      console.log('ID du groupe:', this.groupe.id);
 
-        const restaurantsForGroup = res[this.groupe.id.toString()];
-        console.log('Restaurants pour ce groupe:', restaurantsForGroup);
+      const restaurantsForGroup = res[this.groupe.id.toString()];
+      console.log('Restaurants pour ce groupe:', restaurantsForGroup);
 
-        if (restaurantsForGroup) {
-          this.restaurantList = restaurantsForGroup;
-        } else {
-          console.warn('Aucun restaurant trouvé pour ce groupe.');
-        }
-      });
+      if (restaurantsForGroup) {
+        this.restaurantList = restaurantsForGroup;
+      } else {
+        console.warn('Aucun restaurant trouvé pour ce groupe.');
+      }
+    });
   }
 }

@@ -76,25 +76,25 @@
     <div class="cadre">
       <div id="flexToutCa">
         <div id="left">
-          <form (ngSubmit)="create()" [formGroup]="createForm">
+          <form (ngSubmit)="update()" [formGroup]="updateForm">
             <div class="formulaire">
               <input
                 formControlName="name"
                 class="taille"
                 placeholder="Nom du resto"
               />
-              <div *ngIf="createForm.get('name')?.hasError('required')"></div>
+              <input formControlName="adresse" class="taille" placeholder="Adresse du resto" />
+              <div *ngIf="updateForm.get('name')?.hasError('required') || updateForm.get('adresse') "></div>
             </div>
           </form>
-          <p>Adresse</p>
-          <app-categorie-list></app-categorie-list>
+          <app-categorie-list (categorieChanged)="handleCategorieChange($event)"></app-categorie-list>
         </div>
 
         <!-- {{ restaurantData.member.username }} -->
 
         <div id="right">
           <p>proposé par: <span></span></p>
-          <app-fourchette-de-prix></app-fourchette-de-prix>
+          <app-fourchette-de-prix (priceChanged)="handlePriceChange($event)"></app-fourchette-de-prix>
           <div class="thumbs-up-down">
             <p>
               {{ numberOfThumbsUp
@@ -144,11 +144,11 @@
           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
         />
       </svg>
-      <button class="update">Modifier</button>
+      <button (click)="update()">Modifier</button>
 <div class="message">
   {{ message }}
 </div>
-      <button (click)="(remove)">Supprimer</button>
+      <button (click)="remove(restaurantData.id)">Supprimer</button>
       <div class="message">
         {{ message }}
       </div>

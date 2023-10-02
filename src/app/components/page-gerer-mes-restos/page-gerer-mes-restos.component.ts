@@ -4,6 +4,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
 import { Review } from 'src/app/interfaces/review.interface';
+import { Restaurant } from 'src/app/interfaces/restaurant.interface';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
@@ -16,7 +17,7 @@ export class PageGererMesRestosComponent {
     [];
     
   review!: string;
-  restaurant: any;
+  restaurant!: Restaurant;
   restaurantData: any;
   restaurantList: any[] | undefined;
   reviews: Review[] = [];
@@ -38,6 +39,9 @@ export class PageGererMesRestosComponent {
       this.reviews = response.data;
       console.log(response.data);
     });
+
+
+    
   }
 
   createForm: FormGroup = this.fb.group({
@@ -48,13 +52,22 @@ export class PageGererMesRestosComponent {
     reviews: this.fb.array([]),
   });
 
+  updateForm: FormGroup = this.fb.group({
+    name:['', Validators.required],
+    adresse:['', Validators.required],
+    price: ['', [Validators.required]],
+    categorie: ['', [Validators.required]],
+  })
+
   handlePriceChange(newPrice: string): void {
     console.log('le prix est de  => ' + newPrice);
     this.createForm.get('price')?.setValue(newPrice);
+    this.updateForm.get('price')?.setValue(newPrice);
   }
   handleCategorieChange(newCategorie: string): void {
     console.log('la categorie est de  => ' + newCategorie);
     this.createForm.get('categorie')?.setValue(newCategorie);
+     this.updateForm.get('categorie')?.setValue(newCategorie);
   }
   handleGroupeChange(newGroupe: string): void {
     console.log('la Groupe est de  => ' + newGroupe);
@@ -134,35 +147,66 @@ export class PageGererMesRestosComponent {
     }
   }
 
-  remove(id:number) {
-
+  remove(id:number) {    
     const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
   if (!confirmDelete) {
     return; // L'utilisateur a annulé l'opération de suppression
   }
     
      console.log('le toi est' + id);
-     console.log(this.restaurant);
+    //  console.log(this.restaurant);
     this.restaurantService.remove(id).subscribe((response) => {
      
       console.log('le resto a bien été supprimé.' + response);
     });
   }
 
+  update() {
+    console.log('dit moi ' + JSON.stringify(this.updateForm.value))
+    if (this.updateForm.valid) {
+    const updateRestaurant = this.updateForm.value;
+    console.log('oulala' + updateRestaurant)
+      this.restaurantService.update(this.restaurantData.id, updateRestaurant).subscribe((response: any) => {
+        console.log('Restaurant mis à jour avec succès' , response);
+        alert("Restaurant mis à jour avec succès");
+      },
+      (error: any) =>{
+        console.error('erreur lors de la mise à jur du restaurant', error);
+        alert("erreur lors de la mise à jur du restaurant")
 
-  handleRestaurant(restaurant: any) {
-    this.restaurant=restaurant
-    console.log('la maison' + this.restaurant);
-    this.avisService.getReview(this.restaurant).subscribe((data) => {
+      }
+      );
+     } else{
+console.error('Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.');
+alert("Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.")
+      }
+  }
+
+
+
+
+
+
+  handleRestaurant(restaurantId: string) {
+    
+    
+    this.avisService.getReview(parseInt(restaurantId)).subscribe((data) => {
       this.reviews = data.data;
-      console.log(data.data);
+      console.log("get review", data);
     });
     this.restaurantService
-      .getOneRestaurant(+this.restaurant)
-      .subscribe((data) => {
-        this.restaurantData = data;
+      .getOneRestaurant(parseInt(restaurantId))
+      .subscribe((data: {data: Restaurant} ) => {
+        this.restaurantData = data.data;
         console.log('La data que je veut ' + JSON.stringify(data));
+        console.log('La data que je veut ', this.restaurantData);
       });
-    console.log('La data que je veut ' + this.restaurantData);
+    
   }
+
+
+
 }
+
+
+
