@@ -151,24 +151,25 @@ export class PageMesRestosComponent implements OnInit {
 
         // Ajoutez  l'avis soumis au tableau des avis du restaurant
         restaurant.reviews.push({ review: review.review, vote: review.vote });
-
-        // Appelez le service pour enregistrer l'avis dans le backend
-        // this.avisService
-        //   .ajouterAvis(idResto, {
-        //     review: review,
-        //     vote: true,
-        //   })
-        //   .subscribe(() => {
-        //     console.log('Avis enregistré dans le backend avec succès.');
-        //   });
+        location.reload();
       }
     }
   }
 
-  // handleClickOpenModal(idResto: number, nameResto: string) {
-  //   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
-  // }
   handleClickOpenModal(restaurant: Restaurant) {
-    this.idResto = { id: restaurant.id, name: restaurant.name }; //cette propriété = this.
+    this.idResto = { id: restaurant.id, name: restaurant.name };
   }
 }
+// Appelez le service pour enregistrer l'avis dans le backend
+// this.avisService
+//   .ajouterAvis(idResto, {
+//     review: review,
+//     vote: true,
+//   })
+//   .subscribe(() => {
+//     console.log('Avis enregistré dans le backend avec succès.');
+//   });
+
+// handleClickOpenModal(idResto: number, nameResto: string) {
+//   this.idResto = { id: idResto, name: nameResto }; //cette propriété = this.
+// }
