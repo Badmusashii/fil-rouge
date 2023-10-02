@@ -1,5 +1,7 @@
 .container {
-  /* border: 3px solid green; */
+  border: 3px solid green;
+  display: flex;
+  flex-direction: column;
 }
 .creategroupe {
   /* border: 3px solid yellow; */
@@ -18,8 +20,10 @@
   justify-content: space-around;
 }
 .groupeContainer {
+  /* border: 2px solid red; */
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
+  /* display: flex; */
 }

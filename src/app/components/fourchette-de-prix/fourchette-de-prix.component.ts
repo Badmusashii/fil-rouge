@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-fourchette-de-prix',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class FourchetteDePrixComponent {
   @Output() priceChanged = new EventEmitter<string>();
+  @Input() choixprix: boolean | undefined;
   selectedPrice!: string;
   prices: any;
 

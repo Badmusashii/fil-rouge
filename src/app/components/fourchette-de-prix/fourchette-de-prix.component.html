@@ -1,6 +1,9 @@
 <div class="container">
   <p>Fourchette de prix:</p>
   <select name="idPrice" (change)="onPriceChange($event)">
+    <option *ngIf="choixprix" value="choixprix" disabled selected>
+      Prix ?
+    </option>
     <option>€</option>
     <option>€€</option>
     <option>€€€</option>

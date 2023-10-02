@@ -20,31 +20,52 @@
   margin-left: 1rem;
 }
 
-.modal-content{
+.modal-content {
   width: 40%;
   height: 60%;
   border: 3px solid #b97375;
-  }
+}
 
 button{
   margin-top: 5%;
   margin-left: 40%;
 }
 
-textarea{
-margin-top: 10%;
+textarea {
+  margin-top: 10%;
 }
 
 #reviewText {
-  border: 2px solid #64B6AC;
-  box-shadow: #64B6AC;
-  box-shadow: 0 4px 8px 0 rgba(100,182,172);
+  border: 2px solid #64b6ac;
+  box-shadow: #64b6ac;
+  box-shadow: 0 4px 8px 0 rgba(100, 182, 172);
 }
 
-h2{
+h2 {
   margin-bottom: 5%;
 }
-
-.close{
-  cursor: pointer;
+.blue-icon {
+  color: blue;
 }
+
+.red-icon {
+  color: red;
+}
+
+.black-icon {
+  color: black;
+}
+
+.full-width-textarea {
+  width: 80%;
+  box-sizing: border-box;
+}
+/* #myModal { */
+/* margin-left: 10%;
+  margin-right: 10%; */
+/* position: fixed; */
+/* margin-left: 30%; */
+/* margin-right: 30%; */
+/* transform: translateX(-50%); */
+/* width: 80%; */
+/* } */
