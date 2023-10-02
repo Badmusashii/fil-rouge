@@ -139,11 +139,6 @@ export class PageGererMesRestosComponent {
           const newRestaurantId = res.id;
           console.log(newRestaurantId);
           if (this.review && this.review.trim() !== '') {
-            // this.reviewsFromForm.push({
-            //   review: this.review,
-            //   groupes: [{ id: +this.selectedGroupe }],
-            // });
-            // restaurant.reviews = this.reviewsFromForm;
             const review = {
               review: this.review,
               vote: true,
@@ -161,7 +156,7 @@ export class PageGererMesRestosComponent {
           }
         });
     }
-    alert('Restaurant Crée !');
+    alert('Votre restaurant à bien été crée !');
   }
 
   remove(id: number) {

@@ -1,20 +1,49 @@
 .card {
-    width: 30rem;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(100,182,172);
-    margin: 1rem;
-    background-color: #AED8D3;
-    color: #2C3D55;
-    font-size: 20px;
+  width: 30rem;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(100, 182, 172);
+  margin: 1rem;
+  background-color: #aed8d3;
+  color: #2c3d55;
+  font-size: 20px;
 }
 span {
-color: #B97375;
+  color: #b97375;
 }
-.container{
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+}
+p {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.member {
+  /* border: 1px solid red; */
+  padding-left: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.member li {
+  list-style: none;
+}
+.resto {
+  /* border: 1px solid yellow; */
+  margin-left: 1rem;
+  padding-right: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow-x: hidden; */
+  /* list-style: none; */
+}
+.resto li {
+  list-style: none;
+  /* align-items: center; */
 }
