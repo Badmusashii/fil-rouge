@@ -12,6 +12,7 @@ export class PageGererGroupeComponent implements OnInit {
   ngOnInit(): void {
     this.groupeService.getAllGroupeForUser().subscribe((res) => {
       this.groupes = res;
+
       // console.log(groupes);
     });
   }

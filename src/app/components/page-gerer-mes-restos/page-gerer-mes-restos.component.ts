@@ -75,56 +75,7 @@ export class PageGererMesRestosComponent {
     this.review = event.target.value;
   }
 
-  // create() {
-  //   console.log('okokokokokoko' + this.selectedGroupe);
-  //   if (this.createForm.valid) {
-  //     const restaurant: Restaurants = {
-  //       name: this.createForm.get('name')?.value,
-  //       adresse: this.createForm.get('adresse')?.value,
-  //       price: this.createForm.get('price')?.value,
-  //       categorie: +this.createForm.get('categorie')?.value,
-  //     };
-  //     if (this.review && this.review.trim() !== '') {
-  //       this.reviewsFromForm.push({
-  //         review: this.review,
-  //         groupes: [{ id: +this.selectedGroupe }],
-  //       });
-  //       restaurant.reviews = this.reviewsFromForm;
-  //     }
-  //     this.restaurantService.create(restaurant).subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   }
-  // }
-  // create() {
-  //   console.log('okokokokokoko' + this.selectedGroupe);
-  //   if (this.createForm.valid) {
-  //     const restaurant: Restaurants = {
-  //       name: this.createForm.get('name')?.value,
-  //       adresse: this.createForm.get('adresse')?.value,
-  //       price: this.createForm.get('price')?.value,
-  //       categorie: +this.createForm.get('categorie')?.value,
-  //     };
-  //     if (this.review && this.review.trim() !== '') {
-  //       const reviewPayload = {
-  //         review: this.review,
-  //         vote: true,
-  //         idgroupe: this.selectedGroupe,
-  //       };
-  //     }
-  //     this.avisService.ajouterAvis(this.restaurant.id, reviewPayload).subscribe(
-  //       (reviewRes: any) => {
-  //         console.log('Review ajoutée : ', reviewRes);
-  //       },
-  //       (reviewError) => {
-  //         console.log('Erreur lors de l’ajout de la revue : ', reviewError);
-  //       }
-  //     );
-  //   }
-  // }
-
   create() {
-    // console.log('okokokokokoko' + this.selectedGroupe);
     if (this.createForm.valid) {
       const restaurant: Restaurants = {
         name: this.createForm.get('name')?.value,
@@ -135,7 +86,6 @@ export class PageGererMesRestosComponent {
       this.restaurantService
         .create(restaurant)
         .subscribe((res: createRestaurantResponse) => {
-          console.log('la reponse ' + JSON.stringify(res));
           const newRestaurantId = res.id;
           console.log(newRestaurantId);
           if (this.review && this.review.trim() !== '') {
@@ -144,10 +94,6 @@ export class PageGererMesRestosComponent {
               vote: true,
               idgroupe: this.selectedGroupe,
             };
-            console.log(
-              "l'envoie a avisservice " + typeof newRestaurantId,
-              review
-            );
             this.avisService
               .ajouterAvis(newRestaurantId, review)
               .subscribe((res) => {

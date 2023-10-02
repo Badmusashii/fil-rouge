@@ -73,7 +73,6 @@ h2 {
     width: 40%;
     left: -1.2rem;
     margin-bottom: 0.5rem;
-    /* border: 2px solid red; */
   }
   .title {
     display: flex;
@@ -90,7 +89,6 @@ h2 {
     position: relative;
     width: 30%;
     left: -1.2rem;
-    /* border: 2px solid red; */
   }
   .title {
     display: flex;
@@ -109,8 +107,6 @@ h2 {
     left: -1.2rem;
   }
   .rectangle {
-    /* height: 5rem; */
-    /* border: 1px solid red; */
     height: 25rem;
   }
   .rectangle p {

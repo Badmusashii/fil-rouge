@@ -90,7 +90,6 @@ export class GroupecardComponent implements OnInit {
             to_email: this.email,
             groupe_url: `http://localhost:4200/intermediaire/register?groupeId=${this.groupe.id}`,
           };
-
           emailjs
             .send(
               'service_ffhd2yb',
@@ -100,6 +99,8 @@ export class GroupecardComponent implements OnInit {
             )
             .then(
               (result: EmailJSResponseStatus) => {
+                alert('Votre invitation à bien été envoyer par email');
+                location.reload();
                 console.log(result.text);
               },
               (error) => {

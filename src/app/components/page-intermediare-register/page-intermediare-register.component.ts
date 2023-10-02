@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-intermediare-register',
@@ -15,7 +16,8 @@ export class PageIntermediareRegisterComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
       pseudo: ['', [Validators.required]],
@@ -44,7 +46,6 @@ export class PageIntermediareRegisterComponent implements OnInit {
         email: this.registerForm.get('email')?.value,
         password: this.registerForm.get('password')?.value,
       };
-      // const userData = this.registerForm.value;
       this.http
         .post('http://localhost:8080/api/auth/register', userData)
         .subscribe((res) => {
@@ -63,7 +64,6 @@ export class PageIntermediareRegisterComponent implements OnInit {
         (response: any) => {
           console.log(response);
           this.token = response.accessToken;
-          // console.log('token => ' + this.token);
           this.joinGroupe();
         },
         (error) => {
@@ -78,10 +78,18 @@ export class PageIntermediareRegisterComponent implements OnInit {
       (response) => {
         console.log('Réponse du serveur: ', response);
         // Traitement en cas de succès
+        alert(
+          'Vous avez bien été enrengister. Bienvenue sur notre application'
+        );
+        this.router.navigate(['/home']);
       },
       (error) => {
-        console.log('Erreur: ', error);
+        alert(
+          'Une erreur est survenue. vous allez etre rediriger pour vous inscrire'
+        );
         // Traitement en cas d'erreur
+        this.router.navigate(['/register']);
+        console.log('Erreur: ', error);
       }
     );
   }

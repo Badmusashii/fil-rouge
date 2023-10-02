@@ -18,7 +18,11 @@ export class RestaurantService {
       restaurant
     );
   }
-
+  getByMember() {
+    return this.http.get(
+      'http://localhost:8080/api/restaurant/search/byMember'
+    );
+  }
   remove(id: number) {
     const toke = localStorage.getItem('token');
     return this.http.delete(`http://localhost:8080/api/restaurant/${id}`);
