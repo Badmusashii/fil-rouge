@@ -1,4 +1,4 @@
-import { Component, Input, } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
@@ -15,7 +15,7 @@ export class PageGererMesRestosComponent {
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
-    
+
   review!: string;
   restaurant!: Restaurant;
   restaurantData: any;
@@ -39,9 +39,6 @@ export class PageGererMesRestosComponent {
       this.reviews = response.data;
       console.log(response.data);
     });
-
-
-    
   }
 
   createForm: FormGroup = this.fb.group({
@@ -53,11 +50,11 @@ export class PageGererMesRestosComponent {
   });
 
   updateForm: FormGroup = this.fb.group({
-    name:['', Validators.required],
-    adresse:['', Validators.required],
+    name: ['', Validators.required],
+    adresse: ['', Validators.required],
     price: ['', [Validators.required]],
     categorie: ['', [Validators.required]],
-  })
+  });
 
   handlePriceChange(newPrice: string): void {
     console.log('le prix est de  => ' + newPrice);
@@ -67,7 +64,7 @@ export class PageGererMesRestosComponent {
   handleCategorieChange(newCategorie: string): void {
     console.log('la categorie est de  => ' + newCategorie);
     this.createForm.get('categorie')?.setValue(newCategorie);
-     this.updateForm.get('categorie')?.setValue(newCategorie);
+    this.updateForm.get('categorie')?.setValue(newCategorie);
   }
   handleGroupeChange(newGroupe: string): void {
     console.log('la Groupe est de  => ' + newGroupe);
@@ -147,66 +144,59 @@ export class PageGererMesRestosComponent {
     }
   }
 
-  remove(id:number) {    
-    const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
-  if (!confirmDelete) {
-    return; // L'utilisateur a annulé l'opération de suppression
-  }
-    
-     console.log('le toi est' + id);
+  remove(id: number) {
+    const confirmDelete = confirm(
+      'Êtes-vous sûr de vouloir supprimer ce restaurant ?'
+    );
+    if (!confirmDelete) {
+      return; // L'utilisateur a annulé l'opération de suppression
+    }
+
+    console.log('le toi est' + id);
     //  console.log(this.restaurant);
     this.restaurantService.remove(id).subscribe((response) => {
-     
       console.log('le resto a bien été supprimé.' + response);
     });
   }
 
   update() {
-    console.log('dit moi ' + JSON.stringify(this.updateForm.value))
+    console.log('dit moi ' + JSON.stringify(this.updateForm.value));
     if (this.updateForm.valid) {
-    const updateRestaurant = this.updateForm.value;
-    console.log('oulala' + updateRestaurant)
-      this.restaurantService.update(this.restaurantData.id, updateRestaurant).subscribe((response: any) => {
-        console.log('Restaurant mis à jour avec succès' , response);
-        alert("Restaurant mis à jour avec succès");
-      },
-      (error: any) =>{
-        console.error('erreur lors de la mise à jur du restaurant', error);
-        alert("erreur lors de la mise à jur du restaurant")
-
-      }
+      const updateRestaurant = this.updateForm.value;
+      console.log('oulala' + updateRestaurant);
+      this.restaurantService
+        .update(this.restaurantData.id, updateRestaurant)
+        .subscribe(
+          (response: any) => {
+            console.log('Restaurant mis à jour avec succès', response);
+            alert('Restaurant mis à jour avec succès');
+          },
+          (error: any) => {
+            console.error('erreur lors de la mise à jur du restaurant', error);
+            alert('erreur lors de la mise à jur du restaurant');
+          }
+        );
+    } else {
+      console.error(
+        "Le formulaire n'est pas valide. Impossible de mettre à jour le restaurant."
       );
-     } else{
-console.error('Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.');
-alert("Le formulaire n\'est pas valide. Impossible de mettre à jour le restaurant.")
-      }
+      alert(
+        "Le formulaire n'est pas valide. Impossible de mettre à jour le restaurant."
+      );
+    }
   }
 
-
-
-
-
-
   handleRestaurant(restaurantId: string) {
-    
-    
     this.avisService.getReview(parseInt(restaurantId)).subscribe((data) => {
       this.reviews = data.data;
-      console.log("get review", data);
+      console.log('get review', data);
     });
     this.restaurantService
       .getOneRestaurant(parseInt(restaurantId))
-      .subscribe((data: {data: Restaurant} ) => {
+      .subscribe((data: { data: Restaurant }) => {
         this.restaurantData = data.data;
         console.log('La data que je veut ' + JSON.stringify(data));
         console.log('La data que je veut ', this.restaurantData);
       });
-    
   }
-
-
-
 }
-
-
-

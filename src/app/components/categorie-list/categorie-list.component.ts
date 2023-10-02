@@ -10,7 +10,8 @@ import { ResponseApi } from 'src/app/models/response-api';
 export class CategorieListComponent implements OnInit {
   @Output() categorieChanged = new EventEmitter<string>();
   // La propriété allList = true permet d'afficher une option "Tous" dans le Select
-  @Input() allList: boolean | undefined; 
+  @Input() allList: boolean | undefined;
+  @Input() choixcategorie: boolean | undefined;
   selectedCategorie!: string;
   // prices: any;
 

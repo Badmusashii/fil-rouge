@@ -14,11 +14,19 @@
         <i
           class="fas fa-thumbs-up"
           style="margin-left: 8px"
+          [ngClass]="{
+            'blue-icon': vote === true,
+            'black-icon': vote !== true
+          }"
           (click)="setVote(true)"
         ></i>
         <i
           class="fas fa-thumbs-down flip-horizontal"
           style="margin-right: 8px"
+          [ngClass]="{
+            'red-icon': vote === false,
+            'black-icon': vote !== false
+          }"
           (click)="setVote(false)"
         ></i>
       </div>
@@ -32,6 +40,7 @@
         rows="4"
         cols="50"
         [(ngModel)]="reviewText"
+        class="full-width-textarea"
       ></textarea>
       <button type="submit">Envoyer</button>
     </form>

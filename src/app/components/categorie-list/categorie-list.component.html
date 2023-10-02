@@ -2,6 +2,9 @@
   <span>Catégorie: </span>
   <select name="idCategorie" (change)="onCategorieChange($event)">
     <option *ngIf="allList">Toutes les catégories</option>
+    <option *ngIf="choixcategorie" value="choixcategorie" disabled selected>
+      Selectionnez une categorie
+    </option>
     <option *ngFor="let categorie of categorieList" [value]="categorie.id">
       {{ categorie.name }}
     </option>
