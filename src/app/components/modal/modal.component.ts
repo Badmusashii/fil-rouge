@@ -24,7 +24,7 @@ export class ModalComponent {
   } // Ajoutez une variable pour suivre l'état de la modale
 
   @Output() reviewSubmitted = new EventEmitter<ReviewData>();
-  reviewText: string = '';
+   reviewText: string = '';
   isModalOpen: boolean = false;
   _idResto?: number;
   nameResto?: string;
@@ -35,6 +35,7 @@ export class ModalComponent {
   }
   setVote(vote: boolean): void {
     this.vote = vote;
+    
   }
 
   closeModal() {

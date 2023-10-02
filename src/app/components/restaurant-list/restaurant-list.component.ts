@@ -15,6 +15,7 @@ export class RestaurantListComponent implements OnInit {
 
   // La propriété allList = true permet d'afficher une option "Tous" dans le Select
   @Input() allList: boolean | undefined;
+  @Input() choixrestaurant: boolean | undefined;
 
   constructor(private restaurantService: RestaurantService) {}
 
