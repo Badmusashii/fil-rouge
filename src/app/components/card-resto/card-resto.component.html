@@ -28,7 +28,7 @@
         <p>{{ unAvis.review }}</p>
       </div> -->
       <div class="review" *ngFor="let unAvis of avis">
-        <h3>Avis de {{ pseudo }}</h3>
+        <h3>Avis de {{ restaurant.member?.username }}</h3>
         <p>{{ unAvis }}</p>
       </div>
     </div>

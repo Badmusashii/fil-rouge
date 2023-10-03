@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Restaurants } from '../models/restaurant';
 import { Restaurant } from '../interfaces/restaurant.interface';
 import { createRestaurantResponse } from '../interfaces/createRestaurantResponse.interface';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +18,40 @@ export class RestaurantService {
       restaurant
     );
   }
+  // getByMember() {
+  //   return this.http.get(
+  //     'http://localhost:8080/api/restaurant/search/byMember'
+  //   );
+  // }
+  // async getByMember() {
+  //   return this.http
+  //     .get('http://localhost:8080/api/restaurant/search/byMember')
+  //     .toPromise()
+  //     .then((response: any) => {
+  //       return response.map((restaurant: any) => ({
+  //         id: restaurant.id,
+  //         name: restaurant.name,
+  //         adresse: restaurant.adresse,
+  //         price: restaurant.price,
+  //       }));
+  //     });
+  // }
   getByMember() {
-    return this.http.get(
-      'http://localhost:8080/api/restaurant/search/byMember'
-    );
+    return this.http
+      .get('http://localhost:8080/api/restaurant/search/byMember')
+      .pipe(
+        map((response: any) => {
+          return response.map((restaurant: any) => ({
+            id: restaurant.id,
+            name: restaurant.name,
+            adresse: restaurant.adresse,
+            price: restaurant.price,
+            // ajoutez ici d'autres propriétés si nécessaire
+          }));
+        })
+      );
   }
+
   remove(id: number) {
     const toke = localStorage.getItem('token');
     return this.http.delete(`http://localhost:8080/api/restaurant/${id}`);

@@ -1,0 +1,3 @@
+interface AuthResponse {
+  accessToken: string;
+}
