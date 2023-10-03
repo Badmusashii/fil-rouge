@@ -102,7 +102,8 @@ export class PageGererMesRestosComponent {
           }
         });
     }
-    alert('Votre restaurant à bien été crée !');
+    alert('Votre restaurant a bien été créé !');
+    location.reload();
   }
 
   remove(id: number) {
@@ -118,6 +119,8 @@ export class PageGererMesRestosComponent {
     this.restaurantService.remove(id).subscribe((response) => {
       console.log('le resto a bien été supprimé.' + response);
     });
+    alert('Votre restaurant a bien été supprimé.')
+     location.reload();
   }
 
   update() {
@@ -131,6 +134,7 @@ export class PageGererMesRestosComponent {
           (response: any) => {
             console.log('Restaurant mis à jour avec succès', response);
             alert('Restaurant mis à jour avec succès');
+            location.reload();
           },
           (error: any) => {
             console.error('erreur lors de la mise à jur du restaurant', error);
