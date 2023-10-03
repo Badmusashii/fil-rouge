@@ -55,6 +55,9 @@ export class PageMesRestosComponent implements OnInit {
           this.restaurantListByGroup[groupId] = data[groupId];
         }
       }
+      console.log(
+        'resto par groupe ' + JSON.stringify(this.restaurantListByGroup)
+      );
     });
   }
 

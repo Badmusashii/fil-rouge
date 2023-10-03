@@ -8,6 +8,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class RestaurantListComponent implements OnInit {
   @Input() restaurantList: any;
+  @Input() restaurantListByUser: any;
   @Output() restaurantListOutput: EventEmitter<any[]> = new EventEmitter<
     any[]
   >();

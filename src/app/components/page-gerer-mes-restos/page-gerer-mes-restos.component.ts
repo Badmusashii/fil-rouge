@@ -21,6 +21,7 @@ export class PageGererMesRestosComponent {
   restaurant!: Restaurant;
   restaurantData: any;
   restaurantList: any[] | undefined;
+  restaurantListByUser: any[] | undefined;
   reviews: Review[] = [];
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,14 @@ export class PageGererMesRestosComponent {
       this.reviews = response.data;
       console.log(response.data);
     });
+    this.restaurantService.getByMember().subscribe((restaurantData) => {
+      this.restaurantListByUser = restaurantData;
+      console.log('la data perso ' + JSON.stringify(this.restaurantListByUser));
+    });
+    // this.restaurantService.getByMember().subscribe((res) => {
+    //   this.restaurantList = res;
+    //   console.log('la data perso ' + JSON.stringify(restaurantData));
+    // });
   }
 
   createForm: FormGroup = this.fb.group({
