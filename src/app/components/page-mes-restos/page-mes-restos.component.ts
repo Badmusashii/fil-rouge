@@ -82,23 +82,63 @@ export class PageMesRestosComponent implements OnInit {
   }
 
   filterRestaurantList() {
-    this.restaurantListToDisplay = this.restaurantList;
+    // console.log('log t=de selected resto ' + this.selectedRestaurant);
+    console.log('Selected restaurant: ', this.selectedRestaurant);
+    console.log('Type de selectedGroup: ', typeof this.selectedGroup);
+    console.log(
+      'Clés dans restaurantListByGroup: ',
+      Object.keys(this.restaurantListByGroup || {})
+    );
 
-    if(this.selectedRestaurant&&Number(this.selectedRestaurant)){
+    // if (this.selectedRestaurant === 'all') {
+    //   this.restaurantListToDisplay = [...this.restaurantList!];
+    //   return;
+    // }
+
+    // Réinitialisation du filtrage
+    this.restaurantListToDisplay = [...this.restaurantList!];
+
+    // Filtrage par Groupe
+    if (this.selectedGroup && Number(this.selectedGroup)) {
+      const selectedGroupNum = +this.selectedGroup; // Forçage de type
+      if (
+        this.restaurantListByGroup &&
+        this.restaurantListByGroup.hasOwnProperty(selectedGroupNum)
+      ) {
+        this.restaurantListToDisplay = [
+          ...this.restaurantListByGroup[selectedGroupNum],
+        ];
+        console.log(
+          'les valeurs que je veux pour les groupes ',
+          this.restaurantListToDisplay
+        );
+      } else {
+        this.restaurantListToDisplay = [];
+        console.log('Aucun restaurant trouvé pour ce groupe.');
+      }
+    }
+
+    // Filtrage par resto
+    if (this.selectedRestaurant && Number(this.selectedRestaurant)) {
       this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
-        (restaurant) => restaurant.id == Number(this.selectedRestaurant)
+        (restaurant) => restaurant.id === Number(this.selectedRestaurant)
       );
     }
-    if(this.selectedCategory&&Number(this.selectedCategory)){
+
+    // Filtrage par catégorie
+    if (this.selectedCategory && Number(this.selectedCategory)) {
       this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
         (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
       );
     }
-    if (this.selectedGroup && Number(this.selectedGroup)) {
-      //this.restaurantListToDisplay = this.restaurantList?.filter(
-        //(restaurant) => restaurant. == Number(this.selectedGroup)
-      //);
+
+    if (this.selectedCategory && Number(this.selectedCategory)) {
+      this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
+        (restaurant) =>
+          restaurant.categorie.id === Number(this.selectedCategory)
+      );
     }
+
   }
 
   handleRestaurantList(restaurantList: Restaurant[]) {
