@@ -1,0 +1,16 @@
+.info-message {
+  background-color: #4caf50; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  padding: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.info-message.show {
+  opacity: 1;
+}

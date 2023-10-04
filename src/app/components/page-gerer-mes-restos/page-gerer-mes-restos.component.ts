@@ -1,10 +1,11 @@
-import { Component, Input, } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurants } from 'src/app/models/restaurant';
 import { AvisService } from 'src/app/services/avis.service';
 import { Review } from 'src/app/interfaces/review.interface';
 import { Restaurant } from 'src/app/interfaces/restaurant.interface';
+import { createRestaurantResponse } from 'src/app/interfaces/createRestaurantResponse.interface';
 @Component({
   selector: 'app-page-gerer-mes-restos',
   templateUrl: './page-gerer-mes-restos.component.html',
@@ -15,11 +16,12 @@ export class PageGererMesRestosComponent {
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
-    
+
   review!: string;
-  restaurant: any;
+  restaurant!: Restaurant;
   restaurantData: any;
   restaurantList: any[] | undefined;
+  restaurantListByUser: any[] | undefined;
   reviews: Review[] = [];
   constructor(
     private fb: FormBuilder,
@@ -39,6 +41,14 @@ export class PageGererMesRestosComponent {
       this.reviews = response.data;
       console.log(response.data);
     });
+    this.restaurantService.getByMember().subscribe((restaurantData) => {
+      this.restaurantListByUser = restaurantData;
+      console.log('la data perso ' + JSON.stringify(this.restaurantListByUser));
+    });
+    // this.restaurantService.getByMember().subscribe((res) => {
+    //   this.restaurantList = res;
+    //   console.log('la data perso ' + JSON.stringify(restaurantData));
+    // });
   }
 
   createForm: FormGroup = this.fb.group({
@@ -49,13 +59,22 @@ export class PageGererMesRestosComponent {
     reviews: this.fb.array([]),
   });
 
+  updateForm: FormGroup = this.fb.group({
+    name: ['', Validators.required],
+    adresse: ['', Validators.required],
+    price: ['', [Validators.required]],
+    categorie: ['', [Validators.required]],
+  });
+
   handlePriceChange(newPrice: string): void {
     console.log('le prix est de  => ' + newPrice);
     this.createForm.get('price')?.setValue(newPrice);
+    this.updateForm.get('price')?.setValue(newPrice);
   }
   handleCategorieChange(newCategorie: string): void {
     console.log('la categorie est de  => ' + newCategorie);
     this.createForm.get('categorie')?.setValue(newCategorie);
+    this.updateForm.get('categorie')?.setValue(newCategorie);
   }
   handleGroupeChange(newGroupe: string): void {
     console.log('la Groupe est de  => ' + newGroupe);
@@ -65,56 +84,7 @@ export class PageGererMesRestosComponent {
     this.review = event.target.value;
   }
 
-  // create() {
-  //   console.log('okokokokokoko' + this.selectedGroupe);
-  //   if (this.createForm.valid) {
-  //     const restaurant: Restaurants = {
-  //       name: this.createForm.get('name')?.value,
-  //       adresse: this.createForm.get('adresse')?.value,
-  //       price: this.createForm.get('price')?.value,
-  //       categorie: +this.createForm.get('categorie')?.value,
-  //     };
-  //     if (this.review && this.review.trim() !== '') {
-  //       this.reviewsFromForm.push({
-  //         review: this.review,
-  //         groupes: [{ id: +this.selectedGroupe }],
-  //       });
-  //       restaurant.reviews = this.reviewsFromForm;
-  //     }
-  //     this.restaurantService.create(restaurant).subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   }
-  // }
-  // create() {
-  //   console.log('okokokokokoko' + this.selectedGroupe);
-  //   if (this.createForm.valid) {
-  //     const restaurant: Restaurants = {
-  //       name: this.createForm.get('name')?.value,
-  //       adresse: this.createForm.get('adresse')?.value,
-  //       price: this.createForm.get('price')?.value,
-  //       categorie: +this.createForm.get('categorie')?.value,
-  //     };
-  //     if (this.review && this.review.trim() !== '') {
-  //       const reviewPayload = {
-  //         review: this.review,
-  //         vote: true,
-  //         idgroupe: this.selectedGroupe,
-  //       };
-  //     }
-  //     this.avisService.ajouterAvis(this.restaurant.id, reviewPayload).subscribe(
-  //       (reviewRes: any) => {
-  //         console.log('Review ajoutée : ', reviewRes);
-  //       },
-  //       (reviewError) => {
-  //         console.log('Erreur lors de l’ajout de la revue : ', reviewError);
-  //       }
-  //     );
-  //   }
-  // }
-
   create() {
-    console.log('okokokokokoko' + this.selectedGroupe);
     if (this.createForm.valid) {
       const restaurant: Restaurants = {
         name: this.createForm.get('name')?.value,
@@ -122,48 +92,81 @@ export class PageGererMesRestosComponent {
         price: this.createForm.get('price')?.value,
         categorie: +this.createForm.get('categorie')?.value,
       };
-      if (this.review && this.review.trim() !== '') {
-        this.reviewsFromForm.push({
-          review: this.review,
-          groupes: [{ id: +this.selectedGroupe }],
+      this.restaurantService
+        .create(restaurant)
+        .subscribe((res: createRestaurantResponse) => {
+          const newRestaurantId = res.id;
+          console.log(newRestaurantId);
+          if (this.review && this.review.trim() !== '') {
+            const review = {
+              review: this.review,
+              vote: true,
+              idgroupe: this.selectedGroupe,
+            };
+            this.avisService
+              .ajouterAvis(newRestaurantId, review)
+              .subscribe((res) => {
+                console.log(res);
+              });
+          }
         });
-        restaurant.reviews = this.reviewsFromForm;
-      }
-      this.restaurantService.create(restaurant).subscribe((res) => {
-        console.log(res);
-      });
     }
+    alert('Votre restaurant à bien été crée !');
   }
 
-  remove(id:number) {
+  remove(id: number) {
+    const confirmDelete = confirm(
+      'Êtes-vous sûr de vouloir supprimer ce restaurant ?'
+    );
+    if (!confirmDelete) {
+      return; // L'utilisateur a annulé l'opération de suppression
+    }
 
-    const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');
-  if (!confirmDelete) {
-    return; // L'utilisateur a annulé l'opération de suppression
-  }
-    
-     console.log('le toi est' + id);
-     console.log(this.restaurant);
+    console.log('le toi est' + id);
+    //  console.log(this.restaurant);
     this.restaurantService.remove(id).subscribe((response) => {
-     
       console.log('le resto a bien été supprimé.' + response);
     });
   }
 
+  update() {
+    console.log('dit moi ' + JSON.stringify(this.updateForm.value));
+    if (this.updateForm.valid) {
+      const updateRestaurant = this.updateForm.value;
+      console.log('oulala' + updateRestaurant);
+      this.restaurantService
+        .update(this.restaurantData.id, updateRestaurant)
+        .subscribe(
+          (response: any) => {
+            console.log('Restaurant mis à jour avec succès', response);
+            alert('Restaurant mis à jour avec succès');
+          },
+          (error: any) => {
+            console.error('erreur lors de la mise à jur du restaurant', error);
+            alert('erreur lors de la mise à jur du restaurant');
+          }
+        );
+    } else {
+      console.error(
+        "Le formulaire n'est pas valide. Impossible de mettre à jour le restaurant."
+      );
+      alert(
+        "Le formulaire n'est pas valide. Impossible de mettre à jour le restaurant."
+      );
+    }
+  }
 
-  handleRestaurant(restaurant: any) {
-    this.restaurant=restaurant
-    console.log('la maison' + this.restaurant);
-    this.avisService.getReview(this.restaurant).subscribe((data) => {
+  handleRestaurant(restaurantId: string) {
+    this.avisService.getReview(parseInt(restaurantId)).subscribe((data) => {
       this.reviews = data.data;
-      console.log(data.data);
+      console.log('get review', data);
     });
     this.restaurantService
-      .getOneRestaurant(+this.restaurant)
-      .subscribe((data) => {
-        this.restaurantData = data;
+      .getOneRestaurant(parseInt(restaurantId))
+      .subscribe((data: { data: Restaurant }) => {
+        this.restaurantData = data.data;
         console.log('La data que je veut ' + JSON.stringify(data));
+        console.log('La data que je veut ', this.restaurantData);
       });
-    console.log('La data que je veut ' + this.restaurantData);
   }
 }

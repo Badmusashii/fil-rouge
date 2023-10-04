@@ -1,7 +1,12 @@
 <div>
-    <span>Restaurant: </span>
-    <select name="idRestaurant" (change) = "onRestaurantChange($event)">
-        <option *ngIf="allList">Tous les restaurants</option>
-        <option *ngFor="let restaurant of restaurantList" [value]="restaurant.id">{{restaurant.name}}</option>
-    </select>
+  <span>Restaurant: </span>
+  <select name="idRestaurant" (change)="onRestaurantChange($event)">
+    <option *ngIf="choixrestaurant" value="choixrestaurant" disabled selected>
+      Selectionnez un restaurant
+    </option>
+    <option *ngIf="allList">Tous les restaurants</option>
+    <option *ngFor="let restaurant of restaurantList" [value]="restaurant.id">
+      {{ restaurant.name }}
+    </option>
+  </select>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-intermediare',
@@ -10,7 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class PageIntermediareComponent implements OnInit {
   groupeId: number | null = null;
   token: string | null = null;
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -26,11 +31,12 @@ export class PageIntermediareComponent implements OnInit {
     this.http.put(url, {}).subscribe(
       (response) => {
         console.log('Réponse du serveur: ', response);
-        // Traitement en cas de succès
+        this.router.navigate(['/home']);
       },
       (error) => {
         console.log('Erreur: ', error);
-        // Traitement en cas d'erreur
+        alert("Une chose s'est mal passe ! desolé");
+        this.router.navigate(['/register']);
       }
     );
   }

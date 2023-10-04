@@ -29,7 +29,8 @@ import { PageGererMesRestosComponent } from './components/page-gerer-mes-restos/
 import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourchette-de-prix.component';
 import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { InfoMessageComponent } from './components/info-message/info-message.component';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { FooterComponent } from './components/footer/footer.component';
     PageNotFoundComponent,
     RegisterComponent,
     RestaurantListComponent,
-    FooterComponent
+    InfoMessageComponent,
   ],
   imports: [
     ReactiveFormsModule,
