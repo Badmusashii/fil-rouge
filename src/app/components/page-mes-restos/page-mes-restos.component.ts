@@ -89,7 +89,7 @@ export class PageMesRestosComponent implements OnInit {
 
         // Appelez le service pour enregistrer l'avis dans le backend
         this.avisService
-          .ajouterAvis({ review: '', vote: true, idResto: String(restaurant.id) })
+          .ajouterAvis(restaurant.id,{ review: review.review, vote: true, idgroupe: 1 })
           .subscribe(() => {
             console.log('Avis enregistré dans le backend avec succès.');
           });
