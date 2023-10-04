@@ -11,6 +11,7 @@ import { Member } from 'src/app/models/member';
 })
 export class MemberupdateComponent implements OnInit {
   updateForm: FormGroup;
+  message: string="";
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,

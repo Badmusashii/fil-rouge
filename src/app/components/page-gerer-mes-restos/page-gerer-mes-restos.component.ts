@@ -16,7 +16,6 @@ export class PageGererMesRestosComponent {
   // reviews: Array<{ review: string; groupe: number }> = [];
   reviewsFromForm: Array<{ review: string; groupes: Array<{ id: number }> }> =
     [];
-
   review!: string;
   restaurant!: Restaurant;
   restaurantData: any;

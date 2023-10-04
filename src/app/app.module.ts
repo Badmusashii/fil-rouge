@@ -30,6 +30,7 @@ import { FourchetteDePrixComponent } from './components/fourchette-de-prix/fourc
 import { MemberupdateComponent } from './components/memberupdate/memberupdate.component';
 import { GroupecardComponent } from './components/groupecard/groupecard.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     CardRestoComponent,
     CategorieListComponent,
     FourchetteDePrixComponent,
+    FooterComponent,
     HeaderComponent,
     HeaderhomeComponent,
     HeaderLoginComponent,

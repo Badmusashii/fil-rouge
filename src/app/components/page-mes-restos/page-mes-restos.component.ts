@@ -18,6 +18,7 @@ export class PageMesRestosComponent implements OnInit {
   idResto!: { id: number; name: string };
   isModalOpen: boolean = false;
   restaurantListByGroup?: { [groupId: string]: Restaurant[] };
+  message:string = "";
 
   // Filtres
   selectedRestaurant?: string;
@@ -44,7 +45,7 @@ export class PageMesRestosComponent implements OnInit {
           this.restaurantListToDisplay = flatRestaurantList;
         }
       }
-      this.handleRestaurantList(flatRestaurantList);
+      //this.handleRestaurantList(flatRestaurantList);
       this.restaurantList = flatRestaurantList;
     });
     this.restaurantService.findRestaurantsByMemberGroups().subscribe((data) => {
@@ -68,7 +69,6 @@ export class PageMesRestosComponent implements OnInit {
     } else {
       this.filterRestaurantList();
     }
-    // this.filterRestaurantList();
   }
   handleSelectedCategory(selectedCategory: string) {
     this.selectedCategory = selectedCategory;
@@ -83,7 +83,7 @@ export class PageMesRestosComponent implements OnInit {
 
   filterRestaurantList() {
     this.restaurantListToDisplay = this.restaurantList;
-<<<<<<<<< Temporary merge branch 1
+
     if(this.selectedRestaurant&&Number(this.selectedRestaurant)){
       this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
         (restaurant) => restaurant.id == Number(this.selectedRestaurant)
@@ -94,24 +94,10 @@ export class PageMesRestosComponent implements OnInit {
         (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
       );
     }
-    if(this.selectedGroup&&Number(this.selectedGroup)){
-      // this.restaurantListToDisplay = this.restaurantListToDisplay?.filter(
-=========
-    if (this.selectedRestaurant && Number(this.selectedRestaurant)) {
-      this.restaurantListToDisplay = this.restaurantList?.filter(
-        (restaurant) => restaurant.id == Number(this.selectedRestaurant)
-      );
-    }
-    if (this.selectedCategory && Number(this.selectedCategory)) {
-      this.restaurantListToDisplay = this.restaurantList?.filter(
-        (restaurant) => restaurant.categorie.id == Number(this.selectedCategory)
-      );
-    }
     if (this.selectedGroup && Number(this.selectedGroup)) {
-      // this.restaurantListToDisplay = this.restaurantList?.filter(
->>>>>>>>> Temporary merge branch 2
-      //   (restaurant) => restaurant.id == Number(this.selectedGroup)
-      // );
+      //this.restaurantListToDisplay = this.restaurantList?.filter(
+        //(restaurant) => restaurant. == Number(this.selectedGroup)
+      //);
     }
   }
 
